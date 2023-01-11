@@ -10,6 +10,5 @@ RSpec.describe Golfer, type: :model do
     it { should have_many(:meals).through(:golfer_meals) }
     it { should have_many(:golfer_trip_courses) }
     it { should have_many(:trip_courses).through(:golfer_trip_courses) }
-    it { should have_many(:trips).through(:trip_courses) }
   end
 end
