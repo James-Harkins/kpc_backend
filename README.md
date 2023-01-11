@@ -2,6 +2,7 @@
 
 ## Database Schema 
 
-<img width="1419" alt="image" src="https://user-images.githubusercontent.com/93609855/211689172-7048573b-998e-4c28-95f2-f02065c3632b.png">
+<img width="1419" alt="image" src="https://user-images.githubusercontent.com/93609855/211689632-8aa6dd82-e8aa-4147-8acd-265e2acfbf66.png">
+
 
 
