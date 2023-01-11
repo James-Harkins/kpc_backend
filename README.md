@@ -1,24 +1,5 @@
-# README
+# Welcome back to the KPC!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Database Schema 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+!(<img width="1435" alt="image" src="https://user-images.githubusercontent.com/93609855/211687621-4ae79fb7-e702-4f6e-aa88-8d56623e577f.png">)
