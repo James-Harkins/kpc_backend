@@ -34,5 +34,11 @@ RSpec.describe Golfer, type: :model do
       expect(golfer).to_not have_attribute(:password)
       expect(golfer.password_digest).to_not eq('password123')
     end
+
+    it 'should be initialized with a default role' do
+      golfer = Golfer.create!(first_name: 'Tony', last_name: 'Soprano', email: 'wokeupthismorning@gmail.com', password: 'test123', password_confirmation: 'test123')
+
+      expect(golfer.role).to eq('default')
+    end
   end
 end
