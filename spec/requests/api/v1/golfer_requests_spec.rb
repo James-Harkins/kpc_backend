@@ -25,9 +25,11 @@ describe 'golfer endpoints' do
         expect(golfer).to have_key(:id)
         expect(golfer).to have_key(:attributes)
         expect(golfer[:attributes]).to be_a Hash
+        expect(golfer[:attributes].keys).to eq([:first_name, :last_name, :email, :role])
         expect(golfer[:attributes][:first_name]).to eq(json_payload[:first_name])
         expect(golfer[:attributes][:last_name]).to eq(json_payload[:last_name])
-        expect(golfer[:attributes][:password_digest]).not_to eq(json_payload[:password])
+        expect(golfer[:attributes][:email]).to eq(json_payload[:email])
+        expect(golfer[:attributes][:role]).to eq('default')
       end
     end
 
