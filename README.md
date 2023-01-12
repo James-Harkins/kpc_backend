@@ -23,10 +23,10 @@ Example request:
 ```
 {
     "first_name": "Tony",
-    "last_name":"Soprano",
-    "email":"t@badabing.com",
-    "password":"varsityAthlete",
-    "password_confirmation":"varsityAthlete"
+    "last_name": "Soprano",
+    "email": "t@badabing.com",
+    "password": "varsityAthlete",
+    "password_confirmation": "varsityAthlete"
 }
 ```
 
