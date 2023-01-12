@@ -8,7 +8,7 @@ This is the documentation for the Back End app, which is an API written in Ruby 
 
 ## Database Schema 
 
-<img width="1419" alt="image" src="https://user-images.githubusercontent.com/93609855/211689632-8aa6dd82-e8aa-4147-8acd-265e2acfbf66.png">
+<img width="1419" alt="image" src="https://user-images.githubusercontent.com/93609855/212140683-f1b63ad7-99eb-426f-8611-aebfc87043d5.png">
 
 ## Endpoints
 
