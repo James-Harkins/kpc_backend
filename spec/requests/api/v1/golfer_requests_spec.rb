@@ -21,13 +21,13 @@ describe 'golfer endpoints' do
         response_body = JSON.parse(response.body, symbolize_names: true)
         golfer = response_body[:data]
 
-        expect(new_user[:type]).to eq('golfers')
-        expect(new_user).to have_key(:id)
-        expect(new_user).to have_key(:attributes)
-        expect(new_user[:attributes]).to be_a Hash
-        expect(new_user[:attributes][:first_name]).to eq(json_payload[:first_name])
-        expect(new_user[:attributes][:last_name]).to eq(json_payload[:last_name])
-        expect(new_user[:attributes][:password_digest]).not_to eq(json_payload[:password])
+        expect(golfer[:type]).to eq('golfer')
+        expect(golfer).to have_key(:id)
+        expect(golfer).to have_key(:attributes)
+        expect(golfer[:attributes]).to be_a Hash
+        expect(golfer[:attributes][:first_name]).to eq(json_payload[:first_name])
+        expect(golfer[:attributes][:last_name]).to eq(json_payload[:last_name])
+        expect(golfer[:attributes][:password_digest]).not_to eq(json_payload[:password])
       end
     end
 
