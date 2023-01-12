@@ -8,7 +8,7 @@ describe 'session endpoints' do
 
         json_payload = {
           email: 't@badabing.com',
-          password: 'varsityAthlete',
+          password: 'test123',
         }
 
         headers = {'CONTENT_TYPE' => 'application/json'}
@@ -24,8 +24,8 @@ describe 'session endpoints' do
         expect(golfer).to have_key(:id)
         expect(golfer).to have_key(:attributes)
         expect(golfer[:attributes]).to be_a Hash
-        expect(golfer[:attributes][:first_name]).to eq(json_payload[:first_name])
-        expect(golfer[:attributes][:last_name]).to eq(json_payload[:last_name])
+        expect(golfer[:attributes][:first_name]).to eq('Tony')
+        expect(golfer[:attributes][:last_name]).to eq('Soprano')
         expect(golfer[:attributes][:email]).to eq(json_payload[:email])
         expect(golfer[:attributes][:role]).to eq('default')
       end
