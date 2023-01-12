@@ -30,5 +30,47 @@ describe 'session endpoints' do
         expect(golfer[:attributes][:role]).to eq('default')
       end
     end
+
+    describe 'sad path' do
+      it 'returns a 400 error showing that no golfer exists with that email if
+          there is no golfer with that email address in the database' do
+        json_payload = {
+          email: 't@badabing.com',
+          password: 'test123',
+        }
+
+        headers = {'CONTENT_TYPE' => 'application/json'}
+
+        post '/api/v1/sessions', headers: headers, params: json_payload.to_json
+
+        expect(response).to have_http_status(400)
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response_body).to have_key(:error)
+        expect(response_body[:error]).to eq('No account exists with this email.')
+      end
+
+      it 'returns a 400 error showing invalid credentials if the password
+          is incorrect' do
+        golfer = Golfer.create!(first_name: 'Tony', last_name: 'Soprano', email: 't@badabing.com', password: 'test123', password_confirmation: 'test123')
+
+        json_payload = {
+          email: 't@badabing.com',
+          password: 'varsityAthlete',
+        }
+
+        headers = {'CONTENT_TYPE' => 'application/json'}
+
+        post '/api/v1/sessions', headers: headers, params: json_payload.to_json
+
+        expect(response).to have_http_status(400)
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response_body).to have_key(:error)
+        expect(response_body[:error]).to eq('Invalid credentials.')
+      end
+    end
   end
 end
