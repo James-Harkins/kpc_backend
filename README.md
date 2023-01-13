@@ -41,11 +41,38 @@ Example response:
             "first_name": "Tony",
             "last_name": "Soprano",
             "email": "t@badabing.com",
-            "password_digest": "$2a$12$8awj7YzMutevOQ67MU.nzOv63xgVC5nyfR3G05lI/b5pxRYuEqMoW"
+            "role": "default"
         }
     }
 }
 ```
 
+`POST /api/v1/sessions`
 
+This endpoint returns relevant golfer data after authentication. The required parameters are `email` and `password`. If a golfer is found in the database with that email address and authenticated with the password, then the user is returned.
 
+Example request:
+
+```
+{
+    "email": "t@badabing.com",
+    "password": "varsityAthlete"
+}
+```
+
+Example response:
+
+```
+{
+    "data": {
+        "id": "1",
+        "type": "golfer",
+        "attributes": {
+            "first_name": "Tony",
+            "last_name": "Soprano",
+            "email": "t@badabing.com",
+            "role": "default"
+        }
+    }
+}
+```
