@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'golfer trip endpoints' do
 
-  describe 'GET /golfer_trip requets' do
+  describe 'GET /golfers/:golfer_id/golfer_trips/:trip_id requets' do
     describe 'happy path' do
       it 'returns some golfers trip data for a specific trip' do
         golfer_1 = Golfer.create!(first_name: 'Tony', last_name: 'Soprano', email: 't@badabing.com', password: 'test123', password_confirmation: 'test123')
@@ -180,27 +180,27 @@ describe 'golfer trip endpoints' do
         golfer_1_trip_3 = golfer_1.golfer_trips.create!(trip: trip_4)
         golfer_1_trip_3_night_1 = golfer_1.golfer_nights.create!(night: night_1_trip_4)
         golfer_1_trip_3_meal_1 = golfer_1.golfer_meals.create!(meal: meal_1_trip_4)
-        golfer_1_trip_3_golfer_trip_course_1 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_1)
+        golfer_1_trip_3_golfer_trip_course_1 = golfer_1.golfer_trip_courses.create!(trip_course: trip_4_course_1)
         golfer_1_trip_3_meal_2 = golfer_1.golfer_meals.create!(meal: meal_2_trip_4)
         golfer_1_trip_3_night_2 = golfer_1.golfer_nights.create!(night: night_2_trip_4)
         golfer_1_trip_3_meal_3 = golfer_1.golfer_meals.create!(meal: meal_3_trip_4)
-        golfer_1_trip_3_golfer_trip_course_2 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_2)
+        golfer_1_trip_3_golfer_trip_course_2 = golfer_1.golfer_trip_courses.create!(trip_course: trip_4_course_2)
         golfer_1_trip_3_meal_4 = golfer_1.golfer_meals.create!(meal: meal_4_trip_4)
         golfer_1_trip_3_night_3 = golfer_1.golfer_nights.create!(night: night_3_trip_4)
         golfer_1_trip_3_meal_5 = golfer_1.golfer_meals.create!(meal: meal_5_trip_4)
-        golfer_1_trip_3_golfer_trip_course_3 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_3)
+        golfer_1_trip_3_golfer_trip_course_3 = golfer_1.golfer_trip_courses.create!(trip_course: trip_4_course_3)
         golfer_1_trip_3_meal_6 = golfer_1.golfer_meals.create!(meal: meal_6_trip_4)
         golfer_1_trip_3_night_4 = golfer_1.golfer_nights.create!(night: night_4_trip_4)
         golfer_1_trip_3_meal_7 = golfer_1.golfer_meals.create!(meal: meal_7_trip_4)
-        golfer_1_trip_3_golfer_trip_course_4 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_4)
+        golfer_1_trip_3_golfer_trip_course_4 = golfer_1.golfer_trip_courses.create!(trip_course: trip_4_course_4)
         golfer_1_trip_3_meal_8 = golfer_1.golfer_meals.create!(meal: meal_8_trip_4)
         golfer_1_trip_3_night_5 = golfer_1.golfer_nights.create!(night: night_5_trip_4)
         golfer_1_trip_3_meal_9 = golfer_1.golfer_meals.create!(meal: meal_9_trip_4)
-        golfer_1_trip_3_golfer_trip_course_5 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_5)
+        golfer_1_trip_3_golfer_trip_course_5 = golfer_1.golfer_trip_courses.create!(trip_course: trip_4_course_5)
         golfer_1_trip_3_meal_10 = golfer_1.golfer_meals.create!(meal: meal_10_trip_4)
         golfer_1_trip_3_night_6 = golfer_1.golfer_nights.create!(night: night_6_trip_4)
         golfer_1_trip_3_meal_11 = golfer_1.golfer_meals.create!(meal: meal_11_trip_4)
-        golfer_1_trip_3_golfer_trip_course_6 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_6)
+        golfer_1_trip_3_golfer_trip_course_6 = golfer_1.golfer_trip_courses.create!(trip_course: trip_4_course_6)
         golfer_1_trip_3_meal_12 = golfer_1.golfer_meals.create!(meal: meal_12_trip_4)
         golfer_1_trip_3_night_7 = golfer_1.golfer_nights.create!(night: night_7_trip_4)
         golfer_1_trip_3_meal_13 = golfer_1.golfer_meals.create!(meal: meal_13_trip_4)
@@ -217,14 +217,14 @@ describe 'golfer trip endpoints' do
         golfer_2_trip_1_night_3 = golfer_2.golfer_nights.create!(night: night_7_trip_1)
         golfer_2_trip_1_meal_5 = golfer_1.golfer_meals.create!(meal: meal_13_trip_1)
 
-        golfer_2_trip_2 = golfer_1.golfer_trips.create!(trip: trip_3)
+        golfer_2_trip_2 = golfer_2.golfer_trips.create!(trip: trip_3)
         golfer_2_trip_2_night_1 = golfer_2.golfer_nights.create!(night: night_5_trip_3)
         golfer_2_trip_2_meal_1 = golfer_1.golfer_meals.create!(meal: meal_9_trip_3)
-        golfer_2_trip_2_golfer_trip_course_1 = golfer_1.golfer_trip_courses.create!(trip_course: trip_1_course_5)
+        golfer_2_trip_2_golfer_trip_course_1 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_5)
         golfer_2_trip_2_meal_2 = golfer_1.golfer_meals.create!(meal: meal_10_trip_3)
         golfer_2_trip_2_night_2 = golfer_2.golfer_nights.create!(night: night_6_trip_3)
         golfer_2_trip_2_meal_3 = golfer_1.golfer_meals.create!(meal: meal_11_trip_3)
-        golfer_2_trip_2_golfer_trip_course_2 = golfer_1.golfer_trip_courses.create!(trip_course: trip_1_course_6)
+        golfer_2_trip_2_golfer_trip_course_2 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_6)
         golfer_2_trip_2_meal_4 = golfer_1.golfer_meals.create!(meal: meal_12_trip_3)
         golfer_2_trip_2_night_3 = golfer_2.golfer_nights.create!(night: night_7_trip_3)
         golfer_2_trip_2_meal_5 = golfer_1.golfer_meals.create!(meal: meal_13_trip_3)
@@ -236,7 +236,7 @@ describe 'golfer trip endpoints' do
 
         headers = {'CONTENT_TYPE' => 'application/json'}
 
-        post "/api/v1/golfer/#{golfer_1.id}/trips/#{trip_4.id}", headers: headers, params: json_payload.to_json
+        get "/api/v1/golfers/#{golfer_1.id}/golfer_trips/#{trip_4.id}", headers: headers, params: json_payload.to_json
 
         expect(response).to have_http_status(200)
 
@@ -287,7 +287,7 @@ describe 'golfer trip endpoints' do
       end
     end
   end
-  describe 'GET /golfer_trips request' do
+  describe 'GET /golfers/:golfer_id/golfer_trips request' do
     describe 'happy path' do
       it 'returns all of some golfers trips, along with each trips nights,
           meals, courses, and total cost for each trip' do
@@ -466,27 +466,27 @@ describe 'golfer trip endpoints' do
         golfer_1_trip_3 = golfer_1.golfer_trips.create!(trip: trip_4)
         golfer_1_trip_3_night_1 = golfer_1.golfer_nights.create!(night: night_1_trip_4)
         golfer_1_trip_3_meal_1 = golfer_1.golfer_meals.create!(meal: meal_1_trip_4)
-        golfer_1_trip_3_golfer_trip_course_1 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_1)
+        golfer_1_trip_3_golfer_trip_course_1 = golfer_1.golfer_trip_courses.create!(trip_course: trip_4_course_1)
         golfer_1_trip_3_meal_2 = golfer_1.golfer_meals.create!(meal: meal_2_trip_4)
         golfer_1_trip_3_night_2 = golfer_1.golfer_nights.create!(night: night_2_trip_4)
         golfer_1_trip_3_meal_3 = golfer_1.golfer_meals.create!(meal: meal_3_trip_4)
-        golfer_1_trip_3_golfer_trip_course_2 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_2)
+        golfer_1_trip_3_golfer_trip_course_2 = golfer_1.golfer_trip_courses.create!(trip_course: trip_4_course_2)
         golfer_1_trip_3_meal_4 = golfer_1.golfer_meals.create!(meal: meal_4_trip_4)
         golfer_1_trip_3_night_3 = golfer_1.golfer_nights.create!(night: night_3_trip_4)
         golfer_1_trip_3_meal_5 = golfer_1.golfer_meals.create!(meal: meal_5_trip_4)
-        golfer_1_trip_3_golfer_trip_course_3 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_3)
+        golfer_1_trip_3_golfer_trip_course_3 = golfer_1.golfer_trip_courses.create!(trip_course: trip_4_course_3)
         golfer_1_trip_3_meal_6 = golfer_1.golfer_meals.create!(meal: meal_6_trip_4)
         golfer_1_trip_3_night_4 = golfer_1.golfer_nights.create!(night: night_4_trip_4)
         golfer_1_trip_3_meal_7 = golfer_1.golfer_meals.create!(meal: meal_7_trip_4)
-        golfer_1_trip_3_golfer_trip_course_4 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_4)
+        golfer_1_trip_3_golfer_trip_course_4 = golfer_1.golfer_trip_courses.create!(trip_course: trip_4_course_4)
         golfer_1_trip_3_meal_8 = golfer_1.golfer_meals.create!(meal: meal_8_trip_4)
         golfer_1_trip_3_night_5 = golfer_1.golfer_nights.create!(night: night_5_trip_4)
         golfer_1_trip_3_meal_9 = golfer_1.golfer_meals.create!(meal: meal_9_trip_4)
-        golfer_1_trip_3_golfer_trip_course_5 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_5)
+        golfer_1_trip_3_golfer_trip_course_5 = golfer_1.golfer_trip_courses.create!(trip_course: trip_4_course_5)
         golfer_1_trip_3_meal_10 = golfer_1.golfer_meals.create!(meal: meal_10_trip_4)
         golfer_1_trip_3_night_6 = golfer_1.golfer_nights.create!(night: night_6_trip_4)
         golfer_1_trip_3_meal_11 = golfer_1.golfer_meals.create!(meal: meal_11_trip_4)
-        golfer_1_trip_3_golfer_trip_course_6 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_6)
+        golfer_1_trip_3_golfer_trip_course_6 = golfer_1.golfer_trip_courses.create!(trip_course: trip_4_course_6)
         golfer_1_trip_3_meal_12 = golfer_1.golfer_meals.create!(meal: meal_12_trip_4)
         golfer_1_trip_3_night_7 = golfer_1.golfer_nights.create!(night: night_7_trip_4)
         golfer_1_trip_3_meal_13 = golfer_1.golfer_meals.create!(meal: meal_13_trip_4)
@@ -503,14 +503,14 @@ describe 'golfer trip endpoints' do
         golfer_2_trip_1_night_3 = golfer_2.golfer_nights.create!(night: night_7_trip_1)
         golfer_2_trip_1_meal_5 = golfer_1.golfer_meals.create!(meal: meal_13_trip_1)
 
-        golfer_2_trip_2 = golfer_1.golfer_trips.create!(trip: trip_3)
+        golfer_2_trip_2 = golfer_2.golfer_trips.create!(trip: trip_3)
         golfer_2_trip_2_night_1 = golfer_2.golfer_nights.create!(night: night_5_trip_3)
         golfer_2_trip_2_meal_1 = golfer_1.golfer_meals.create!(meal: meal_9_trip_3)
-        golfer_2_trip_2_golfer_trip_course_1 = golfer_1.golfer_trip_courses.create!(trip_course: trip_1_course_5)
+        golfer_2_trip_2_golfer_trip_course_1 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_5)
         golfer_2_trip_2_meal_2 = golfer_1.golfer_meals.create!(meal: meal_10_trip_3)
         golfer_2_trip_2_night_2 = golfer_2.golfer_nights.create!(night: night_6_trip_3)
         golfer_2_trip_2_meal_3 = golfer_1.golfer_meals.create!(meal: meal_11_trip_3)
-        golfer_2_trip_2_golfer_trip_course_2 = golfer_1.golfer_trip_courses.create!(trip_course: trip_1_course_6)
+        golfer_2_trip_2_golfer_trip_course_2 = golfer_1.golfer_trip_courses.create!(trip_course: trip_3_course_6)
         golfer_2_trip_2_meal_4 = golfer_1.golfer_meals.create!(meal: meal_12_trip_3)
         golfer_2_trip_2_night_3 = golfer_2.golfer_nights.create!(night: night_7_trip_3)
         golfer_2_trip_2_meal_5 = golfer_1.golfer_meals.create!(meal: meal_13_trip_3)
@@ -521,7 +521,7 @@ describe 'golfer trip endpoints' do
 
         headers = {'CONTENT_TYPE' => 'application/json'}
 
-        post "/api/v1/golfer/#{golfer_1.id}/trips", headers: headers, params: json_payload.to_json
+        get "/api/v1/golfers/#{golfer_1.id}/golfer_trips", headers: headers, params: json_payload.to_json
 
         expect(response).to have_http_status(200)
 
