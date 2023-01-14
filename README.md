@@ -83,8 +83,396 @@ This endpoint returns data for each trip that a given golfer has attended, inclu
 
 Example request:
 
-
+```
+{
+    "golfer_id": 1
+}
+```
 
 Example response: 
 
+```
+{
+    "data": [
+        {
+            "id": 1,
+            "type": "golfer_trip",
+            "total_cost": 660.0,
+            "attributes": {
+                "nights": [
+                    "2013-04-23",
+                    "2013-04-24",
+                    "2013-04-25",
+                    "2013-04-26",
+                    "2013-04-27"
+                ],
+                "meals": [
+                    {
+                        "2013-04-23": "dinner"
+                    },
+                    {
+                        "2013-04-24": "breakfast"
+                    },
+                    {
+                        "2013-04-24": "dinner"
+                    },
+                    {
+                        "2013-04-25": "breakfast"
+                    },
+                    {
+                        "2013-04-25": "dinner"
+                    },
+                    {
+                        "2013-04-26": "breakfast"
+                    },
+                    {
+                        "2013-04-26": "dinner"
+                    },
+                    {
+                        "2013-04-27": "breakfast"
+                    },
+                    {
+                        "2013-04-27": "dinner"
+                    },
+                    {
+                        "2013-04-28": "breakfast"
+                    }
+                ],
+                "courses": [
+                    {
+                        "date": "2013-04-24",
+                        "name": "The Salt Pond Golf Club",
+                        "address": "402 Bethany Loop",
+                        "city": "Bethany Beach",
+                        "state": "DE",
+                        "zip": "19930"
+                    },
+                    {
+                        "date": "2013-04-25",
+                        "name": "American Classic Golf Club",
+                        "address": "18485 Bethpage Dr",
+                        "city": "Lewes",
+                        "state": "DE",
+                        "zip": "19958"
+                    },
+                    {
+                        "date": "2013-04-26",
+                        "name": "Kings Creek Country Club",
+                        "address": "1 Kings Creek Cir",
+                        "city": "Rehoboth Beach",
+                        "state": "DE",
+                        "zip": "19971"
+                    },
+                    {
+                        "date": "2013-04-27",
+                        "name": "Rehoboth Country Club",
+                        "address": "221 West Side Dr",
+                        "city": "Rehoboth Beach",
+                        "state": "DE",
+                        "zip": "19971"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "type": "golfer_trip",
+            "total_cost": 570.0,
+            "attributes": {
+                "nights": [
+                    "2014-04-23",
+                    "2014-04-24",
+                    "2014-04-25",
+                    "2014-04-26"
+                ],
+                "meals": [
+                    {
+                        "2014-04-23": "dinner"
+                    },
+                    {
+                        "2014-04-24": "breakfast"
+                    },
+                    {
+                        "2014-04-24": "dinner"
+                    },
+                    {
+                        "2014-04-25": "breakfast"
+                    },
+                    {
+                        "2014-04-25": "dinner"
+                    },
+                    {
+                        "2014-04-26": "breakfast"
+                    },
+                    {
+                        "2014-04-26": "dinner"
+                    },
+                    {
+                        "2014-04-27": "breakfast"
+                    }
+                ],
+                "courses": [
+                    {
+                        "date": "2014-04-24",
+                        "name": "American Classic Golf Club",
+                        "address": "18485 Bethpage Dr",
+                        "city": "Lewes",
+                        "state": "DE",
+                        "zip": "19958"
+                    },
+                    {
+                        "date": "2014-04-25",
+                        "name": "Kings Creek Country Club",
+                        "address": "1 Kings Creek Cir",
+                        "city": "Rehoboth Beach",
+                        "state": "DE",
+                        "zip": "19971"
+                    },
+                    {
+                        "date": "2014-04-26",
+                        "name": "The Salt Pond Golf Club",
+                        "address": "402 Bethany Loop",
+                        "city": "Bethany Beach",
+                        "state": "DE",
+                        "zip": "19930"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 4,
+            "type": "golfer_trip",
+            "total_cost": 1025.0,
+            "attributes": {
+                "nights": [
+                    "2016-04-24",
+                    "2016-04-25",
+                    "2016-04-26",
+                    "2016-04-27",
+                    "2016-04-28",
+                    "2016-04-29",
+                    "2016-04-30"
+                ],
+                "meals": [
+                    {
+                        "2016-04-25": "breakfast"
+                    },
+                    {
+                        "2016-04-25": "dinner"
+                    },
+                    {
+                        "2016-04-26": "breakfast"
+                    },
+                    {
+                        "2016-04-26": "dinner"
+                    },
+                    {
+                        "2016-04-27": "breakfast"
+                    },
+                    {
+                        "2016-04-27": "dinner"
+                    },
+                    {
+                        "2016-04-28": "breakfast"
+                    },
+                    {
+                        "2016-04-28": "dinner"
+                    },
+                    {
+                        "2016-04-29": "breakfast"
+                    },
+                    {
+                        "2016-04-29": "dinner"
+                    },
+                    {
+                        "2016-04-30": "breakfast"
+                    },
+                    {
+                        "2016-04-30": "dinner"
+                    },
+                    {
+                        "2016-05-01": "breakfast"
+                    }
+                ],
+                "courses": [
+                    {
+                        "date": "2016-04-25",
+                        "name": "Red Wing Lake Golf Course",
+                        "address": "1144 Prosperity Rd",
+                        "city": "Virginia Beach",
+                        "state": "VA",
+                        "zip": "23451"
+                    },
+                    {
+                        "date": "2016-04-26",
+                        "name": "Virginia Beach National Golf Club",
+                        "address": "2500 Tournament Dr",
+                        "city": "Virginia Beach",
+                        "state": "VA",
+                        "zip": "23456"
+                    },
+                    {
+                        "date": "2016-04-27",
+                        "name": "Hells Point Golf Club",
+                        "address": "2700 Atwoodtown Rd",
+                        "city": "Virginia Beach",
+                        "state": "VA",
+                        "zip": "23456"
+                    },
+                    {
+                        "date": "2016-04-28",
+                        "name": "Heron Ridge Golf Club",
+                        "address": "2973 Heron Ridge Dr",
+                        "city": "Virginia Beach",
+                        "state": "VA",
+                        "zip": "23456"
+                    },
+                    {
+                        "date": "2016-04-29",
+                        "name": "Stumpy Lake Golf Course",
+                        "address": "4797 Indian River Rd",
+                        "city": "Virginia Beach",
+                        "state": "VA",
+                        "zip": "23456"
+                    },
+                    {
+                        "date": "2016-04-30",
+                        "name": "Red Wing Lake Golf Course",
+                        "address": "1144 Prosperity Rd",
+                        "city": "Virginia Beach",
+                        "state": "VA",
+                        "zip": "23451"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
 
+`GET /golfers/:golfer_id/trips/:trip_id`
+
+This endpoint returns data for a given trip that a given golfer has attended, including the total cost of the trip to the golfer, all the nights he stayed in the house, all the meals he ate, and all the courses he played. The only parameters that need to be passed back for this endpoint are the `golfer_id` and the `trip_id`.
+
+Example request:
+
+```
+{
+    "golfer_id": 1,
+    "trip_id": 4
+}
+```
+
+Example response:
+
+```
+{
+    "data": {
+        "id": 4,
+        "type": "golfer_trip",
+        "total_cost": 1025.0,
+        "attributes": {
+            "nights": [
+                "2016-04-24",
+                "2016-04-25",
+                "2016-04-26",
+                "2016-04-27",
+                "2016-04-28",
+                "2016-04-29",
+                "2016-04-30"
+            ],
+            "meals": [
+                {
+                    "2016-04-25": "breakfast"
+                },
+                {
+                    "2016-04-25": "dinner"
+                },
+                {
+                    "2016-04-26": "breakfast"
+                },
+                {
+                    "2016-04-26": "dinner"
+                },
+                {
+                    "2016-04-27": "breakfast"
+                },
+                {
+                    "2016-04-27": "dinner"
+                },
+                {
+                    "2016-04-28": "breakfast"
+                },
+                {
+                    "2016-04-28": "dinner"
+                },
+                {
+                    "2016-04-29": "breakfast"
+                },
+                {
+                    "2016-04-29": "dinner"
+                },
+                {
+                    "2016-04-30": "breakfast"
+                },
+                {
+                    "2016-04-30": "dinner"
+                },
+                {
+                    "2016-05-01": "breakfast"
+                }
+            ],
+            "courses": [
+                {
+                    "date": "2016-04-25",
+                    "name": "Red Wing Lake Golf Course",
+                    "address": "1144 Prosperity Rd",
+                    "city": "Virginia Beach",
+                    "state": "VA",
+                    "zip": "23451"
+                },
+                {
+                    "date": "2016-04-26",
+                    "name": "Virginia Beach National Golf Club",
+                    "address": "2500 Tournament Dr",
+                    "city": "Virginia Beach",
+                    "state": "VA",
+                    "zip": "23456"
+                },
+                {
+                    "date": "2016-04-27",
+                    "name": "Hells Point Golf Club",
+                    "address": "2700 Atwoodtown Rd",
+                    "city": "Virginia Beach",
+                    "state": "VA",
+                    "zip": "23456"
+                },
+                {
+                    "date": "2016-04-28",
+                    "name": "Heron Ridge Golf Club",
+                    "address": "2973 Heron Ridge Dr",
+                    "city": "Virginia Beach",
+                    "state": "VA",
+                    "zip": "23456"
+                },
+                {
+                    "date": "2016-04-29",
+                    "name": "Stumpy Lake Golf Course",
+                    "address": "4797 Indian River Rd",
+                    "city": "Virginia Beach",
+                    "state": "VA",
+                    "zip": "23456"
+                },
+                {
+                    "date": "2016-04-30",
+                    "name": "Red Wing Lake Golf Course",
+                    "address": "1144 Prosperity Rd",
+                    "city": "Virginia Beach",
+                    "state": "VA",
+                    "zip": "23451"
+                }
+            ]
+        }
+    }
+}
+```
