@@ -247,6 +247,7 @@ describe 'golfer trip endpoints' do
         expect(trip).to be_a Hash
         expect(trip[:id]).to eq(@trip_4.id)
         expect(trip[:type]).to eq('golfer_trip')
+        expect(trip[:trip_number]).to eq(16)
         expect(trip[:total_cost]).to eq(1025.0)
         expect(trip[:attributes]).to be_a Hash
         expect(trip[:attributes].keys).to eq([:nights, :meals, :courses])
@@ -316,6 +317,7 @@ describe 'golfer trip endpoints' do
         expect(trips[0]).to be_a Hash
         expect(trips[0][:id]).to eq(@trip_1.id)
         expect(trips[0][:type]).to eq('golfer_trip')
+        expect(trips[0][:trip_number]).to eq(13)
         expect(trips[0][:total_cost]).to eq(660.0)
         expect(trips[0][:attributes]).to be_a Hash
         expect(trips[0][:attributes].keys).to eq([:nights, :meals, :courses])
@@ -351,6 +353,7 @@ describe 'golfer trip endpoints' do
         expect(trips[1]).to be_a Hash
         expect(trips[1][:id]).to eq(@trip_2.id)
         expect(trips[1][:type]).to eq('golfer_trip')
+        expect(trips[1][:trip_number]).to eq(14)
         expect(trips[1][:total_cost]).to eq(570.0)
         expect(trips[1][:attributes]).to be_a Hash
         expect(trips[1][:attributes].keys).to eq([:nights, :meals, :courses])
@@ -382,6 +385,7 @@ describe 'golfer trip endpoints' do
         expect(trips[2]).to be_a Hash
         expect(trips[2][:id]).to eq(@trip_4.id)
         expect(trips[2][:type]).to eq('golfer_trip')
+        expect(trips[2][:trip_number]).to eq(16)
         expect(trips[2][:total_cost]).to eq(1025.0)
         expect(trips[2][:attributes]).to be_a Hash
         expect(trips[2][:attributes].keys).to eq([:nights, :meals, :courses])
@@ -432,7 +436,10 @@ describe 'golfer trip endpoints' do
           golfer_id: golfer_3.id,
           trip_id: @trip_4.id,
           nights: [
-            @night_4_trip_4.id, @night_4_trip_5.id, @night_4_trip_6.id, @night_4_trip_7.id
+            @night_4_trip_4.id,
+            @night_5_trip_4.id,
+            @night_6_trip_4.id,
+            @night_7_trip_4.id
             ],
           meals: [
             @meal_6_trip_4.id,
@@ -453,7 +460,7 @@ describe 'golfer trip endpoints' do
 
         headers = {'CONTENT_TYPE' => 'application/json'}
 
-        get "/api/v1/golfers/#{@golfer_1.id}/golfer_trips", headers: headers, params: json_payload.to_json
+        post "/api/v1/golfers/#{golfer_3.id}/golfer_trips", headers: headers, params: json_payload.to_json
 
         expect(response).to have_http_status(201)
 
