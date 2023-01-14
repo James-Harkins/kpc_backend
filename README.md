@@ -76,3 +76,15 @@ Example response:
     }
 }
 ```
+
+`GET /golfers/:golfer_id/trips`
+
+This endpoint returns data for each trip that a given golfer has attended, including the total cost of the trip to the golfer, all the nights he stayed in the house, all the meals he ate, and all the courses he played. The only parameter that needs to be passed back for this endpoint is the `golfer_id`.
+
+Example request:
+
+
+
+Example response: 
+
+
