@@ -16,4 +16,8 @@ class Golfer < ApplicationRecord
   validates_presence_of :password_confirmation
   has_secure_password
   enum role: [:default, :admin]
+
+  def trip_meals_total_cost(trip_id)
+    meals.where(trip_id: trip_id).sum(:cost)
+  end
 end

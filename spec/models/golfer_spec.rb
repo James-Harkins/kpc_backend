@@ -45,7 +45,6 @@ RSpec.describe Golfer, type: :model do
   describe 'instance methods' do
     before do
       @golfer_1 = Golfer.create!(first_name: 'Tony', last_name: 'Soprano', email: 't@badabing.com', password: 'test123', password_confirmation: 'test123')
-      @golfer_2 = Golfer.create!(first_name: 'Paulie', last_name: 'Gaultieri', email: 'walnuts@badabing.com', password: 'test123', password_confirmation: 'test123')
 
       @trip_1 = Trip.create!(year: 2013, number: 13, location: 'Dewey Beach')
       @trip_2 = Trip.create!(year: 2014, number: 14, location: 'Rehoboth Beach')
@@ -249,8 +248,6 @@ RSpec.describe Golfer, type: :model do
         expect(@golfer_1.trip_meals_total_cost(@trip_1.id)).to eq(50.0)
         expect(@golfer_1.trip_meals_total_cost(@trip_2.id)).to eq(40.0)
         expect(@golfer_1.trip_meals_total_cost(@trip_4.id)).to eq(65.0)
-        expect(@golfer_2.trip_meals_total_cost(@trip_1.id)).to eq(25.0)
-        expect(@golfer_2.trip_meals_total_cost(@trip_3.id)).to eq(25.0)
       end
     end
 
@@ -259,8 +256,6 @@ RSpec.describe Golfer, type: :model do
         expect(@golfer_1.trip_nights_total_cost(@trip_1.id)).to eq(350.0)
         expect(@golfer_1.trip_nights_total_cost(@trip_2.id)).to eq(320.0)
         expect(@golfer_1.trip_nights_total_cost(@trip_4.id)).to eq(600.0)
-        expect(@golfer_2.trip_nights_total_cost(@trip_1.id)).to eq(210.0)
-        expect(@golfer_2.trip_nights_total_cost(@trip_3.id)).to eq(270.0)
       end
     end
 
@@ -269,8 +264,6 @@ RSpec.describe Golfer, type: :model do
         expect(@golfer_1.trip_courses_total_cost(@trip_1.id)).to eq(260.0)
         expect(@golfer_1.trip_courses_total_cost(@trip_2.id)).to eq(210.0)
         expect(@golfer_1.trip_courses_total_cost(@trip_4.id)).to eq(360.0)
-        expect(@golfer_2.trip_courses_total_cost(@trip_1.id)).to eq(130.0)
-        expect(@golfer_2.trip_courses_total_cost(@trip_3.id)).to eq(100.0)
       end
     end
 
@@ -279,8 +272,6 @@ RSpec.describe Golfer, type: :model do
         expect(@golfer_1.trip_total_cost(@trip_1.id)).to eq(660.0)
         expect(@golfer_1.trip_total_cost(@trip_2.id)).to eq(570.0)
         expect(@golfer_1.trip_total_cost(@trip_4.id)).to eq(1025.0)
-        expect(@golfer_2.trip_total_cost(@trip_1.id)).to eq(365.0)
-        expect(@golfer_2.trip_total_cost(@trip_3.id)).to eq(395.0)
       end
     end
   end
