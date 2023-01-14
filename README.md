@@ -12,9 +12,7 @@ This is the documentation for the Back End app, which is an API written in Ruby 
 
 ## Endpoints
 
-### Golfers 
-
-`POST /api/v1/golfers`
+### POST /api/v1/golfers
 
 This endpoint is used to create a new golfer in the database. The required parameters are `first_name`, `last_name`, `email`, `password`, and `password_confirmation`. The `email` parameter must satisfy the `Golfer` model uniqueness validation, and the `password` and `password_confirmation` must match. 
 
@@ -47,7 +45,7 @@ Example response:
 }
 ```
 
-`POST /api/v1/sessions`
+### POST /api/v1/sessions
 
 This endpoint returns relevant golfer data after authentication. The required parameters are `email` and `password`. If a golfer is found in the database with that email address and authenticated with the password, then the user is returned.
 
@@ -77,7 +75,7 @@ Example response:
 }
 ```
 
-`GET /golfers/:golfer_id/trips`
+### GET /golfers/:golfer_id/golfer_trips
 
 This endpoint returns data for each trip that a given golfer has attended, including the total cost of the trip to the golfer, all the nights he stayed in the house, all the meals he ate, and all the courses he played. The only parameter that needs to be passed back for this endpoint is the `golfer_id`.
 
@@ -97,6 +95,7 @@ Example response:
         {
             "id": 1,
             "type": "golfer_trip",
+            "trip_number": 13,
             "total_cost": 660.0,
             "attributes": {
                 "nights": [
@@ -177,6 +176,7 @@ Example response:
         {
             "id": 2,
             "type": "golfer_trip",
+            "trip_number": 14,
             "total_cost": 570.0,
             "attributes": {
                 "nights": [
@@ -242,6 +242,7 @@ Example response:
         {
             "id": 4,
             "type": "golfer_trip",
+            "trip_number": 16,
             "total_cost": 1025.0,
             "attributes": {
                 "nights": [
@@ -350,7 +351,7 @@ Example response:
 }
 ```
 
-`GET /golfers/:golfer_id/trips/:trip_id`
+### GET /golfers/:golfer_id/golfer_trips/:trip_id
 
 This endpoint returns data for a given trip that a given golfer has attended, including the total cost of the trip to the golfer, all the nights he stayed in the house, all the meals he ate, and all the courses he played. The only parameters that need to be passed back for this endpoint are the `golfer_id` and the `trip_id`.
 
@@ -370,6 +371,7 @@ Example response:
     "data": {
         "id": 4,
         "type": "golfer_trip",
+        "trip_number": 16,
         "total_cost": 1025.0,
         "attributes": {
             "nights": [
@@ -447,6 +449,95 @@ Example response:
                     "state": "VA",
                     "zip": "23456"
                 },
+                {
+                    "date": "2016-04-28",
+                    "name": "Heron Ridge Golf Club",
+                    "address": "2973 Heron Ridge Dr",
+                    "city": "Virginia Beach",
+                    "state": "VA",
+                    "zip": "23456"
+                },
+                {
+                    "date": "2016-04-29",
+                    "name": "Stumpy Lake Golf Course",
+                    "address": "4797 Indian River Rd",
+                    "city": "Virginia Beach",
+                    "state": "VA",
+                    "zip": "23456"
+                },
+                {
+                    "date": "2016-04-30",
+                    "name": "Red Wing Lake Golf Course",
+                    "address": "1144 Prosperity Rd",
+                    "city": "Virginia Beach",
+                    "state": "VA",
+                    "zip": "23451"
+                }
+            ]
+        }
+    }
+}
+```
+
+### POST /golfers/:golfer_id/golfer_trips
+
+This endpoint creates a new `golfer_trip` for a given `golfer` and returns data for that new trip, including the total cost of the trip to the golfer, all the nights he will stay in the house, all the meals he will eat, and all the courses he will play. This endpoint requires more paramaters, including the `id` attributes for the golfer himself, the trip he will attend, each night he will stay, each meal he will eat, and each course he will play. 
+
+Example request:
+
+```
+{
+    "golfer_id":3,
+    "trip_id":4,
+    "nights":[25,26,27,28],
+    "meals":[45,46,47,48,49,50,51,52],
+    "courses":[22,23,24]
+}
+```
+
+Example response:
+
+```
+{
+    "data": {
+        "id": 4,
+        "type": "golfer_trip",
+        "trip_number": 16,
+        "total_cost": 1645.0,
+        "attributes": {
+            "nights": [
+                "2016-04-27",
+                "2016-04-28",
+                "2016-04-29",
+                "2016-04-30"
+            ],
+            "meals": [
+                {
+                    "2016-04-27": "dinner"
+                },
+                {
+                    "2016-04-28": "breakfast"
+                },
+                {
+                    "2016-04-28": "dinner"
+                },
+                {
+                    "2016-04-29": "breakfast"
+                },
+                {
+                    "2016-04-29": "dinner"
+                },
+                {
+                    "2016-04-30": "breakfast"
+                },
+                {
+                    "2016-04-30": "dinner"
+                },
+                {
+                    "2016-05-01": "breakfast"
+                }
+            ],
+            "courses": [
                 {
                     "date": "2016-04-28",
                     "name": "Heron Ridge Golf Club",
