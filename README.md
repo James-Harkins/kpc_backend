@@ -503,7 +503,7 @@ Example response:
         "id": 4,
         "type": "golfer_trip",
         "trip_number": 16,
-        "total_cost": 1645.0,
+        "total_cost": 620.0,
         "attributes": {
             "nights": [
                 "2016-04-27",
