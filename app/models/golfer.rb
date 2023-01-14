@@ -20,4 +20,8 @@ class Golfer < ApplicationRecord
   def trip_meals_total_cost(trip_id)
     meals.where(trip_id: trip_id).sum(:cost)
   end
+
+  def trip_nights_total_cost(trip_id)
+    nights.where(trip_id: trip_id).sum(:cost)
+  end
 end
