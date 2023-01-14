@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :golfers, only: [:create]
+      resources :golfers, only: [:create] do
+        resources :golfer_trips, only: [:index, :show]
+      end
       resources :sessions, only: [:create]
     end
   end
