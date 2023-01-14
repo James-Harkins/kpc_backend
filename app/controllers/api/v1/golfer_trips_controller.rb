@@ -5,6 +5,9 @@ class Api::V1::GolferTripsController < ApplicationController
     nights = golfer.nights.where(trip_id: trip.id)
     meals = golfer.meals.where(trip_id: trip.id)
     courses = golfer.golfer_trip_courses.joins(:trip_course).where(trip_courses: {trip_id: trip.id})
-    binding.pry
+    trip_response = Hash.new
+    trip_response[:id] = trip.id
+    trip_response[:type] = 'golfer_trip'
+    trip_response[:total_cost]
   end
 end
