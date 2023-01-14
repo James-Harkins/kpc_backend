@@ -465,7 +465,7 @@ describe 'golfer trip endpoints' do
         expect(response).to have_http_status(201)
 
         response_body = JSON.parse(response.body, symbolize_names: true)
-        trips = response_body[:data]
+        trip = response_body[:data]
 
         expect(trip).to be_a Hash
         expect(trip[:id]).to eq(@trip_4.id)
