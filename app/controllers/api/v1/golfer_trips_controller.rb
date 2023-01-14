@@ -9,6 +9,7 @@ class Api::V1::GolferTripsController < ApplicationController
     trip_response[:data] = Hash.new
     trip_response[:data][:id] = trip.id
     trip_response[:data][:type] = 'golfer_trip'
+    trip_response[:data][:trip_number] = trip.number
     trip_response[:data][:total_cost] = golfer.trip_total_cost(trip.id)
     trip_response[:data][:attributes] = Hash.new
     trip_response[:data][:attributes][:nights] = nights.map {|night| night.date}
@@ -41,6 +42,7 @@ class Api::V1::GolferTripsController < ApplicationController
       trip_data = Hash.new
       trip_data[:id] = trip.id
       trip_data[:type] = 'golfer_trip'
+      trip_data[:trip_number] = trip.number
       trip_data[:total_cost] = golfer.trip_total_cost(trip.id)
       trip_data[:attributes] = Hash.new
       trip_data[:attributes][:nights] = nights.map {|night| night.date}
