@@ -227,7 +227,7 @@ describe 'golfer trip endpoints' do
     @golfer_2_trip_2_meal_5 = @golfer_2.golfer_meals.create!(meal: @meal_13_trip_3)
   end
 
-  describe 'GET /golfers/:golfer_id/golfer_trips/:trip_id requets' do
+  describe 'GET /golfers/:golfer_id/golfer_trips/:trip_id request' do
     describe 'happy path' do
       it 'returns some golfers trip data for a specific trip' do
         json_payload = {
@@ -247,6 +247,7 @@ describe 'golfer trip endpoints' do
         expect(trip).to be_a Hash
         expect(trip[:id]).to eq(@trip_4.id)
         expect(trip[:type]).to eq('golfer_trip')
+        expect(trip[:trip_number]).to eq(16)
         expect(trip[:total_cost]).to eq(1025.0)
         expect(trip[:attributes]).to be_a Hash
         expect(trip[:attributes].keys).to eq([:nights, :meals, :courses])
@@ -316,6 +317,7 @@ describe 'golfer trip endpoints' do
         expect(trips[0]).to be_a Hash
         expect(trips[0][:id]).to eq(@trip_1.id)
         expect(trips[0][:type]).to eq('golfer_trip')
+        expect(trips[0][:trip_number]).to eq(13)
         expect(trips[0][:total_cost]).to eq(660.0)
         expect(trips[0][:attributes]).to be_a Hash
         expect(trips[0][:attributes].keys).to eq([:nights, :meals, :courses])
@@ -351,6 +353,7 @@ describe 'golfer trip endpoints' do
         expect(trips[1]).to be_a Hash
         expect(trips[1][:id]).to eq(@trip_2.id)
         expect(trips[1][:type]).to eq('golfer_trip')
+        expect(trips[1][:trip_number]).to eq(14)
         expect(trips[1][:total_cost]).to eq(570.0)
         expect(trips[1][:attributes]).to be_a Hash
         expect(trips[1][:attributes].keys).to eq([:nights, :meals, :courses])
@@ -382,6 +385,7 @@ describe 'golfer trip endpoints' do
         expect(trips[2]).to be_a Hash
         expect(trips[2][:id]).to eq(@trip_4.id)
         expect(trips[2][:type]).to eq('golfer_trip')
+        expect(trips[2][:trip_number]).to eq(16)
         expect(trips[2][:total_cost]).to eq(1025.0)
         expect(trips[2][:attributes]).to be_a Hash
         expect(trips[2][:attributes].keys).to eq([:nights, :meals, :courses])
@@ -420,6 +424,84 @@ describe 'golfer trip endpoints' do
         expect(trips[2][:attributes][:meals][10][@meal_11_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
         expect(trips[2][:attributes][:meals][11][@meal_12_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
         expect(trips[2][:attributes][:meals][12][@meal_13_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
+      end
+    end
+  end
+
+  describe 'POST /golfers/:id/golfer_trips' do
+    describe 'happy path' do
+      it 'returns a 201 created response with the new trip data' do
+        golfer_3 = Golfer.create!(first_name: 'Christopher', last_name: 'Moltisante', email: 'chrissie@badabing.com', password: 'test123', password_confirmation: 'test123')
+        json_payload = {
+          golfer_id: golfer_3.id,
+          trip_id: @trip_4.id,
+          nights: [
+            @night_4_trip_4.id,
+            @night_5_trip_4.id,
+            @night_6_trip_4.id,
+            @night_7_trip_4.id
+            ],
+          meals: [
+            @meal_6_trip_4.id,
+            @meal_7_trip_4.id,
+            @meal_8_trip_4.id,
+            @meal_9_trip_4.id,
+            @meal_10_trip_4.id,
+            @meal_11_trip_4.id,
+            @meal_12_trip_4.id,
+            @meal_13_trip_4.id
+          ],
+          courses: [
+            @trip_4_course_4.id,
+            @trip_4_course_5.id,
+            @trip_4_course_6.id
+          ]
+        }
+
+        headers = {'CONTENT_TYPE' => 'application/json'}
+
+        post "/api/v1/golfers/#{golfer_3.id}/golfer_trips", headers: headers, params: json_payload.to_json
+
+        expect(response).to have_http_status(201)
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+        trip = response_body[:data]
+
+        expect(trip).to be_a Hash
+        expect(trip[:id]).to eq(@trip_4.id)
+        expect(trip[:type]).to eq('golfer_trip')
+        expect(trip[:total_cost]).to eq(620.0)
+        expect(trip[:attributes]).to be_a Hash
+        expect(trip[:attributes].keys).to eq([:nights, :meals, :courses])
+        expect(trip[:attributes][:nights]).to be_an Array
+        expect(trip[:attributes][:nights].length).to eq(4)
+        expect(trip[:attributes][:nights][0]).to be_a String
+        expect(trip[:attributes][:nights][0]).to eq(@night_4_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:nights][1]).to eq(@night_5_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:nights][2]).to eq(@night_6_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:nights][3]).to eq(@night_7_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:courses]).to be_an Array
+        expect(trip[:attributes][:courses].length).to eq(3)
+        expect(trip[:attributes][:courses][0]).to be_a Hash
+        expect(trip[:attributes][:courses][0][:date]).to eq(@trip_4_course_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:courses][0][:name]).to eq(@trip_4_course_4.course.name)
+        expect(trip[:attributes][:courses][0][:address]).to eq(@trip_4_course_4.course.address)
+        expect(trip[:attributes][:courses][0][:city]).to eq(@trip_4_course_4.course.city)
+        expect(trip[:attributes][:courses][0][:state]).to eq(@trip_4_course_4.course.state)
+        expect(trip[:attributes][:courses][0][:zip]).to eq(@trip_4_course_4.course.zipcode)
+        expect(trip[:attributes][:courses][1][:name]).to eq(@trip_4_course_5.course.name)
+        expect(trip[:attributes][:courses][2][:name]).to eq(@trip_4_course_6.course.name)
+        expect(trip[:attributes][:meals]).to be_an Array
+        expect(trip[:attributes][:meals].length).to eq(8)
+        expect(trip[:attributes][:meals][0]).to be_a Hash
+        expect(trip[:attributes][:meals][0][@meal_6_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
+        expect(trip[:attributes][:meals][1][@meal_7_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
+        expect(trip[:attributes][:meals][2][@meal_8_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
+        expect(trip[:attributes][:meals][3][@meal_9_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
+        expect(trip[:attributes][:meals][4][@meal_10_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
+        expect(trip[:attributes][:meals][5][@meal_11_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
+        expect(trip[:attributes][:meals][6][@meal_12_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
+        expect(trip[:attributes][:meals][7][@meal_13_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
       end
     end
   end
