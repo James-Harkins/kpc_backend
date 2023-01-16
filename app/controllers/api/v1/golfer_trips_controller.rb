@@ -1,43 +1,12 @@
 class Api::V1::GolferTripsController < ApplicationController
   def show
     trip_data = GolferTripFacade.golfer_trip_data(params)
-    trip_response = GolferTripSerializer.serialize_trip(trip_data)
-    render json: trip_response, status: 200
+    render json: GolferTripSerializer.serialize_trip(trip_data), status: 200
   end
 
   def index
-    golfer = Golfer.find(params[:golfer_id])
-    trips = golfer.trips
-    trip_response = Hash.new
-    trip_response[:data] = []
-    trips.each do |trip|
-      trip_data = Hash.new
-      nights = golfer.nights.where(trip_id: trip.id)
-      meals = golfer.meals.where(trip_id: trip.id)
-      courses = golfer.golfer_trip_courses.joins(:trip_course).where(trip_courses: {trip_id: trip.id}).order(:date)
-      trip_data = Hash.new
-      trip_data[:id] = trip.id
-      trip_data[:type] = 'golfer_trip'
-      trip_data[:trip_number] = trip.number
-      trip_data[:total_cost] = golfer.trip_total_cost(trip.id)
-      trip_data[:attributes] = Hash.new
-      trip_data[:attributes][:nights] = nights.map {|night| night.date}
-      trip_data[:attributes][:meals] = meals.map {|meal| {meal.date => meal.time_of_day}}
-      trip_data[:attributes][:courses] = courses.map do |gtc|
-        trip_course = TripCourse.find(gtc.trip_course_id)
-        course = trip_course.course
-        {
-          date: trip_course.date,
-          name: course.name,
-          address: course.address,
-          city: course.city,
-          state: course.state,
-          zip: course.zipcode
-        }
-      end
-      trip_response[:data] << trip_data
-    end
-    render json: trip_response
+    trips_data = GolferTripFacade.golfer_trips_data(params)
+    render json: GolferTripSerializer.serialize_trips(trips_data), status: 200
   end
 
   def create

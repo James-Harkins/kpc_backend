@@ -9,6 +9,16 @@ class GolferTripFacade
     response
   end
 
+  def self.golfer_trips_data(params)
+    golfer = Golfer.find(params[:golfer_id])
+    golfer.trips.map do |trip|
+      trip_params = Hash.new
+      trip_params[:golfer_id] = golfer.id
+      trip_params[:id] = trip.id
+      golfer_trip_data(trip_params)
+    end
+  end
+
   def self.golfer_trip_nights(golfer, trip_id)
     golfer.nights.where(trip_id: trip_id)
   end
