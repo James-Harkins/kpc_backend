@@ -457,7 +457,7 @@ describe 'golfer trip endpoints' do
             @trip_4_course_6.id
           ]
         }
-
+        
         headers = {'CONTENT_TYPE' => 'application/json'}
 
         post "/api/v1/golfers/#{golfer_3.id}/golfer_trips", headers: headers, params: json_payload.to_json
