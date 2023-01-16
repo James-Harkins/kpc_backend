@@ -66,4 +66,14 @@ class GolferTripFacade
   def self.trip_total_cost(trip_data)
     trip_data[:golfer].trip_total_cost(trip_data[:trip].id)
   end
+
+  def self.create_new_golfer_trip(params)
+    golfer = Golfer.find(params[:golfer_id])
+    trip = Trip.find(params[:trip_id])
+    golfer_trip = GolferTrip.create!(golfer: golfer, trip: trip)
+    params[:nights].each {|night| golfer.golfer_nights.create!(night_id: night)}
+    params[:meals].each {|meal| golfer.golfer_meals.create!(meal_id: meal)}
+    params[:courses].each {|trip_course| golfer.golfer_trip_courses.create!(trip_course_id: trip_course)}
+    golfer_trip_data({golfer_id: golfer.id, id: trip.id})
+  end
 end
