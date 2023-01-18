@@ -274,7 +274,7 @@ describe 'golfer endpoints' do
 
         response_body = JSON.parse(response.body, symbolize_names: true)
         trip = response_body[:data]
-
+binding.pry
         expect(trip).to be_a Hash
         expect(trip.keys).to eq([:id, :type, :attributes])
         expect(trip[:id]).to eq(@trip_1.id)
