@@ -567,3 +567,53 @@ Example response:
     }
 }
 ```
+
+
+### GET /trips
+
+This endpoint returns all trips in the database, including their `year`, `number`, and `location` attributes. It does not require any parameters. 
+
+Example response: 
+
+```
+{
+    "data": [
+        {
+            "id": "1",
+            "type": "trip",
+            "attributes": {
+                "year": 2013,
+                "number": 13,
+                "location": "Dewey Beach"
+            }
+        },
+        {
+            "id": "2",
+            "type": "trip",
+            "attributes": {
+                "year": 2014,
+                "number": 14,
+                "location": "Rehoboth Beach"
+            }
+        },
+        {
+            "id": "3",
+            "type": "trip",
+            "attributes": {
+                "year": 2015,
+                "number": 15,
+                "location": "VA Beach"
+            }
+        },
+        {
+            "id": "4",
+            "type": "trip",
+            "attributes": {
+                "year": 2016,
+                "number": 16,
+                "location": "VA Beach"
+            }
+        }
+    ]
+}
+```
