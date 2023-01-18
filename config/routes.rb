@@ -5,6 +5,7 @@ Rails.application.routes.draw do
         resources :golfer_trips, only: [:index, :show, :create]
       end
       resources :sessions, only: [:create]
+      resources :trips, only: [:index]
     end
   end
 end

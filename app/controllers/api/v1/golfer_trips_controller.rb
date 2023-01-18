@@ -11,6 +11,6 @@ class Api::V1::GolferTripsController < ApplicationController
 
   def create
     trip_data = GolferTripFacade.create_new_golfer_trip(params)
-    render json: GolferTripSerializer.serialize_trip(trip_data), status: :created
+    render json: GolferTripSerializer.serialize_trip(trip_data), status: 201
   end
 end
