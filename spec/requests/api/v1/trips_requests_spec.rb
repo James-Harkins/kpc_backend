@@ -274,7 +274,7 @@ describe 'golfer endpoints' do
 
         response_body = JSON.parse(response.body, symbolize_names: true)
         trip = response_body[:data]
-binding.pry
+
         expect(trip).to be_a Hash
         expect(trip.keys).to eq([:id, :type, :attributes])
         expect(trip[:id]).to eq(@trip_1.id)
@@ -299,14 +299,14 @@ binding.pry
         expect(trip[:attributes][:nights][0]).to be_a Hash
         expect(trip[:attributes][:nights][0].keys).to eq([:id, :date, :cost])
         expect(trip[:attributes][:nights][0][:id]).to eq(@night_1_trip_1.id)
-        expect(trip[:attributes][:nights][0][:date]).to eq(@night_1_trip_1.date)
+        expect(trip[:attributes][:nights][0][:date]).to eq(@night_1_trip_1.date.strftime('%Y-%m-%d'))
         expect(trip[:attributes][:nights][0][:cost]).to eq(@night_1_trip_1.cost)
         expect(trip[:attributes][:meals]).to be_an Array
         expect(trip[:attributes][:meals].length).to eq(13)
         expect(trip[:attributes][:meals][0]).to be_a Hash
         expect(trip[:attributes][:meals][0].keys).to eq([:id, :date, :time_of_day, :cost])
         expect(trip[:attributes][:meals][0][:id]).to eq(@meal_1_trip_1.id)
-        expect(trip[:attributes][:meals][0][:date]).to eq(@meal_1_trip_1.date)
+        expect(trip[:attributes][:meals][0][:date]).to eq(@meal_1_trip_1.date.strftime('%Y-%m-%d'))
         expect(trip[:attributes][:meals][0][:time_of_day]).to eq(@meal_1_trip_1.time_of_day)
         expect(trip[:attributes][:meals][0][:cost]).to eq(@meal_1_trip_1.cost)
         expect(trip[:attributes][:golfers]).to be_an Array
