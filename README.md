@@ -571,7 +571,7 @@ Example response:
 
 ### GET /trips
 
-This endpoint returns all trips in the database, including their `year`, `number`, and `location` attributes. It does not require any parameters. 
+This endpoint returns all trips in the database, including their `year`, `number`, and `location` attributes, along with its `nights`, `meals`, `courses`, and `golfers`. It does not require any parameters. 
 
 Example response: 
 
@@ -584,7 +584,176 @@ Example response:
             "attributes": {
                 "year": 2013,
                 "number": 13,
-                "location": "Dewey Beach"
+                "location": "Dewey Beach",
+                "nights": [
+                    {
+                        "id": 1,
+                        "date": "2013-04-21",
+                        "cost": 0.0
+                    },
+                    {
+                        "id": 2,
+                        "date": "2013-04-22",
+                        "cost": 70.0
+                    },
+                    {
+                        "id": 3,
+                        "date": "2013-04-23",
+                        "cost": 70.0
+                    },
+                    {
+                        "id": 4,
+                        "date": "2013-04-24",
+                        "cost": 70.0
+                    },
+                    {
+                        "id": 5,
+                        "date": "2013-04-25",
+                        "cost": 70.0
+                    },
+                    {
+                        "id": 6,
+                        "date": "2013-04-26",
+                        "cost": 70.0
+                    },
+                    {
+                        "id": 7,
+                        "date": "2013-04-27",
+                        "cost": 70.0
+                    }
+                ],
+                "meals": [
+                    {
+                        "id": 1,
+                        "date": "2013-04-22",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 2,
+                        "date": "2013-04-22",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 3,
+                        "date": "2013-04-23",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 4,
+                        "date": "2013-04-23",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 5,
+                        "date": "2013-04-24",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 6,
+                        "date": "2013-04-24",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 7,
+                        "date": "2013-04-25",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 8,
+                        "date": "2013-04-25",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 9,
+                        "date": "2013-04-26",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 10,
+                        "date": "2013-04-26",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 11,
+                        "date": "2013-04-27",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 12,
+                        "date": "2013-04-27",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 13,
+                        "date": "2013-04-28",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    }
+                ],
+                "courses": [
+                    {
+                        "id": 1,
+                        "name": "Kings Creek Country Club",
+                        "date": "2013-04-22",
+                        "cost": 65.0
+                    },
+                    {
+                        "id": 2,
+                        "name": "Rehoboth Country Club",
+                        "date": "2013-04-23",
+                        "cost": 65.0
+                    },
+                    {
+                        "id": 3,
+                        "name": "The Salt Pond Golf Club",
+                        "date": "2013-04-24",
+                        "cost": 65.0
+                    },
+                    {
+                        "id": 4,
+                        "name": "American Classic Golf Club",
+                        "date": "2013-04-25",
+                        "cost": 65.0
+                    },
+                    {
+                        "id": 5,
+                        "name": "Kings Creek Country Club",
+                        "date": "2013-04-26",
+                        "cost": 65.0
+                    },
+                    {
+                        "id": 6,
+                        "name": "Rehoboth Country Club",
+                        "date": "2013-04-27",
+                        "cost": 65.0
+                    }
+                ],
+                "golfers": [
+                    {
+                        "id": 1,
+                        "name": "Tony Soprano",
+                        "email": "t@badabing.com",
+                        "cost": 660.0
+                    },
+                    {
+                        "id": 2,
+                        "name": "Paulie Gaultieri",
+                        "email": "walnuts@badabing.com",
+                        "cost": 365.0
+                    }
+                ]
             }
         },
         {
@@ -593,7 +762,170 @@ Example response:
             "attributes": {
                 "year": 2014,
                 "number": 14,
-                "location": "Rehoboth Beach"
+                "location": "Rehoboth Beach",
+                "nights": [
+                    {
+                        "id": 8,
+                        "date": "2014-04-20",
+                        "cost": 0.0
+                    },
+                    {
+                        "id": 9,
+                        "date": "2014-04-21",
+                        "cost": 80.0
+                    },
+                    {
+                        "id": 10,
+                        "date": "2014-04-22",
+                        "cost": 80.0
+                    },
+                    {
+                        "id": 11,
+                        "date": "2014-04-23",
+                        "cost": 80.0
+                    },
+                    {
+                        "id": 12,
+                        "date": "2014-04-24",
+                        "cost": 80.0
+                    },
+                    {
+                        "id": 13,
+                        "date": "2014-04-25",
+                        "cost": 80.0
+                    },
+                    {
+                        "id": 14,
+                        "date": "2014-04-26",
+                        "cost": 80.0
+                    }
+                ],
+                "meals": [
+                    {
+                        "id": 14,
+                        "date": "2014-04-21",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 15,
+                        "date": "2014-04-21",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 16,
+                        "date": "2014-04-22",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 17,
+                        "date": "2014-04-22",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 18,
+                        "date": "2014-04-23",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 19,
+                        "date": "2014-04-23",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 20,
+                        "date": "2014-04-24",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 21,
+                        "date": "2014-04-24",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 22,
+                        "date": "2014-04-25",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 23,
+                        "date": "2014-04-25",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 24,
+                        "date": "2014-04-26",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 25,
+                        "date": "2014-04-26",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 26,
+                        "date": "2014-04-27",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    }
+                ],
+                "courses": [
+                    {
+                        "id": 7,
+                        "name": "Kings Creek Country Club",
+                        "date": "2014-04-21",
+                        "cost": 70.0
+                    },
+                    {
+                        "id": 8,
+                        "name": "Rehoboth Country Club",
+                        "date": "2014-04-22",
+                        "cost": 70.0
+                    },
+                    {
+                        "id": 9,
+                        "name": "The Salt Pond Golf Club",
+                        "date": "2014-04-23",
+                        "cost": 70.0
+                    },
+                    {
+                        "id": 10,
+                        "name": "American Classic Golf Club",
+                        "date": "2014-04-24",
+                        "cost": 70.0
+                    },
+                    {
+                        "id": 11,
+                        "name": "Kings Creek Country Club",
+                        "date": "2014-04-25",
+                        "cost": 70.0
+                    },
+                    {
+                        "id": 12,
+                        "name": "The Salt Pond Golf Club",
+                        "date": "2014-04-26",
+                        "cost": 70.0
+                    }
+                ],
+                "golfers": [
+                    {
+                        "id": 1,
+                        "name": "Tony Soprano",
+                        "email": "t@badabing.com",
+                        "cost": 570.0
+                    }
+                ]
             }
         },
         {
@@ -602,7 +934,170 @@ Example response:
             "attributes": {
                 "year": 2015,
                 "number": 15,
-                "location": "VA Beach"
+                "location": "VA Beach",
+                "nights": [
+                    {
+                        "id": 15,
+                        "date": "2015-04-19",
+                        "cost": 0.0
+                    },
+                    {
+                        "id": 16,
+                        "date": "2015-04-20",
+                        "cost": 90.0
+                    },
+                    {
+                        "id": 17,
+                        "date": "2015-04-21",
+                        "cost": 90.0
+                    },
+                    {
+                        "id": 18,
+                        "date": "2015-04-22",
+                        "cost": 90.0
+                    },
+                    {
+                        "id": 19,
+                        "date": "2015-04-23",
+                        "cost": 90.0
+                    },
+                    {
+                        "id": 20,
+                        "date": "2015-04-24",
+                        "cost": 90.0
+                    },
+                    {
+                        "id": 21,
+                        "date": "2015-04-25",
+                        "cost": 90.0
+                    }
+                ],
+                "meals": [
+                    {
+                        "id": 27,
+                        "date": "2015-04-20",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 28,
+                        "date": "2015-04-20",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 29,
+                        "date": "2015-04-21",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 30,
+                        "date": "2015-04-21",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 31,
+                        "date": "2015-04-22",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 32,
+                        "date": "2015-04-22",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 33,
+                        "date": "2015-04-23",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 34,
+                        "date": "2015-04-23",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 35,
+                        "date": "2015-04-24",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 36,
+                        "date": "2015-04-24",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 37,
+                        "date": "2015-04-25",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 38,
+                        "date": "2015-04-25",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 39,
+                        "date": "2015-04-26",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    }
+                ],
+                "courses": [
+                    {
+                        "id": 13,
+                        "name": "Red Wing Lake Golf Course",
+                        "date": "2015-04-20",
+                        "cost": 50.0
+                    },
+                    {
+                        "id": 14,
+                        "name": "Virginia Beach National Golf Club",
+                        "date": "2015-04-21",
+                        "cost": 50.0
+                    },
+                    {
+                        "id": 15,
+                        "name": "Hells Point Golf Club",
+                        "date": "2015-04-22",
+                        "cost": 50.0
+                    },
+                    {
+                        "id": 16,
+                        "name": "Heron Ridge Golf Club",
+                        "date": "2015-04-23",
+                        "cost": 50.0
+                    },
+                    {
+                        "id": 17,
+                        "name": "Stumpy Lake Golf Course",
+                        "date": "2015-04-24",
+                        "cost": 50.0
+                    },
+                    {
+                        "id": 18,
+                        "name": "Virginia Beach National Golf Club",
+                        "date": "2015-04-25",
+                        "cost": 50.0
+                    }
+                ],
+                "golfers": [
+                    {
+                        "id": 2,
+                        "name": "Paulie Gaultieri",
+                        "email": "walnuts@badabing.com",
+                        "cost": 395.0
+                    }
+                ]
             }
         },
         {
@@ -611,9 +1106,361 @@ Example response:
             "attributes": {
                 "year": 2016,
                 "number": 16,
-                "location": "VA Beach"
+                "location": "VA Beach",
+                "nights": [
+                    {
+                        "id": 22,
+                        "date": "2016-04-24",
+                        "cost": 0.0
+                    },
+                    {
+                        "id": 23,
+                        "date": "2016-04-25",
+                        "cost": 100.0
+                    },
+                    {
+                        "id": 24,
+                        "date": "2016-04-26",
+                        "cost": 100.0
+                    },
+                    {
+                        "id": 25,
+                        "date": "2016-04-27",
+                        "cost": 100.0
+                    },
+                    {
+                        "id": 26,
+                        "date": "2016-04-28",
+                        "cost": 100.0
+                    },
+                    {
+                        "id": 27,
+                        "date": "2016-04-29",
+                        "cost": 100.0
+                    },
+                    {
+                        "id": 28,
+                        "date": "2016-04-30",
+                        "cost": 100.0
+                    }
+                ],
+                "meals": [
+                    {
+                        "id": 40,
+                        "date": "2016-04-25",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 41,
+                        "date": "2016-04-25",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 42,
+                        "date": "2016-04-26",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 43,
+                        "date": "2016-04-26",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 44,
+                        "date": "2016-04-27",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 45,
+                        "date": "2016-04-27",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 46,
+                        "date": "2016-04-28",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 47,
+                        "date": "2016-04-28",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 48,
+                        "date": "2016-04-29",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 49,
+                        "date": "2016-04-29",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 50,
+                        "date": "2016-04-30",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 51,
+                        "date": "2016-04-30",
+                        "time_of_day": "dinner",
+                        "cost": 5.0
+                    },
+                    {
+                        "id": 52,
+                        "date": "2016-05-01",
+                        "time_of_day": "breakfast",
+                        "cost": 5.0
+                    }
+                ],
+                "courses": [
+                    {
+                        "id": 19,
+                        "name": "Red Wing Lake Golf Course",
+                        "date": "2016-04-25",
+                        "cost": 60.0
+                    },
+                    {
+                        "id": 20,
+                        "name": "Virginia Beach National Golf Club",
+                        "date": "2016-04-26",
+                        "cost": 60.0
+                    },
+                    {
+                        "id": 21,
+                        "name": "Hells Point Golf Club",
+                        "date": "2016-04-27",
+                        "cost": 60.0
+                    },
+                    {
+                        "id": 22,
+                        "name": "Heron Ridge Golf Club",
+                        "date": "2016-04-28",
+                        "cost": 60.0
+                    },
+                    {
+                        "id": 23,
+                        "name": "Stumpy Lake Golf Course",
+                        "date": "2016-04-29",
+                        "cost": 60.0
+                    },
+                    {
+                        "id": 24,
+                        "name": "Red Wing Lake Golf Course",
+                        "date": "2016-04-30",
+                        "cost": 60.0
+                    }
+                ],
+                "golfers": [
+                    {
+                        "id": 1,
+                        "name": "Tony Soprano",
+                        "email": "t@badabing.com",
+                        "cost": 1025.0
+                    }
+                ]
             }
         }
     ]
+}
+```
+
+### GET /trips/:id
+
+This endpoint returns data for the requested trip, including its `year`, `number`, and `location` attributes, along with its `nights`, `meals`, `courses`, and `golfers`. It only requires the trip `id` to be passed in as a query param. 
+
+Example response: 
+
+```
+{
+    "data": {
+        "id": "1",
+        "type": "trip",
+        "attributes": {
+            "year": 2013,
+            "number": 13,
+            "location": "Dewey Beach",
+            "nights": [
+                {
+                    "id": 1,
+                    "date": "2013-04-21",
+                    "cost": 0.0
+                },
+                {
+                    "id": 2,
+                    "date": "2013-04-22",
+                    "cost": 70.0
+                },
+                {
+                    "id": 3,
+                    "date": "2013-04-23",
+                    "cost": 70.0
+                },
+                {
+                    "id": 4,
+                    "date": "2013-04-24",
+                    "cost": 70.0
+                },
+                {
+                    "id": 5,
+                    "date": "2013-04-25",
+                    "cost": 70.0
+                },
+                {
+                    "id": 6,
+                    "date": "2013-04-26",
+                    "cost": 70.0
+                },
+                {
+                    "id": 7,
+                    "date": "2013-04-27",
+                    "cost": 70.0
+                }
+            ],
+            "meals": [
+                {
+                    "id": 1,
+                    "date": "2013-04-22",
+                    "time_of_day": "breakfast",
+                    "cost": 5.0
+                },
+                {
+                    "id": 2,
+                    "date": "2013-04-22",
+                    "time_of_day": "dinner",
+                    "cost": 5.0
+                },
+                {
+                    "id": 3,
+                    "date": "2013-04-23",
+                    "time_of_day": "breakfast",
+                    "cost": 5.0
+                },
+                {
+                    "id": 4,
+                    "date": "2013-04-23",
+                    "time_of_day": "dinner",
+                    "cost": 5.0
+                },
+                {
+                    "id": 5,
+                    "date": "2013-04-24",
+                    "time_of_day": "breakfast",
+                    "cost": 5.0
+                },
+                {
+                    "id": 6,
+                    "date": "2013-04-24",
+                    "time_of_day": "dinner",
+                    "cost": 5.0
+                },
+                {
+                    "id": 7,
+                    "date": "2013-04-25",
+                    "time_of_day": "breakfast",
+                    "cost": 5.0
+                },
+                {
+                    "id": 8,
+                    "date": "2013-04-25",
+                    "time_of_day": "dinner",
+                    "cost": 5.0
+                },
+                {
+                    "id": 9,
+                    "date": "2013-04-26",
+                    "time_of_day": "breakfast",
+                    "cost": 5.0
+                },
+                {
+                    "id": 10,
+                    "date": "2013-04-26",
+                    "time_of_day": "dinner",
+                    "cost": 5.0
+                },
+                {
+                    "id": 11,
+                    "date": "2013-04-27",
+                    "time_of_day": "breakfast",
+                    "cost": 5.0
+                },
+                {
+                    "id": 12,
+                    "date": "2013-04-27",
+                    "time_of_day": "dinner",
+                    "cost": 5.0
+                },
+                {
+                    "id": 13,
+                    "date": "2013-04-28",
+                    "time_of_day": "breakfast",
+                    "cost": 5.0
+                }
+            ],
+            "courses": [
+                {
+                    "id": 1,
+                    "name": "Kings Creek Country Club",
+                    "date": "2013-04-22",
+                    "cost": 65.0
+                },
+                {
+                    "id": 2,
+                    "name": "Rehoboth Country Club",
+                    "date": "2013-04-23",
+                    "cost": 65.0
+                },
+                {
+                    "id": 3,
+                    "name": "The Salt Pond Golf Club",
+                    "date": "2013-04-24",
+                    "cost": 65.0
+                },
+                {
+                    "id": 4,
+                    "name": "American Classic Golf Club",
+                    "date": "2013-04-25",
+                    "cost": 65.0
+                },
+                {
+                    "id": 5,
+                    "name": "Kings Creek Country Club",
+                    "date": "2013-04-26",
+                    "cost": 65.0
+                },
+                {
+                    "id": 6,
+                    "name": "Rehoboth Country Club",
+                    "date": "2013-04-27",
+                    "cost": 65.0
+                }
+            ],
+            "golfers": [
+                {
+                    "id": 1,
+                    "name": "Tony Soprano",
+                    "email": "t@badabing.com",
+                    "cost": 660.0
+                },
+                {
+                    "id": 2,
+                    "name": "Paulie Gaultieri",
+                    "email": "walnuts@badabing.com",
+                    "cost": 365.0
+                }
+            ]
+        }
+    }
 }
 ```
