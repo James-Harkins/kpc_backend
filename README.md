@@ -13,7 +13,7 @@ This is the documentation for the Back End app, which is an API written in Ruby 
 ## Endpoints
 
 1. [POST /api/v1/golfers](#create_golfer)
-2. [POST /api/v1/sessions](#crete_session)
+2. [POST /api/v1/sessions](#create_session)
 3. [GET /golfer/:id/golfer_trips](#get_golfer_trips)
 4. [GET /golfer/:golfer_id/golfer_trips/:trip_id](#get_golfer_trip)
 5. [POST /golfer/:id/golfer_trips](#create_golfer_trip)
