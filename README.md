@@ -12,6 +12,8 @@ This is the documentation for the Back End app, which is an API written in Ruby 
 
 ## Endpoints
 
+1. [POST /api/v1/golfers](#POST /api/v1/golfers)
+
 ### POST /api/v1/golfers
 
 This endpoint is used to create a new golfer in the database. The required parameters are `first_name`, `last_name`, `email`, `password`, and `password_confirmation`. The `email` parameter must satisfy the `Golfer` model uniqueness validation, and the `password` and `password_confirmation` must match. 
