@@ -13,6 +13,13 @@ This is the documentation for the Back End app, which is an API written in Ruby 
 ## Endpoints
 
 1. [POST /api/v1/golfers](#create_golfer)
+2. [POST /api/v1/sessions](#crete_session)
+3. [GET /golfer/:id/golfer_trips](#get_golfer_trips)
+4. [GET /golfer/:golfer_id/golfer_trips/:trip_id](#get_golfer_trip)
+5. [POST /golfer/:id/golfer_trips](#create_golfer_trip)
+6. [GET /trips](#get_trips)
+7. [GET /trips/:id](#get_trip)
+8. [POST /trips](#create_trip)
 
 ### POST /api/v1/golfers <a name="create_golfer"></a>
 
@@ -47,7 +54,7 @@ Example response:
 }
 ```
 
-### POST /api/v1/sessions
+### POST /api/v1/sessions <a name="create_session"></a>
 
 This endpoint returns relevant golfer data after authentication. The required parameters are `email` and `password`. If a golfer is found in the database with that email address and authenticated with the password, then the user is returned.
 
@@ -77,7 +84,7 @@ Example response:
 }
 ```
 
-### GET /golfers/:golfer_id/golfer_trips
+### GET /golfers/:golfer_id/golfer_trips <a name="get_golfer_trips"></a>
 
 This endpoint returns data for each trip that a given golfer has attended, including the total cost of the trip to the golfer, all the nights he stayed in the house, all the meals he ate, and all the courses he played. The only parameter that needs to be passed back for this endpoint is the `golfer_id`.
 
@@ -353,7 +360,7 @@ Example response:
 }
 ```
 
-### GET /golfers/:golfer_id/golfer_trips/:trip_id
+### GET /golfers/:golfer_id/golfer_trips/:trip_id <a name="get_golfer_trip"></a>
 
 This endpoint returns data for a given trip that a given golfer has attended, including the total cost of the trip to the golfer, all the nights he stayed in the house, all the meals he ate, and all the courses he played. The only parameters that need to be passed back for this endpoint are the `golfer_id` and the `trip_id`.
 
@@ -481,7 +488,7 @@ Example response:
 }
 ```
 
-### POST /golfers/:golfer_id/golfer_trips
+### POST /golfers/:golfer_id/golfer_trips <a name="create_golfer_trip"></a>
 
 This endpoint creates a new `golfer_trip` for a given `golfer` and returns data for that new trip, including the total cost of the trip to the golfer, all the nights he will stay in the house, all the meals he will eat, and all the courses he will play. This endpoint requires more paramaters, including the `id` attributes for the golfer himself, the trip he will attend, each night he will stay, each meal he will eat, and each course he will play. 
 
@@ -571,7 +578,7 @@ Example response:
 ```
 
 
-### GET /trips
+### GET /trips <a name="get_trips"></a>
 
 This endpoint returns all trips in the database, including their `year`, `number`, and `location` attributes, along with its `nights`, `meals`, `courses`, and `golfers`. It does not require any parameters. 
 
@@ -1278,7 +1285,7 @@ Example response:
 }
 ```
 
-### GET /trips/:id
+### GET /trips/:id <a name="get_trip"></a>
 
 This endpoint returns data for the requested trip, including its `year`, `number`, and `location` attributes, along with its `nights`, `meals`, `courses`, and `golfers`. It only requires the trip `id` to be passed in as a query param. 
 
@@ -1467,7 +1474,7 @@ Example response:
 }
 ```
 
-### POST /trips
+### POST /trips <a name="create_trip"></a>
 
 This endpoint creates a new trip in the database, including its direct attributes of `year`, `number`, and `location`, as well as all of its dependent relationships: its `trip_courses`, `nights`, and `meals`. Thus, it requires six parameters: `year`, `number`, and `location`, as well as `courses`, which should be an array of hashes, each containing a `course_id`, `date`, and `cost`; it also requires `nights`, which should be an array of hashes, each containing a `date` and `cost`; last, it requires `meals`, which should be an array of hashes, each containing a `date`, `time_of_day` of either `0` for breakfast or `1` for dinner, and `cost`.
 
