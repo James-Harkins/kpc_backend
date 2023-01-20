@@ -318,4 +318,189 @@ describe 'golfer endpoints' do
       end
     end
   end
+
+  describe 'POST /trips' do
+    describe 'happy path' do
+      it 'creates a new trip and returns a json serialization of the new trip' do
+        json_payload = {
+          year: 2017,
+          number: 17,
+          location: 'VA Beach',
+          courses: [
+            {
+              course: @course_5.id,
+              date: Date.parse('2017-04-24'),
+              cost: 65.0
+            },
+            {
+              course: @course_6.id,
+              date: Date.parse('2017-04-25'),
+              cost: 65.0
+            },
+            {
+              course: @course_7.id,
+              date: Date.parse('2017-04-26'),
+              cost: 65.0
+            },
+            {
+              course: @course_8.id,
+              date: Date.parse('2017-04-27'),
+              cost: 65.0
+            },
+            {
+              course: @course_5.id,
+              date: Date.parse('2017-04-28'),
+              cost: 65.0
+            },
+            {
+              course: @course_9.id,
+              date: Date.parse('2017-04-29'),
+              cost: 65.0
+            },
+          ],
+          nights: [
+            {
+              date: Date.parse('2017-04-23'),
+              cost: 0.0
+            },
+            {
+              date: Date.parse('2017-04-24'),
+              cost: 90.0
+            },
+            {
+              date: Date.parse('2017-04-25'),
+              cost: 90.0
+            },
+            {
+              date: Date.parse('2017-04-26'),
+              cost: 90.0
+            },
+            {
+              date: Date.parse('2017-04-27'),
+              cost: 90.0
+            },
+            {
+              date: Date.parse('2017-04-28'),
+              cost: 90.0
+            },
+            {
+              date: Date.parse('2017-04-29'),
+              cost: 90.0
+            }
+          ],
+          meals: [
+            {
+              date: Date.parse('2017-04-24'),
+              time_of_day: 0,
+              cost: 5.0
+            },
+            {
+              date: Date.parse('2017-04-24'),
+              time_of_day: 1,
+              cost: 5.0
+            },
+            {
+              date: Date.parse('2017-04-25'),
+              time_of_day: 0,
+              cost: 5.0
+            },
+            {
+              date: Date.parse('2017-04-25'),
+              time_of_day: 1,
+              cost: 5.0
+            },
+            {
+              date: Date.parse('2017-04-26'),
+              time_of_day: 0,
+              cost: 5.0
+            },
+            {
+              date: Date.parse('2017-04-26'),
+              time_of_day: 1,
+              cost: 5.0
+            },
+            {
+              date: Date.parse('2017-04-27'),
+              time_of_day: 0,
+              cost: 5.0
+            },
+            {
+              date: Date.parse('2017-04-27'),
+              time_of_day: 1,
+              cost: 5.0
+            },
+            {
+              date: Date.parse('2017-04-28'),
+              time_of_day: 0,
+              cost: 5.0
+            },
+            {
+              date: Date.parse('2017-04-28'),
+              time_of_day: 1,
+              cost: 5.0
+            },
+            {
+              date: Date.parse('2017-04-29'),
+              time_of_day: 0,
+              cost: 5.0
+            },
+            {
+              date: Date.parse('2017-04-29'),
+              time_of_day: 1,
+              cost: 5.0
+            },
+            {
+              date: Date.parse('2017-04-30'),
+              time_of_day: 0,
+              cost: 5.0
+            },
+          ]
+        }
+
+        headers = {'CONTENT_TYPE' => 'application/json'}
+
+        post '/api/v1/trips', headers: headers, params: json_payload.to_json
+
+        expect(response).to have_http_status(201)
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+        trip = response_body[:data]
+
+        expect(trip).to be_a Hash
+        expect(trip.keys).to eq([:id, :type, :attributes])
+        expect(trip[:id]).to eq(@trip_1.id.to_s)
+        expect(trip[:type]).to eq('trip')
+        expect(trip[:attributes]).to be_a Hash
+        expect(trip[:attributes].keys).to eq([:year, :number, :location, :nights, :meals, :courses, :golfers])
+        expect(trip[:attributes][:year]).to eq(2017)
+        expect(trip[:attributes][:number]).to eq(17)
+        expect(trip[:attributes][:location]).to eq('VA Beach')
+        expect(trip[:attributes][:courses]).to be_an Array
+        expect(trip[:attributes][:courses].length).to eq(6)
+        expect(trip[:attributes][:courses][0]).to be_a Hash
+        expect(trip[:attributes][:courses][0].keys).to eq([:id, :name, :date, :cost])
+        expect(trip[:attributes][:courses][0][:id]).to be_an Integer
+        expect(trip[:attributes][:courses][0][:name]).to eq(@course_5.name)
+        expect(trip[:attributes][:courses][0][:date]).to eq('2017-04-24')
+        expect(trip[:attributes][:courses][0][:cost]).to eq(65.0)
+        expect(trip[:attributes][:nights]).to be_an Array
+        expect(trip[:attributes][:nights].length).to eq(7)
+        expect(trip[:attributes][:nights][0]).to be_a Hash
+        expect(trip[:attributes][:nights][0].keys).to eq([:id, :date, :cost])
+        expect(trip[:attributes][:nights][0][:id]).to be_an Integer
+        expect(trip[:attributes][:nights][0][:date]).to eq('2017-04-23')
+        expect(trip[:attributes][:nights][0][:cost]).to eq(90.0)
+        expect(trip[:attributes][:meals]).to be_an Array
+        expect(trip[:attributes][:meals].length).to eq(13)
+        expect(trip[:attributes][:meals][0]).to be_a Hash
+        expect(trip[:attributes][:meals][0].keys).to eq([:id, :date, :time_of_day, :cost])
+        expect(trip[:attributes][:meals][0][:id]).to be_an Integer
+        expect(trip[:attributes][:meals][0][:date]).to eq('2017-04-24')
+        expect(trip[:attributes][:meals][0][:time_of_day]).to eq('breakfast')
+        expect(trip[:attributes][:meals][0][:cost]).to eq(5.0)
+        expect(trip[:attributes][:golfers]).to be_an Array
+        expect(trip[:attributes][:golfers].length).to eq(0)
+      end
+    end
+  end
 end
