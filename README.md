@@ -1464,3 +1464,317 @@ Example response:
     }
 }
 ```
+
+### POST /trips
+
+This endpoint creates a new trip in the database, including its direct attributes of `year`, `number`, and `location`, as well as all of its dependent relationships: its `trip_courses`, `nights`, and `meals`. Thus, it requires six parameters: `year`, `number`, and `location`, as well as `courses`, which should be an array of hashes, each containing a `course_id`, `date`, and `cost`; it also requires `nights`, which should be an array of hashes, each containing a `date` and `cost`; last, it requires `meals`, which should be an array of hashes, each containing a `date`, `time_of_day` of either `0` for breakfast or `1` for dinner, and `cost`.
+
+Example request: 
+
+```
+{
+    "year":2017,
+    "number":17,
+    "location":"VA Beach",
+    "courses":[
+        {
+            "course":5,
+            "date":"2017-04-24",
+            "cost":65.0
+        },
+        {
+            "course":6,
+            "date":"2017-04-25",
+            "cost":65.0
+        },
+        {
+            "course":7,
+            "date":"2017-04-26",
+            "cost":65.0
+        },
+        {
+            "course":8,
+            "date":"2017-04-27",
+            "cost":65.0
+        },
+        {
+            "course":9,
+            "date":"2017-04-28",
+            "cost":65.0
+        },{
+            "course":5,
+            "date":"2017-04-29",
+            "cost":65.0
+        }
+    ],
+    "nights":[
+        {
+            "date":"2017-04-23",
+            "cost":0.0
+        },
+        {
+            "date":"2017-04-24",
+            "cost":90.0
+        },
+        {
+            "date":"2017-04-25",
+            "cost":90.0
+        },
+        {
+            "date":"2017-04-26",
+            "cost":90.0
+        },
+        {
+            "date":"2017-04-27",
+            "cost":90.0
+        },
+        {
+            "date":"2017-04-28",
+            "cost":90.0
+        },
+        {
+            "date":"2017-04-29",
+            "cost":90.0
+        }
+    ],
+    "meals":[
+        {
+            "date":"2017-04-24",
+            "time_of_day":0,
+            "cost":5.0
+        },
+        {
+            "date":"2017-04-24",
+            "time_of_day":1,
+            "cost":5.0
+        },
+        {
+            "date":"2017-04-25",
+            "time_of_day":0,
+            "cost":5.0
+        },
+        {
+            "date":"2017-04-25",
+            "time_of_day":1,
+            "cost":5.0
+        },
+        {
+            "date":"2017-04-26",
+            "time_of_day":0,
+            "cost":5.0
+        },
+        {
+            "date":"2017-04-26",
+            "time_of_day":1,
+            "cost":5.0
+        },
+        {
+            "date":"2017-04-27",
+            "time_of_day":0,
+            "cost":5.0
+        },
+        {
+            "date":"2017-04-27",
+            "time_of_day":1,
+            "cost":5.0
+        },
+        {
+            "date":"2017-04-28",
+            "time_of_day":0,
+            "cost":5.0
+        },
+        {
+            "date":"2017-04-28",
+            "time_of_day":1,
+            "cost":5.0
+        },
+        {
+            "date":"2017-04-29",
+            "time_of_day":0,
+            "cost":5.0
+        },
+        {
+            "date":"2017-04-29",
+            "time_of_day":1,
+            "cost":5.0
+        },
+        {
+            "date":"2017-04-30",
+            "time_of_day":0,
+            "cost":5.0
+        }
+    ]
+}
+```
+
+Example response: 
+
+```
+{
+    "data": {
+        "id": "6",
+        "type": "trip",
+        "attributes": {
+            "year": 2017,
+            "number": 17,
+            "location": "VA Beach",
+            "nights": [
+                {
+                    "id": 29,
+                    "date": "2017-04-23",
+                    "cost": 0.0
+                },
+                {
+                    "id": 30,
+                    "date": "2017-04-24",
+                    "cost": 90.0
+                },
+                {
+                    "id": 31,
+                    "date": "2017-04-25",
+                    "cost": 90.0
+                },
+                {
+                    "id": 32,
+                    "date": "2017-04-26",
+                    "cost": 90.0
+                },
+                {
+                    "id": 33,
+                    "date": "2017-04-27",
+                    "cost": 90.0
+                },
+                {
+                    "id": 34,
+                    "date": "2017-04-28",
+                    "cost": 90.0
+                },
+                {
+                    "id": 35,
+                    "date": "2017-04-29",
+                    "cost": 90.0
+                }
+            ],
+            "meals": [
+                {
+                    "id": 53,
+                    "date": "2017-04-24",
+                    "time_of_day": "breakfast",
+                    "cost": 5.0
+                },
+                {
+                    "id": 54,
+                    "date": "2017-04-24",
+                    "time_of_day": "dinner",
+                    "cost": 5.0
+                },
+                {
+                    "id": 55,
+                    "date": "2017-04-25",
+                    "time_of_day": "breakfast",
+                    "cost": 5.0
+                },
+                {
+                    "id": 56,
+                    "date": "2017-04-25",
+                    "time_of_day": "dinner",
+                    "cost": 5.0
+                },
+                {
+                    "id": 57,
+                    "date": "2017-04-26",
+                    "time_of_day": "breakfast",
+                    "cost": 5.0
+                },
+                {
+                    "id": 58,
+                    "date": "2017-04-26",
+                    "time_of_day": "dinner",
+                    "cost": 5.0
+                },
+                {
+                    "id": 59,
+                    "date": "2017-04-27",
+                    "time_of_day": "breakfast",
+                    "cost": 5.0
+                },
+                {
+                    "id": 60,
+                    "date": "2017-04-27",
+                    "time_of_day": "dinner",
+                    "cost": 5.0
+                },
+                {
+                    "id": 61,
+                    "date": "2017-04-28",
+                    "time_of_day": "breakfast",
+                    "cost": 5.0
+                },
+                {
+                    "id": 62,
+                    "date": "2017-04-28",
+                    "time_of_day": "dinner",
+                    "cost": 5.0
+                },
+                {
+                    "id": 63,
+                    "date": "2017-04-29",
+                    "time_of_day": "breakfast",
+                    "cost": 5.0
+                },
+                {
+                    "id": 64,
+                    "date": "2017-04-29",
+                    "time_of_day": "dinner",
+                    "cost": 5.0
+                },
+                {
+                    "id": 65,
+                    "date": "2017-04-30",
+                    "time_of_day": "breakfast",
+                    "cost": 5.0
+                }
+            ],
+            "courses": [
+                {
+                    "id": 25,
+                    "name": "Red Wing Lake Golf Course",
+                    "date": "2017-04-24",
+                    "cost": 65.0
+                },
+                {
+                    "id": 26,
+                    "name": "Virginia Beach National Golf Club",
+                    "date": "2017-04-25",
+                    "cost": 65.0
+                },
+                {
+                    "id": 27,
+                    "name": "Hells Point Golf Club",
+                    "date": "2017-04-26",
+                    "cost": 65.0
+                },
+                {
+                    "id": 28,
+                    "name": "Heron Ridge Golf Club",
+                    "date": "2017-04-27",
+                    "cost": 65.0
+                },
+                {
+                    "id": 29,
+                    "name": "Stumpy Lake Golf Course",
+                    "date": "2017-04-28",
+                    "cost": 65.0
+                },
+                {
+                    "id": 30,
+                    "name": "Red Wing Lake Golf Course",
+                    "date": "2017-04-29",
+                    "cost": 65.0
+                }
+            ],
+            "golfers": []
+        }
+    }
+}
+```
