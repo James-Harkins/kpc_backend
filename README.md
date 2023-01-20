@@ -14,9 +14,9 @@ This is the documentation for the Back End app, which is an API written in Ruby 
 
 1. [POST /api/v1/golfers](#create_golfer)
 2. [POST /api/v1/sessions](#create_session)
-3. [GET /golfer/:id/golfer_trips](#get_golfer_trips)
-4. [GET /golfer/:golfer_id/golfer_trips/:trip_id](#get_golfer_trip)
-5. [POST /golfer/:id/golfer_trips](#create_golfer_trip)
+3. [GET /golfers/:golfer_id/golfer_trips](#get_golfer_trips)
+4. [GET /golfers/:golfer_id/golfer_trips/:trip_id](#get_golfer_trip)
+5. [POST /golfers/:golfer_id/golfer_trips](#create_golfer_trip)
 6. [GET /trips](#get_trips)
 7. [GET /trips/:id](#get_trip)
 8. [POST /trips](#create_trip)
