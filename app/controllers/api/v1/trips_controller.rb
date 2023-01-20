@@ -11,26 +11,7 @@ class Api::V1::TripsController < ApplicationController
 
   def create
     trip = Trip.create!(trip_params)
-    params[:courses].each do |course|
-      trip.trip_courses.create!(
-        course_id: course[:course],
-        date: course[:date],
-        cost: course[:cost]
-      )
-    end
-    params[:nights].each do |night|
-      trip.nights.create!(
-        date: night[:date],
-        cost: night[:cost]
-      )
-    end
-    params[:meals].each do |meal|
-      trip.meals.create!(
-        date: meal[:date],
-        time_of_day: meal[:time_of_day],
-        cost: meal[:cost]
-      )
-    end
+    TripFacade.create_trip_relationships(trip, params)
     render json: TripSerializer.new(trip), status: 201
   end
 
