@@ -20,6 +20,7 @@ This is the documentation for the Back End app, which is an API written in Ruby 
 6. [GET /trips](#get_trips)
 7. [GET /trips/:id](#get_trip)
 8. [POST /trips](#create_trip)
+9. [GET /courses](#get_courses)
 
 ### POST /api/v1/golfers <a name="create_golfer"></a>
 
@@ -1785,5 +1786,115 @@ Example response:
             "golfers": []
         }
     }
+}
+```
+
+### GET /api/v1/courses <a name="get_courses"></a>
+
+This endpoint returns all of the courses in the database, including their `name`, `address`, `city`, `state`, and `zipcode` attributes. No parameters are required. 
+
+```
+{
+    "data": [
+        {
+            "id": "1",
+            "type": "course",
+            "attributes": {
+                "name": "Kings Creek Country Club",
+                "address": "1 Kings Creek Cir",
+                "city": "Rehoboth Beach",
+                "state": "DE",
+                "zipcode": "19971"
+            }
+        },
+        {
+            "id": "2",
+            "type": "course",
+            "attributes": {
+                "name": "Rehoboth Country Club",
+                "address": "221 West Side Dr",
+                "city": "Rehoboth Beach",
+                "state": "DE",
+                "zipcode": "19971"
+            }
+        },
+        {
+            "id": "3",
+            "type": "course",
+            "attributes": {
+                "name": "The Salt Pond Golf Club",
+                "address": "402 Bethany Loop",
+                "city": "Bethany Beach",
+                "state": "DE",
+                "zipcode": "19930"
+            }
+        },
+        {
+            "id": "4",
+            "type": "course",
+            "attributes": {
+                "name": "American Classic Golf Club",
+                "address": "18485 Bethpage Dr",
+                "city": "Lewes",
+                "state": "DE",
+                "zipcode": "19958"
+            }
+        },
+        {
+            "id": "5",
+            "type": "course",
+            "attributes": {
+                "name": "Red Wing Lake Golf Course",
+                "address": "1144 Prosperity Rd",
+                "city": "Virginia Beach",
+                "state": "VA",
+                "zipcode": "23451"
+            }
+        },
+        {
+            "id": "6",
+            "type": "course",
+            "attributes": {
+                "name": "Virginia Beach National Golf Club",
+                "address": "2500 Tournament Dr",
+                "city": "Virginia Beach",
+                "state": "VA",
+                "zipcode": "23456"
+            }
+        },
+        {
+            "id": "7",
+            "type": "course",
+            "attributes": {
+                "name": "Hells Point Golf Club",
+                "address": "2700 Atwoodtown Rd",
+                "city": "Virginia Beach",
+                "state": "VA",
+                "zipcode": "23456"
+            }
+        },
+        {
+            "id": "8",
+            "type": "course",
+            "attributes": {
+                "name": "Heron Ridge Golf Club",
+                "address": "2973 Heron Ridge Dr",
+                "city": "Virginia Beach",
+                "state": "VA",
+                "zipcode": "23456"
+            }
+        },
+        {
+            "id": "9",
+            "type": "course",
+            "attributes": {
+                "name": "Stumpy Lake Golf Course",
+                "address": "4797 Indian River Rd",
+                "city": "Virginia Beach",
+                "state": "VA",
+                "zipcode": "23456"
+            }
+        }
+    ]
 }
 ```
