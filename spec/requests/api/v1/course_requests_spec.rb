@@ -39,4 +39,36 @@ describe 'course endpoints' do
       end
     end
   end
+
+  describe 'POST /courses' do
+    describe 'happy path' do
+      it 'creates a new course with the provided parameters and returns serialized json for the new course' do
+        json_payload = {
+          name: 'Gauntlet Golf Club',
+          address: '18 Fairway Dr',
+          city: 'Fredericksburg',
+          state: 'VA',
+          zipcode: '22406'
+        }
+
+        headers = {'CONTENT_TYPE' => 'application/json'}
+
+        post "/api/v1/courses", headers: headers, params: json_payload.to_json
+
+        expect(response).to have_http_status(200)
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+        course = response_body[:data]
+
+        expect(course[:id]).to be_an Integer
+        expect(course[:type]).to eq('course')
+        expect(course[:attributes].keys).to eq([:name, :address, :city, :state, :zipcode])
+        expect(course[:attributes][:name]).to eq('Gauntlet Golf Club')
+        expect(course[:attributes][:address]).to eq('18 Fairway Dr')
+        expect(course[:attributes][:city]).to eq('Fredericksburg')
+        expect(course[:attributes][:state]).to eq('VA')
+        expect(course[:attributes][:zipcode]).to eq('22406')
+      end
+    end
+  end
 end
