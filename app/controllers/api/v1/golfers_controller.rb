@@ -13,6 +13,12 @@ class Api::V1::GolfersController < ApplicationController
     end
   end
 
+  def destroy
+    golfer = Golfer.find(params[:id])
+    golfer.destroy
+    render body: nil, status: :no_content
+  end
+
   private
 
   def golfer_params

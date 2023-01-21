@@ -198,7 +198,7 @@ describe 'golfer endpoints' do
 
         headers = {'CONTENT_TYPE' => 'application/json'}
 
-        delete "/api/v1/golfer/#{golfer.id}"
+        delete "/api/v1/golfers/#{golfer.id}"
 
         expect(response).to have_http_status(204)
 
