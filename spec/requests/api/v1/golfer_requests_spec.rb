@@ -29,6 +29,7 @@ describe 'golfer endpoints' do
       end
     end
   end
+
   describe 'POST /golfers request' do
     describe 'happy path' do
       it 'returns a 201 response and json for the newly created golfer' do
@@ -184,6 +185,24 @@ describe 'golfer endpoints' do
 
         expect(response_body).to have_key(:error)
         expect(response_body[:error]).to be_a String
+      end
+    end
+  end
+
+  describe 'DELETE /golfers' do
+    describe 'happy path' do
+      it 'deletes the golfer in the database with the id passed in as a query param' do
+        golfer = Golfer.create!(first_name: 'Tony', last_name: 'Soprano', email: 't@badabing.com', password: 'test123', password_confirmation: 'test123')
+
+        expect(Golfer.find_by(email: 't@badabing.com')).to eq(golfer)
+
+        headers = {'CONTENT_TYPE' => 'application/json'}
+
+        delete "/api/v1/golfers/#{golfer.id}"
+
+        expect(response).to have_http_status(204)
+
+        expect(Golfer.find_by(email: 't@badabing.com')).to eq(nil)
       end
     end
   end
