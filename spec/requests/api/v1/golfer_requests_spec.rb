@@ -1,6 +1,36 @@
 require 'rails_helper'
 
 describe 'golfer endpoints' do
+  before do
+    @golfer_1 = Golfer.create!(first_name: 'Tony', last_name: 'Soprano', email: 't@badabing.com', password: 'test123', password_confirmation: 'test123')
+    @golfer_2 = Golfer.create!(first_name: 'Paulie', last_name: 'Gaultieri', email: 'walnuts@badabing.com', password: 'test123', password_confirmation: 'test123')
+    @golfer_3 = Golfer.create!(first_name: 'Christopher', last_name: 'Moltisante', email: 'chrissie@badabing.com', password: 'test123', password_confirmation: 'test123')
+  end
+
+  describe 'GET /golfers' do
+    describe 'happy path' do
+      it 'returns serialized json for all of the golfers in the database' do
+        headers = {'CONTENT_TYPE' => 'application/json'}
+
+        get '/api/v1/golfers', headers: headers, params: json_payload.to_json
+
+        expect(response).to have_http_status(200)
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+        golfers = response_body[:data]
+
+        expect(golfers.length).to eq(3)
+        expect(golfers[0]).to be_a Hash
+        expect(golfers[0][:id]).to eq(@golfer_1.id)
+        expect(golfers[0][:type]).to eq('golfer')
+        expect(golfers[0][:attributes].keys).to eq([:first_name, :last_name, :email, :role])
+        expect(golfers[0][:attributes][:first_name]).to eq(@golfer_1.first_name)
+        expect(golfers[0][:attributes][:last_name]).to eq(@golfer_1.last_name)
+        expect(golfers[0][:attributes][:email]).to eq(@golfer_1.email)
+        expect(golfers[0][:attributes][:role]).to eq('default')
+      end
+    end
+  end
   describe 'POST /golfers request' do
     describe 'happy path' do
       it 'returns a 201 response and json for the newly created golfer' do
