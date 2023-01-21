@@ -55,12 +55,12 @@ describe 'course endpoints' do
 
         post "/api/v1/courses", headers: headers, params: json_payload.to_json
 
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(201)
 
         response_body = JSON.parse(response.body, symbolize_names: true)
         course = response_body[:data]
 
-        expect(course[:id]).to be_an Integer
+        expect(course[:id]).to be_an String
         expect(course[:type]).to eq('course')
         expect(course[:attributes].keys).to eq([:name, :address, :city, :state, :zipcode])
         expect(course[:attributes][:name]).to eq('Gauntlet Golf Club')
