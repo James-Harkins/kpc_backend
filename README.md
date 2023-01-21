@@ -12,16 +12,60 @@ This is the documentation for the Back End app, which is an API written in Ruby 
 
 ## Endpoints
 
-1. [POST /api/v1/golfers](#create_golfer)
-2. [POST /api/v1/sessions](#create_session)
-3. [GET /golfers/:golfer_id/golfer_trips](#get_golfer_trips)
-4. [GET /golfers/:golfer_id/golfer_trips/:trip_id](#get_golfer_trip)
-5. [POST /golfers/:golfer_id/golfer_trips](#create_golfer_trip)
-6. [GET /trips](#get_trips)
-7. [GET /trips/:id](#get_trip)
-8. [POST /trips](#create_trip)
-9. [GET /courses](#get_courses)
-10. [POST /courses](#create_course)
+1. [GET /golfers](#get_golfers)
+3. [POST /api/v1/golfers](#create_golfer)
+4. [POST /api/v1/sessions](#create_session)
+5. [GET /golfers/:golfer_id/golfer_trips](#get_golfer_trips)
+6. [GET /golfers/:golfer_id/golfer_trips/:trip_id](#get_golfer_trip)
+7. [POST /golfers/:golfer_id/golfer_trips](#create_golfer_trip)
+8. [GET /trips](#get_trips)
+9. [GET /trips/:id](#get_trip)
+10. [POST /trips](#create_trip)
+11. [GET /courses](#get_courses)
+12. [POST /courses](#create_course)
+
+### GET /api/v1/golfers <a name="get_golfers"></a>
+
+This endpoint returns all of the golfers in the database, including all of their attributes except for their `password_digest`, which is just an encryption of their password. This includes `first_name`, `last_name`, `email`, and `role`. 
+
+Example response: 
+
+```
+{
+    "data": [
+        {
+            "id": "1",
+            "type": "golfer",
+            "attributes": {
+                "first_name": "Tony",
+                "last_name": "Soprano",
+                "email": "t@badabing.com",
+                "role": "default"
+            }
+        },
+        {
+            "id": "2",
+            "type": "golfer",
+            "attributes": {
+                "first_name": "Paulie",
+                "last_name": "Gaultieri",
+                "email": "walnuts@badabing.com",
+                "role": "default"
+            }
+        },
+        {
+            "id": "3",
+            "type": "golfer",
+            "attributes": {
+                "first_name": "Christopher",
+                "last_name": "Moltisanti",
+                "email": "chrissie@badabing.com",
+                "role": "default"
+            }
+        }
+    ]
+}
+```
 
 ### POST /api/v1/golfers <a name="create_golfer"></a>
 
