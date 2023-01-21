@@ -1900,7 +1900,7 @@ This endpoint returns all of the courses in the database, including their `name`
 }
 ```
 
-### POST /api/v1/course <a name="create_course"></a>
+### POST /api/v1/courses <a name="create_course"></a>
 
 This endpoint creates a new Course in the database and returns serialized json for the new course including all of its attributes. The required parameters are `name`, `address`, `city`, `state`, and `zipcode`. 
 
