@@ -21,6 +21,7 @@ This is the documentation for the Back End app, which is an API written in Ruby 
 7. [GET /trips/:id](#get_trip)
 8. [POST /trips](#create_trip)
 9. [GET /courses](#get_courses)
+10. [POST /courses](#create_course)
 
 ### POST /api/v1/golfers <a name="create_golfer"></a>
 
@@ -1896,5 +1897,39 @@ This endpoint returns all of the courses in the database, including their `name`
             }
         }
     ]
+}
+```
+
+### POST /api/v1/course <a name="create_course"></a>
+
+This endpoint creates a new Course in the database and returns serialized json for the new course including all of its attributes. The required parameters are `name`, `address`, `city`, `state`, and `zipcode`. 
+
+Example request: 
+
+```
+{
+    "name":"Gauntlet Golf Club",
+    "address":"18 Fairway Dr",
+    "city":"Fredericksburg",
+    "state":"VA",
+    "zipcode":"22406"
+}
+```
+
+Example response: 
+
+```
+{
+    "data": {
+        "id": "10",
+        "type": "course",
+        "attributes": {
+            "name": "Gauntlet Golf Club",
+            "address": "18 Fairway Dr",
+            "city": "Fredericksburg",
+            "state": "VA",
+            "zipcode": "22406"
+        }
+    }
 }
 ```
