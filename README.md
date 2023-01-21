@@ -13,7 +13,8 @@ This is the documentation for the Back End app, which is an API written in Ruby 
 ## Endpoints
 
 1. [GET /golfers](#get_golfers)
-3. [POST /api/v1/golfers](#create_golfer)
+2. [POST /api/v1/golfers](#create_golfer)
+3. [DELETE /golers/:id](#delete_golfer)
 4. [POST /api/v1/sessions](#create_session)
 5. [GET /golfers/:golfer_id/golfer_trips](#get_golfer_trips)
 6. [GET /golfers/:golfer_id/golfer_trips/:trip_id](#get_golfer_trip)
@@ -99,6 +100,10 @@ Example response:
     }
 }
 ```
+
+### DELETE /api/v1/golfers/:id <a name="delete_golfer"></a>
+
+This endpoint destroys the golfer in the database with the `id` passed in as a query parameter. This is the only parameter required. It produces a response of "no content."
 
 ### POST /api/v1/sessions <a name="create_session"></a>
 
