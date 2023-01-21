@@ -12,18 +12,18 @@ This is the documentation for the Back End app, which is an API written in Ruby 
 
 ## Endpoints
 
-1. [GET /golfers](#get_golfers)
+1. [GET /api/v1/golfers](#get_golfers)
 2. [POST /api/v1/golfers](#create_golfer)
-3. [DELETE /golers/:id](#delete_golfer)
+3. [DELETE /api/v1/golfers/:id](#delete_golfer)
 4. [POST /api/v1/sessions](#create_session)
-5. [GET /golfers/:golfer_id/golfer_trips](#get_golfer_trips)
-6. [GET /golfers/:golfer_id/golfer_trips/:trip_id](#get_golfer_trip)
-7. [POST /golfers/:golfer_id/golfer_trips](#create_golfer_trip)
-8. [GET /trips](#get_trips)
-9. [GET /trips/:id](#get_trip)
-10. [POST /trips](#create_trip)
-11. [GET /courses](#get_courses)
-12. [POST /courses](#create_course)
+5. [GET /api/v1/golfers/:golfer_id/golfer_trips](#get_golfer_trips)
+6. [GET /api/v1/golfers/:golfer_id/golfer_trips/:trip_id](#get_golfer_trip)
+7. [POST /api/v1/golfers/:golfer_id/golfer_trips](#create_golfer_trip)
+8. [GET /api/v1/trips](#get_trips)
+9. [GET /api/v1/trips/:id](#get_trip)
+10. [POST /api/v1/trips](#create_trip)
+11. [GET /api/v1/courses](#get_courses)
+12. [POST /api/v1/courses](#create_course)
 
 ### GET /api/v1/golfers <a name="get_golfers"></a>
 
@@ -135,7 +135,7 @@ Example response:
 }
 ```
 
-### GET /golfers/:golfer_id/golfer_trips <a name="get_golfer_trips"></a>
+### GET /api/v1/golfers/:golfer_id/golfer_trips <a name="get_golfer_trips"></a>
 
 This endpoint returns data for each trip that a given golfer has attended, including the total cost of the trip to the golfer, all the nights he stayed in the house, all the meals he ate, and all the courses he played. The only parameter that needs to be passed back for this endpoint is the `golfer_id`.
 
@@ -411,7 +411,7 @@ Example response:
 }
 ```
 
-### GET /golfers/:golfer_id/golfer_trips/:trip_id <a name="get_golfer_trip"></a>
+### GET /api/v1/golfers/:golfer_id/golfer_trips/:trip_id <a name="get_golfer_trip"></a>
 
 This endpoint returns data for a given trip that a given golfer has attended, including the total cost of the trip to the golfer, all the nights he stayed in the house, all the meals he ate, and all the courses he played. The only parameters that need to be passed back for this endpoint are the `golfer_id` and the `trip_id`.
 
@@ -539,7 +539,7 @@ Example response:
 }
 ```
 
-### POST /golfers/:golfer_id/golfer_trips <a name="create_golfer_trip"></a>
+### POST /api/v1/golfers/:golfer_id/golfer_trips <a name="create_golfer_trip"></a>
 
 This endpoint creates a new `golfer_trip` for a given `golfer` and returns data for that new trip, including the total cost of the trip to the golfer, all the nights he will stay in the house, all the meals he will eat, and all the courses he will play. This endpoint requires more paramaters, including the `id` attributes for the golfer himself, the trip he will attend, each night he will stay, each meal he will eat, and each course he will play. 
 
@@ -629,7 +629,7 @@ Example response:
 ```
 
 
-### GET /trips <a name="get_trips"></a>
+### GET /api/v1/trips <a name="get_trips"></a>
 
 This endpoint returns all trips in the database, including their `year`, `number`, and `location` attributes, along with its `nights`, `meals`, `courses`, and `golfers`. It does not require any parameters. 
 
@@ -1336,7 +1336,7 @@ Example response:
 }
 ```
 
-### GET /trips/:id <a name="get_trip"></a>
+### GET /api/v1/trips/:id <a name="get_trip"></a>
 
 This endpoint returns data for the requested trip, including its `year`, `number`, and `location` attributes, along with its `nights`, `meals`, `courses`, and `golfers`. It only requires the trip `id` to be passed in as a query param. 
 
@@ -1525,7 +1525,7 @@ Example response:
 }
 ```
 
-### POST /trips <a name="create_trip"></a>
+### POST /api/v1/trips <a name="create_trip"></a>
 
 This endpoint creates a new trip in the database, including its direct attributes of `year`, `number`, and `location`, as well as all of its dependent relationships: its `trip_courses`, `nights`, and `meals`. Thus, it requires six parameters: `year`, `number`, and `location`, as well as `courses`, which should be an array of hashes, each containing a `course_id`, `date`, and `cost`; it also requires `nights`, which should be an array of hashes, each containing a `date` and `cost`; last, it requires `meals`, which should be an array of hashes, each containing a `date`, `time_of_day` of either `0` for breakfast or `1` for dinner, and `cost`.
 
