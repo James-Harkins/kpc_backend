@@ -27,15 +27,15 @@ describe 'course endpoints' do
 
         expect(courses.length).to eq(9)
         expect(courses[0]).to be_a Hash
-        expect(courses[0][:id]).to eq(@course_1.id)
+        expect(courses[0][:id]).to eq(@course_1.id.to_s)
         expect(courses[0][:type]).to eq('course')
-        expect(courses[0][:type][:attributes]).to be_a Hash
-        expect(courses[0][:type][:attributes].keys).to eq([:name, :address, :city, :state, :zipcode])
-        expect(courses[0][:type][:attributes][:name]).to eq(@course_1.name)
-        expect(courses[0][:type][:attributes][:address]).to eq(@course_1.address)
-        expect(courses[0][:type][:attributes][:city]).to eq(@course_1.city)
-        expect(courses[0][:type][:attributes][:state]).to eq(@course_1.state)
-        expect(courses[0][:type][:attributes][:zipcode]).to eq(@course_1.zipcode)
+        expect(courses[0][:attributes]).to be_a Hash
+        expect(courses[0][:attributes].keys).to eq([:name, :address, :city, :state, :zipcode])
+        expect(courses[0][:attributes][:name]).to eq(@course_1.name)
+        expect(courses[0][:attributes][:address]).to eq(@course_1.address)
+        expect(courses[0][:attributes][:city]).to eq(@course_1.city)
+        expect(courses[0][:attributes][:state]).to eq(@course_1.state)
+        expect(courses[0][:attributes][:zipcode]).to eq(@course_1.zipcode)
       end
     end
   end

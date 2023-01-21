@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       end
       resources :sessions, only: [:create]
       resources :trips, only: [:index, :show, :create]
+      resources :courses, only: [:index]
     end
   end
 end
