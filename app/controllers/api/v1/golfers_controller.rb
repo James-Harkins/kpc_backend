@@ -1,4 +1,9 @@
 class Api::V1::GolfersController < ApplicationController
+  def index
+    golfers = Golfer.all
+    render json: GolferSerializer.new(golfers), status: 200
+  end
+
   def create
     golfer = Golfer.new(golfer_params)
     if golfer.save
