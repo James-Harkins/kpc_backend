@@ -246,17 +246,26 @@ describe 'golfer trip endpoints' do
         expect(trip[:attributes].keys).to eq([:nights, :meals, :courses])
         expect(trip[:attributes][:nights]).to be_an Array
         expect(trip[:attributes][:nights].length).to eq(7)
-        expect(trip[:attributes][:nights][0]).to be_a String
-        expect(trip[:attributes][:nights][0]).to eq(@night_1_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:nights][1]).to eq(@night_2_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:nights][2]).to eq(@night_3_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:nights][3]).to eq(@night_4_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:nights][4]).to eq(@night_5_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:nights][5]).to eq(@night_6_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:nights][6]).to eq(@night_7_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:nights][0]).to be_a Hash
+        expect(trip[:attributes][:nights][0][:id]).to eq(@night_1_trip_4.id)
+        expect(trip[:attributes][:nights][0][:date]).to eq(@night_1_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:nights][1][:id]).to eq(@night_2_trip_4.id)
+        expect(trip[:attributes][:nights][1][:date]).to eq(@night_2_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:nights][2][:id]).to eq(@night_3_trip_4.id)
+        expect(trip[:attributes][:nights][2][:date]).to eq(@night_3_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:nights][3][:id]).to eq(@night_4_trip_4.id)
+        expect(trip[:attributes][:nights][3][:date]).to eq(@night_4_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:nights][4][:id]).to eq(@night_5_trip_4.id)
+        expect(trip[:attributes][:nights][4][:date]).to eq(@night_5_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:nights][5][:id]).to eq(@night_6_trip_4.id)
+        expect(trip[:attributes][:nights][5][:date]).to eq(@night_6_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:nights][6][:id]).to eq(@night_7_trip_4.id)
+        expect(trip[:attributes][:nights][6][:date]).to eq(@night_7_trip_4.date.strftime('%Y-%m-%d'))
         expect(trip[:attributes][:courses]).to be_an Array
         expect(trip[:attributes][:courses].length).to eq(6)
         expect(trip[:attributes][:courses][0]).to be_a Hash
+        expect(trip[:attributes][:courses][0][:course_id]).to eq(@course_5.id)
+        expect(trip[:attributes][:courses][0][:trip_course_id]).to eq(@trip_4_course_1.id)
         expect(trip[:attributes][:courses][0][:date]).to eq(@trip_4_course_1.date.strftime('%Y-%m-%d'))
         expect(trip[:attributes][:courses][0][:name]).to eq(@trip_4_course_1.course.name)
         expect(trip[:attributes][:courses][0][:address]).to eq(@trip_4_course_1.course.address)
@@ -271,19 +280,45 @@ describe 'golfer trip endpoints' do
         expect(trip[:attributes][:meals]).to be_an Array
         expect(trip[:attributes][:meals].length).to eq(13)
         expect(trip[:attributes][:meals][0]).to be_a Hash
-        expect(trip[:attributes][:meals][0][@meal_1_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trip[:attributes][:meals][1][@meal_2_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trip[:attributes][:meals][2][@meal_3_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trip[:attributes][:meals][3][@meal_4_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trip[:attributes][:meals][4][@meal_5_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trip[:attributes][:meals][5][@meal_6_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trip[:attributes][:meals][6][@meal_7_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trip[:attributes][:meals][7][@meal_8_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trip[:attributes][:meals][8][@meal_9_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trip[:attributes][:meals][9][@meal_10_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trip[:attributes][:meals][10][@meal_11_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trip[:attributes][:meals][11][@meal_12_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trip[:attributes][:meals][12][@meal_13_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
+        expect(trip[:attributes][:meals][0][:id]).to eq(@meal_1_trip_4.id)
+        expect(trip[:attributes][:meals][0][:date]).to eq(@meal_1_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][0][:time_of_day]).to eq('breakfast')
+        expect(trip[:attributes][:meals][1][:id]).to eq(@meal_2_trip_4.id)
+        expect(trip[:attributes][:meals][1][:date]).to eq(@meal_2_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][1][:time_of_day]).to eq('dinner')
+        expect(trip[:attributes][:meals][2][:id]).to eq(@meal_3_trip_4.id)
+        expect(trip[:attributes][:meals][2][:date]).to eq(@meal_3_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][2][:time_of_day]).to eq('breakfast')
+        expect(trip[:attributes][:meals][3][:id]).to eq(@meal_4_trip_4.id)
+        expect(trip[:attributes][:meals][3][:date]).to eq(@meal_4_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][3][:time_of_day]).to eq('dinner')
+        expect(trip[:attributes][:meals][4][:id]).to eq(@meal_5_trip_4.id)
+        expect(trip[:attributes][:meals][4][:date]).to eq(@meal_5_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][4][:time_of_day]).to eq('breakfast')
+        expect(trip[:attributes][:meals][5][:id]).to eq(@meal_6_trip_4.id)
+        expect(trip[:attributes][:meals][5][:date]).to eq(@meal_6_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][5][:time_of_day]).to eq('dinner')
+        expect(trip[:attributes][:meals][6][:id]).to eq(@meal_7_trip_4.id)
+        expect(trip[:attributes][:meals][6][:date]).to eq(@meal_7_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][6][:time_of_day]).to eq('breakfast')
+        expect(trip[:attributes][:meals][7][:id]).to eq(@meal_8_trip_4.id)
+        expect(trip[:attributes][:meals][7][:date]).to eq(@meal_8_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][7][:time_of_day]).to eq('dinner')
+        expect(trip[:attributes][:meals][8][:id]).to eq(@meal_9_trip_4.id)
+        expect(trip[:attributes][:meals][8][:date]).to eq(@meal_9_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][8][:time_of_day]).to eq('breakfast')
+        expect(trip[:attributes][:meals][9][:id]).to eq(@meal_10_trip_4.id)
+        expect(trip[:attributes][:meals][9][:date]).to eq(@meal_10_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][9][:time_of_day]).to eq('dinner')
+        expect(trip[:attributes][:meals][10][:id]).to eq(@meal_11_trip_4.id)
+        expect(trip[:attributes][:meals][10][:date]).to eq(@meal_11_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][10][:time_of_day]).to eq('breakfast')
+        expect(trip[:attributes][:meals][11][:id]).to eq(@meal_12_trip_4.id)
+        expect(trip[:attributes][:meals][11][:date]).to eq(@meal_12_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][11][:time_of_day]).to eq('dinner')
+        expect(trip[:attributes][:meals][12][:id]).to eq(@meal_13_trip_4.id)
+        expect(trip[:attributes][:meals][12][:date]).to eq(@meal_13_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][12][:time_of_day]).to eq('breakfast')
       end
     end
   end
@@ -310,12 +345,12 @@ describe 'golfer trip endpoints' do
         expect(trips[0][:attributes].keys).to eq([:nights, :meals, :courses])
         expect(trips[0][:attributes][:nights]).to be_an Array
         expect(trips[0][:attributes][:nights].length).to eq(5)
-        expect(trips[0][:attributes][:nights][0]).to be_a String
-        expect(trips[0][:attributes][:nights][0]).to eq(@night_3_trip_1.date.strftime('%Y-%m-%d'))
-        expect(trips[0][:attributes][:nights][1]).to eq(@night_4_trip_1.date.strftime('%Y-%m-%d'))
-        expect(trips[0][:attributes][:nights][2]).to eq(@night_5_trip_1.date.strftime('%Y-%m-%d'))
-        expect(trips[0][:attributes][:nights][3]).to eq(@night_6_trip_1.date.strftime('%Y-%m-%d'))
-        expect(trips[0][:attributes][:nights][4]).to eq(@night_7_trip_1.date.strftime('%Y-%m-%d'))
+        expect(trips[0][:attributes][:nights][0]).to be_a Hash
+        expect(trips[0][:attributes][:nights][0][:date]).to eq(@night_3_trip_1.date.strftime('%Y-%m-%d'))
+        expect(trips[0][:attributes][:nights][1][:date]).to eq(@night_4_trip_1.date.strftime('%Y-%m-%d'))
+        expect(trips[0][:attributes][:nights][2][:date]).to eq(@night_5_trip_1.date.strftime('%Y-%m-%d'))
+        expect(trips[0][:attributes][:nights][3][:date]).to eq(@night_6_trip_1.date.strftime('%Y-%m-%d'))
+        expect(trips[0][:attributes][:nights][4][:date]).to eq(@night_7_trip_1.date.strftime('%Y-%m-%d'))
         expect(trips[0][:attributes][:courses]).to be_an Array
         expect(trips[0][:attributes][:courses].length).to eq(4)
         expect(trips[0][:attributes][:courses][0]).to be_a Hash
@@ -326,16 +361,16 @@ describe 'golfer trip endpoints' do
         expect(trips[0][:attributes][:meals]).to be_an Array
         expect(trips[0][:attributes][:meals].length).to eq(10)
         expect(trips[0][:attributes][:meals][0]).to be_a Hash
-        expect(trips[0][:attributes][:meals][0][@meal_4_trip_1.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trips[0][:attributes][:meals][1][@meal_5_trip_1.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trips[0][:attributes][:meals][2][@meal_6_trip_1.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trips[0][:attributes][:meals][3][@meal_7_trip_1.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trips[0][:attributes][:meals][4][@meal_8_trip_1.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trips[0][:attributes][:meals][5][@meal_9_trip_1.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trips[0][:attributes][:meals][6][@meal_10_trip_1.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trips[0][:attributes][:meals][7][@meal_11_trip_1.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trips[0][:attributes][:meals][8][@meal_12_trip_1.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trips[0][:attributes][:meals][9][@meal_13_trip_1.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
+        expect(trips[0][:attributes][:meals][0][:date]).to eq(@meal_4_trip_1.date.strftime('%Y-%m-%d'))
+        expect(trips[0][:attributes][:meals][1][:date]).to eq(@meal_5_trip_1.date.strftime('%Y-%m-%d'))
+        expect(trips[0][:attributes][:meals][2][:date]).to eq(@meal_6_trip_1.date.strftime('%Y-%m-%d'))
+        expect(trips[0][:attributes][:meals][3][:date]).to eq(@meal_7_trip_1.date.strftime('%Y-%m-%d'))
+        expect(trips[0][:attributes][:meals][4][:date]).to eq(@meal_8_trip_1.date.strftime('%Y-%m-%d'))
+        expect(trips[0][:attributes][:meals][5][:date]).to eq(@meal_9_trip_1.date.strftime('%Y-%m-%d'))
+        expect(trips[0][:attributes][:meals][6][:date]).to eq(@meal_10_trip_1.date.strftime('%Y-%m-%d'))
+        expect(trips[0][:attributes][:meals][7][:date]).to eq(@meal_11_trip_1.date.strftime('%Y-%m-%d'))
+        expect(trips[0][:attributes][:meals][8][:date]).to eq(@meal_12_trip_1.date.strftime('%Y-%m-%d'))
+        expect(trips[0][:attributes][:meals][9][:date]).to eq(@meal_13_trip_1.date.strftime('%Y-%m-%d'))
 
         expect(trips[1]).to be_a Hash
         expect(trips[1][:id]).to eq(@trip_2.id)
@@ -346,11 +381,11 @@ describe 'golfer trip endpoints' do
         expect(trips[1][:attributes].keys).to eq([:nights, :meals, :courses])
         expect(trips[1][:attributes][:nights]).to be_an Array
         expect(trips[1][:attributes][:nights].length).to eq(4)
-        expect(trips[1][:attributes][:nights][0]).to be_a String
-        expect(trips[1][:attributes][:nights][0]).to eq(@night_4_trip_2.date.strftime('%Y-%m-%d'))
-        expect(trips[1][:attributes][:nights][1]).to eq(@night_5_trip_2.date.strftime('%Y-%m-%d'))
-        expect(trips[1][:attributes][:nights][2]).to eq(@night_6_trip_2.date.strftime('%Y-%m-%d'))
-        expect(trips[1][:attributes][:nights][3]).to eq(@night_7_trip_2.date.strftime('%Y-%m-%d'))
+        expect(trips[1][:attributes][:nights][0]).to be_a Hash
+        expect(trips[1][:attributes][:nights][0][:date]).to eq(@night_4_trip_2.date.strftime('%Y-%m-%d'))
+        expect(trips[1][:attributes][:nights][1][:date]).to eq(@night_5_trip_2.date.strftime('%Y-%m-%d'))
+        expect(trips[1][:attributes][:nights][2][:date]).to eq(@night_6_trip_2.date.strftime('%Y-%m-%d'))
+        expect(trips[1][:attributes][:nights][3][:date]).to eq(@night_7_trip_2.date.strftime('%Y-%m-%d'))
         expect(trips[1][:attributes][:courses]).to be_an Array
         expect(trips[1][:attributes][:courses].length).to eq(3)
         expect(trips[1][:attributes][:courses][0]).to be_a Hash
@@ -360,14 +395,14 @@ describe 'golfer trip endpoints' do
         expect(trips[1][:attributes][:meals]).to be_an Array
         expect(trips[1][:attributes][:meals].length).to eq(8)
         expect(trips[1][:attributes][:meals][0]).to be_a Hash
-        expect(trips[1][:attributes][:meals][0][@meal_6_trip_2.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trips[1][:attributes][:meals][1][@meal_7_trip_2.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trips[1][:attributes][:meals][2][@meal_8_trip_2.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trips[1][:attributes][:meals][3][@meal_9_trip_2.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trips[1][:attributes][:meals][4][@meal_10_trip_2.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trips[1][:attributes][:meals][5][@meal_11_trip_2.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trips[1][:attributes][:meals][6][@meal_12_trip_2.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trips[1][:attributes][:meals][7][@meal_13_trip_2.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
+        expect(trips[1][:attributes][:meals][0][:date]).to eq(@meal_6_trip_2.date.strftime('%Y-%m-%d'))
+        expect(trips[1][:attributes][:meals][1][:date]).to eq(@meal_7_trip_2.date.strftime('%Y-%m-%d'))
+        expect(trips[1][:attributes][:meals][2][:date]).to eq(@meal_8_trip_2.date.strftime('%Y-%m-%d'))
+        expect(trips[1][:attributes][:meals][3][:date]).to eq(@meal_9_trip_2.date.strftime('%Y-%m-%d'))
+        expect(trips[1][:attributes][:meals][4][:date]).to eq(@meal_10_trip_2.date.strftime('%Y-%m-%d'))
+        expect(trips[1][:attributes][:meals][5][:date]).to eq(@meal_11_trip_2.date.strftime('%Y-%m-%d'))
+        expect(trips[1][:attributes][:meals][6][:date]).to eq(@meal_12_trip_2.date.strftime('%Y-%m-%d'))
+        expect(trips[1][:attributes][:meals][7][:date]).to eq(@meal_13_trip_2.date.strftime('%Y-%m-%d'))
 
         expect(trips[2]).to be_a Hash
         expect(trips[2][:id]).to eq(@trip_4.id)
@@ -378,14 +413,7 @@ describe 'golfer trip endpoints' do
         expect(trips[2][:attributes].keys).to eq([:nights, :meals, :courses])
         expect(trips[2][:attributes][:nights]).to be_an Array
         expect(trips[2][:attributes][:nights].length).to eq(7)
-        expect(trips[2][:attributes][:nights][0]).to be_a String
-        expect(trips[2][:attributes][:nights][0]).to eq(@night_1_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trips[2][:attributes][:nights][1]).to eq(@night_2_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trips[2][:attributes][:nights][2]).to eq(@night_3_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trips[2][:attributes][:nights][3]).to eq(@night_4_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trips[2][:attributes][:nights][4]).to eq(@night_5_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trips[2][:attributes][:nights][5]).to eq(@night_6_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trips[2][:attributes][:nights][6]).to eq(@night_7_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trips[2][:attributes][:nights][0]).to be_a Hash
         expect(trips[2][:attributes][:courses]).to be_an Array
         expect(trips[2][:attributes][:courses].length).to eq(6)
         expect(trips[2][:attributes][:courses][0]).to be_a Hash
@@ -398,19 +426,6 @@ describe 'golfer trip endpoints' do
         expect(trips[2][:attributes][:meals]).to be_an Array
         expect(trips[2][:attributes][:meals].length).to eq(13)
         expect(trips[2][:attributes][:meals][0]).to be_a Hash
-        expect(trips[2][:attributes][:meals][0][@meal_1_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trips[2][:attributes][:meals][1][@meal_2_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trips[2][:attributes][:meals][2][@meal_3_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trips[2][:attributes][:meals][3][@meal_4_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trips[2][:attributes][:meals][4][@meal_5_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trips[2][:attributes][:meals][5][@meal_6_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trips[2][:attributes][:meals][6][@meal_7_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trips[2][:attributes][:meals][7][@meal_8_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trips[2][:attributes][:meals][8][@meal_9_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trips[2][:attributes][:meals][9][@meal_10_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trips[2][:attributes][:meals][10][@meal_11_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trips[2][:attributes][:meals][11][@meal_12_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trips[2][:attributes][:meals][12][@meal_13_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
       end
     end
   end
@@ -463,11 +478,11 @@ describe 'golfer trip endpoints' do
         expect(trip[:attributes].keys).to eq([:nights, :meals, :courses])
         expect(trip[:attributes][:nights]).to be_an Array
         expect(trip[:attributes][:nights].length).to eq(4)
-        expect(trip[:attributes][:nights][0]).to be_a String
-        expect(trip[:attributes][:nights][0]).to eq(@night_4_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:nights][1]).to eq(@night_5_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:nights][2]).to eq(@night_6_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:nights][3]).to eq(@night_7_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:nights][0]).to be_a Hash
+        expect(trip[:attributes][:nights][0][:date]).to eq(@night_4_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:nights][1][:date]).to eq(@night_5_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:nights][2][:date]).to eq(@night_6_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:nights][3][:date]).to eq(@night_7_trip_4.date.strftime('%Y-%m-%d'))
         expect(trip[:attributes][:courses]).to be_an Array
         expect(trip[:attributes][:courses].length).to eq(3)
         expect(trip[:attributes][:courses][0]).to be_a Hash
@@ -482,14 +497,14 @@ describe 'golfer trip endpoints' do
         expect(trip[:attributes][:meals]).to be_an Array
         expect(trip[:attributes][:meals].length).to eq(8)
         expect(trip[:attributes][:meals][0]).to be_a Hash
-        expect(trip[:attributes][:meals][0][@meal_6_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trip[:attributes][:meals][1][@meal_7_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trip[:attributes][:meals][2][@meal_8_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trip[:attributes][:meals][3][@meal_9_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trip[:attributes][:meals][4][@meal_10_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trip[:attributes][:meals][5][@meal_11_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
-        expect(trip[:attributes][:meals][6][@meal_12_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('dinner')
-        expect(trip[:attributes][:meals][7][@meal_13_trip_4.date.strftime('%Y-%m-%d').to_sym]).to eq('breakfast')
+        expect(trip[:attributes][:meals][0][:date]).to eq(@meal_6_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][1][:date]).to eq(@meal_7_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][2][:date]).to eq(@meal_8_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][3][:date]).to eq(@meal_9_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][4][:date]).to eq(@meal_10_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][5][:date]).to eq(@meal_11_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][6][:date]).to eq(@meal_12_trip_4.date.strftime('%Y-%m-%d'))
+        expect(trip[:attributes][:meals][7][:date]).to eq(@meal_13_trip_4.date.strftime('%Y-%m-%d'))
       end
     end
   end

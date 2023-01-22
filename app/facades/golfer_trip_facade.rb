@@ -33,11 +33,11 @@ class GolferTripFacade
   end
 
   def self.map_nights(trip_data)
-    trip_data[:nights].map {|night| night.date}
+    trip_data[:nights].map {|night| {id: night.id, date: night.date}}
   end
 
   def self.map_meals(trip_data)
-    trip_data[:meals].map {|meal| {meal.date => meal.time_of_day}}
+    trip_data[:meals].map {|meal| {id: meal.id, date: meal.date, time_of_day: meal.time_of_day}}
   end
 
   def self.map_courses(trip_data)
@@ -45,6 +45,8 @@ class GolferTripFacade
       trip_course = TripCourse.find(gtc.trip_course_id)
       course = trip_course.course
       {
+        course_id: course.id,
+        trip_course_id: trip_course.id,
         date: trip_course.date,
         name: course.name,
         address: course.address,
