@@ -137,15 +137,7 @@ Example response:
 
 ### GET /api/v1/golfers/:golfer_id/golfer_trips <a name="get_golfer_trips"></a>
 
-This endpoint returns data for each trip that a given golfer has attended, including the total cost of the trip to the golfer, all the nights he stayed in the house, all the meals he ate, and all the courses he played. The only parameter that needs to be passed back for this endpoint is the `golfer_id`.
-
-Example request:
-
-```
-{
-    "golfer_id": 1
-}
-```
+This endpoint returns data for each trip that a given golfer has attended, including the total cost of the trip to the golfer, all the nights he stayed in the house, all the meals he ate, and all the courses he played. The only parameter that needs to be passed back for this endpoint is the `golfer_id`, which should be included in the URI.
 
 Example response: 
 
@@ -413,16 +405,7 @@ Example response:
 
 ### GET /api/v1/golfers/:golfer_id/golfer_trips/:trip_id <a name="get_golfer_trip"></a>
 
-This endpoint returns data for a given trip that a given golfer has attended, including the total cost of the trip to the golfer, all the nights he stayed in the house, all the meals he ate, and all the courses he played. The only parameters that need to be passed back for this endpoint are the `golfer_id` and the `trip_id`.
-
-Example request:
-
-```
-{
-    "golfer_id": 1,
-    "trip_id": 4
-}
-```
+This endpoint returns data for a given trip that a given golfer has attended, including the total cost of the trip to the golfer, all the nights he stayed in the house, all the meals he ate, and all the courses he played. The only parameters that need to be passed back for this endpoint are the `golfer_id` and the `trip_id`, which should be included in the URI.
 
 Example response:
 
@@ -1338,7 +1321,7 @@ Example response:
 
 ### GET /api/v1/trips/:id <a name="get_trip"></a>
 
-This endpoint returns data for the requested trip, including its `year`, `number`, and `location` attributes, along with its `nights`, `meals`, `courses`, and `golfers`. It only requires the trip `id` to be passed in as a query param. 
+This endpoint returns data for the requested trip, including its `year`, `number`, and `location` attributes, along with its `nights`, `meals`, `courses`, and `golfers`. The only required parameter is the the trip `id`, which should be included in the URI. 
 
 Example response: 
 
