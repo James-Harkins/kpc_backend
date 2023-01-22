@@ -1,13 +1,15 @@
 class Api::V1::CoursesController < ApplicationController
+  include Authenticatable
+  
   def index
-    if params[:api_key] == ENV["API_KEY"]
+    if authenticated?(params)
       courses = Course.all
       render json: CourseSerializer.new(courses), status: 200
     end
   end
 
   def create
-    if params[:api_key] == ENV["API_KEY"]
+    if authenticated?(params)
       course = Course.create!(course_params)
       render json: CourseSerializer.new(course), status: 201
     end

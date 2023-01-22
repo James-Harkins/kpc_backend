@@ -1,13 +1,15 @@
 class Api::V1::GolfersController < ApplicationController
+  include Authenticatable
+
   def index
-    if params[:api_key] == ENV["API_KEY"]
+    if authenticated?(params)
       golfers = Golfer.all
       render json: GolferSerializer.new(golfers), status: 200
     end
   end
 
   def create
-    if params[:api_key] == ENV["API_KEY"]
+    if authenticated?(params)
       golfer = Golfer.new(golfer_params)
       if golfer.save
         render json: GolferSerializer.new(golfer), status: :created
@@ -18,7 +20,7 @@ class Api::V1::GolfersController < ApplicationController
   end
 
   def destroy
-    if params[:api_key] == ENV["API_KEY"]
+    if authenticated?(params)
       golfer = Golfer.find(params[:id])
       golfer.destroy
       render body: nil, status: :no_content

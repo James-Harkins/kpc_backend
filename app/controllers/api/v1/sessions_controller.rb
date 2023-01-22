@@ -1,6 +1,8 @@
 class Api::V1::SessionsController < ApplicationController
+  include Authenticatable
+  
   def create
-    if params[:api_key] == ENV["API_KEY"]
+    if authenticated?(params)
       golfer = Golfer.find_by(email: session_params[:email])
       if golfer&.authenticate(session_params[:password])
         render json: GolferSerializer.new(golfer)
