@@ -433,7 +433,7 @@ describe 'golfer trip endpoints' do
   describe 'POST /golfers/:id/golfer_trips' do
     describe 'happy path' do
       it 'returns a 201 created response with the new trip data' do
-        golfer_3 = Golfer.create!(first_name: 'Christopher', last_name: 'Moltisante', email: 'chrissie@badabing.com', password: 'test123', password_confirmation: 'test123')
+        golfer_3 = Golfer.create!(first_name: 'Christopher', last_name: 'Moltisanti', email: 'chrissie@badabing.com', password: 'test123', password_confirmation: 'test123')
         json_payload = {
           golfer_id: golfer_3.id,
           trip_id: @trip_4.id,
