@@ -25,7 +25,7 @@ This is the documentation for the Back End app, which is an API written in Ruby 
 11. [GET /api/v1/courses](#get_courses)
 12. [POST /api/v1/courses](#create_course)
 
-## Note: all requests must include an `api_key`, whether as a query param in the URI for `GET` requests or in the JSON payload for any other requests. Authentication is conducted by checking this parameter against the "API_KEY" environment variable, which is hidden from this repository using the `figaro` gem, included in the gemfile.
+### Note: all requests must include an `api_key`, whether as a query param in the URI for `GET` requests or in the JSON payload for any other requests. Authentication is conducted by checking this parameter against the "API_KEY" environment variable, which is hidden from this repository using the `figaro` gem, included in the gemfile.
 
 ### GET /api/v1/golfers <a name="get_golfers"></a>
 
