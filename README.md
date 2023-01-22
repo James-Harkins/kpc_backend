@@ -157,46 +157,83 @@ Example response:
             "total_cost": 660.0,
             "attributes": {
                 "nights": [
-                    "2013-04-23",
-                    "2013-04-24",
-                    "2013-04-25",
-                    "2013-04-26",
-                    "2013-04-27"
+                    {
+                        "id": 3,
+                        "date": "2013-04-23"
+                    },
+                    {
+                        "id": 4,
+                        "date": "2013-04-24"
+                    },
+                    {
+                        "id": 5,
+                        "date": "2013-04-25"
+                    },
+                    {
+                        "id": 6,
+                        "date": "2013-04-26"
+                    },
+                    {
+                        "id": 7,
+                        "date": "2013-04-27"
+                    }
                 ],
                 "meals": [
                     {
-                        "2013-04-23": "dinner"
+                        "id": 4,
+                        "date": "2013-04-23",
+                        "time_of_day": "dinner"
                     },
                     {
-                        "2013-04-24": "breakfast"
+                        "id": 5,
+                        "date": "2013-04-24",
+                        "time_of_day": "breakfast"
                     },
                     {
-                        "2013-04-24": "dinner"
+                        "id": 6,
+                        "date": "2013-04-24",
+                        "time_of_day": "dinner"
                     },
                     {
-                        "2013-04-25": "breakfast"
+                        "id": 7,
+                        "date": "2013-04-25",
+                        "time_of_day": "breakfast"
                     },
                     {
-                        "2013-04-25": "dinner"
+                        "id": 8,
+                        "date": "2013-04-25",
+                        "time_of_day": "dinner"
                     },
                     {
-                        "2013-04-26": "breakfast"
+                        "id": 9,
+                        "date": "2013-04-26",
+                        "time_of_day": "breakfast"
                     },
                     {
-                        "2013-04-26": "dinner"
+                        "id": 10,
+                        "date": "2013-04-26",
+                        "time_of_day": "dinner"
                     },
                     {
-                        "2013-04-27": "breakfast"
+                        "id": 11,
+                        "date": "2013-04-27",
+                        "time_of_day": "breakfast"
                     },
                     {
-                        "2013-04-27": "dinner"
+                        "id": 12,
+                        "date": "2013-04-27",
+                        "time_of_day": "dinner"
                     },
                     {
-                        "2013-04-28": "breakfast"
+                        "id": 13,
+                        "date": "2013-04-28",
+                        "time_of_day": "breakfast"
                     }
                 ],
                 "courses": [
                     {
+                        "course_id": 3,
+                        "trip_course_id": 3,
                         "date": "2013-04-24",
                         "name": "The Salt Pond Golf Club",
                         "address": "402 Bethany Loop",
@@ -205,6 +242,8 @@ Example response:
                         "zip": "19930"
                     },
                     {
+                        "course_id": 4,
+                        "trip_course_id": 4,
                         "date": "2013-04-25",
                         "name": "American Classic Golf Club",
                         "address": "18485 Bethpage Dr",
@@ -213,6 +252,8 @@ Example response:
                         "zip": "19958"
                     },
                     {
+                        "course_id": 1,
+                        "trip_course_id": 5,
                         "date": "2013-04-26",
                         "name": "Kings Creek Country Club",
                         "address": "1 Kings Creek Cir",
@@ -221,6 +262,8 @@ Example response:
                         "zip": "19971"
                     },
                     {
+                        "course_id": 2,
+                        "trip_course_id": 6,
                         "date": "2013-04-27",
                         "name": "Rehoboth Country Club",
                         "address": "221 West Side Dr",
@@ -238,39 +281,69 @@ Example response:
             "total_cost": 570.0,
             "attributes": {
                 "nights": [
-                    "2014-04-23",
-                    "2014-04-24",
-                    "2014-04-25",
-                    "2014-04-26"
+                    {
+                        "id": 11,
+                        "date": "2014-04-23"
+                    },
+                    {
+                        "id": 12,
+                        "date": "2014-04-24"
+                    },
+                    {
+                        "id": 13,
+                        "date": "2014-04-25"
+                    },
+                    {
+                        "id": 14,
+                        "date": "2014-04-26"
+                    }
                 ],
                 "meals": [
                     {
-                        "2014-04-23": "dinner"
+                        "id": 19,
+                        "date": "2014-04-23",
+                        "time_of_day": "dinner"
                     },
                     {
-                        "2014-04-24": "breakfast"
+                        "id": 20,
+                        "date": "2014-04-24",
+                        "time_of_day": "breakfast"
                     },
                     {
-                        "2014-04-24": "dinner"
+                        "id": 21,
+                        "date": "2014-04-24",
+                        "time_of_day": "dinner"
                     },
                     {
-                        "2014-04-25": "breakfast"
+                        "id": 22,
+                        "date": "2014-04-25",
+                        "time_of_day": "breakfast"
                     },
                     {
-                        "2014-04-25": "dinner"
+                        "id": 23,
+                        "date": "2014-04-25",
+                        "time_of_day": "dinner"
                     },
                     {
-                        "2014-04-26": "breakfast"
+                        "id": 24,
+                        "date": "2014-04-26",
+                        "time_of_day": "breakfast"
                     },
                     {
-                        "2014-04-26": "dinner"
+                        "id": 25,
+                        "date": "2014-04-26",
+                        "time_of_day": "dinner"
                     },
                     {
-                        "2014-04-27": "breakfast"
+                        "id": 26,
+                        "date": "2014-04-27",
+                        "time_of_day": "breakfast"
                     }
                 ],
                 "courses": [
                     {
+                        "course_id": 4,
+                        "trip_course_id": 10,
                         "date": "2014-04-24",
                         "name": "American Classic Golf Club",
                         "address": "18485 Bethpage Dr",
@@ -279,6 +352,8 @@ Example response:
                         "zip": "19958"
                     },
                     {
+                        "course_id": 1,
+                        "trip_course_id": 11,
                         "date": "2014-04-25",
                         "name": "Kings Creek Country Club",
                         "address": "1 Kings Creek Cir",
@@ -287,6 +362,8 @@ Example response:
                         "zip": "19971"
                     },
                     {
+                        "course_id": 3,
+                        "trip_course_id": 12,
                         "date": "2014-04-26",
                         "name": "The Salt Pond Golf Club",
                         "address": "402 Bethany Loop",
@@ -304,57 +381,106 @@ Example response:
             "total_cost": 1025.0,
             "attributes": {
                 "nights": [
-                    "2016-04-24",
-                    "2016-04-25",
-                    "2016-04-26",
-                    "2016-04-27",
-                    "2016-04-28",
-                    "2016-04-29",
-                    "2016-04-30"
+                    {
+                        "id": 22,
+                        "date": "2016-04-24"
+                    },
+                    {
+                        "id": 23,
+                        "date": "2016-04-25"
+                    },
+                    {
+                        "id": 24,
+                        "date": "2016-04-26"
+                    },
+                    {
+                        "id": 25,
+                        "date": "2016-04-27"
+                    },
+                    {
+                        "id": 26,
+                        "date": "2016-04-28"
+                    },
+                    {
+                        "id": 27,
+                        "date": "2016-04-29"
+                    },
+                    {
+                        "id": 28,
+                        "date": "2016-04-30"
+                    }
                 ],
                 "meals": [
                     {
-                        "2016-04-25": "breakfast"
+                        "id": 40,
+                        "date": "2016-04-25",
+                        "time_of_day": "breakfast"
                     },
                     {
-                        "2016-04-25": "dinner"
+                        "id": 41,
+                        "date": "2016-04-25",
+                        "time_of_day": "dinner"
                     },
                     {
-                        "2016-04-26": "breakfast"
+                        "id": 42,
+                        "date": "2016-04-26",
+                        "time_of_day": "breakfast"
                     },
                     {
-                        "2016-04-26": "dinner"
+                        "id": 43,
+                        "date": "2016-04-26",
+                        "time_of_day": "dinner"
                     },
                     {
-                        "2016-04-27": "breakfast"
+                        "id": 44,
+                        "date": "2016-04-27",
+                        "time_of_day": "breakfast"
                     },
                     {
-                        "2016-04-27": "dinner"
+                        "id": 45,
+                        "date": "2016-04-27",
+                        "time_of_day": "dinner"
                     },
                     {
-                        "2016-04-28": "breakfast"
+                        "id": 46,
+                        "date": "2016-04-28",
+                        "time_of_day": "breakfast"
                     },
                     {
-                        "2016-04-28": "dinner"
+                        "id": 47,
+                        "date": "2016-04-28",
+                        "time_of_day": "dinner"
                     },
                     {
-                        "2016-04-29": "breakfast"
+                        "id": 48,
+                        "date": "2016-04-29",
+                        "time_of_day": "breakfast"
                     },
                     {
-                        "2016-04-29": "dinner"
+                        "id": 49,
+                        "date": "2016-04-29",
+                        "time_of_day": "dinner"
                     },
                     {
-                        "2016-04-30": "breakfast"
+                        "id": 50,
+                        "date": "2016-04-30",
+                        "time_of_day": "breakfast"
                     },
                     {
-                        "2016-04-30": "dinner"
+                        "id": 51,
+                        "date": "2016-04-30",
+                        "time_of_day": "dinner"
                     },
                     {
-                        "2016-05-01": "breakfast"
+                        "id": 52,
+                        "date": "2016-05-01",
+                        "time_of_day": "breakfast"
                     }
                 ],
                 "courses": [
                     {
+                        "course_id": 5,
+                        "trip_course_id": 19,
                         "date": "2016-04-25",
                         "name": "Red Wing Lake Golf Course",
                         "address": "1144 Prosperity Rd",
@@ -363,6 +489,8 @@ Example response:
                         "zip": "23451"
                     },
                     {
+                        "course_id": 6,
+                        "trip_course_id": 20,
                         "date": "2016-04-26",
                         "name": "Virginia Beach National Golf Club",
                         "address": "2500 Tournament Dr",
@@ -371,6 +499,8 @@ Example response:
                         "zip": "23456"
                     },
                     {
+                        "course_id": 7,
+                        "trip_course_id": 21,
                         "date": "2016-04-27",
                         "name": "Hells Point Golf Club",
                         "address": "2700 Atwoodtown Rd",
@@ -379,6 +509,8 @@ Example response:
                         "zip": "23456"
                     },
                     {
+                        "course_id": 8,
+                        "trip_course_id": 22,
                         "date": "2016-04-28",
                         "name": "Heron Ridge Golf Club",
                         "address": "2973 Heron Ridge Dr",
@@ -387,6 +519,8 @@ Example response:
                         "zip": "23456"
                     },
                     {
+                        "course_id": 9,
+                        "trip_course_id": 23,
                         "date": "2016-04-29",
                         "name": "Stumpy Lake Golf Course",
                         "address": "4797 Indian River Rd",
@@ -395,6 +529,8 @@ Example response:
                         "zip": "23456"
                     },
                     {
+                        "course_id": 5,
+                        "trip_course_id": 24,
                         "date": "2016-04-30",
                         "name": "Red Wing Lake Golf Course",
                         "address": "1144 Prosperity Rd",
@@ -424,57 +560,106 @@ Example response:
         "total_cost": 1025.0,
         "attributes": {
             "nights": [
-                "2016-04-24",
-                "2016-04-25",
-                "2016-04-26",
-                "2016-04-27",
-                "2016-04-28",
-                "2016-04-29",
-                "2016-04-30"
+                {
+                    "id": 22,
+                    "date": "2016-04-24"
+                },
+                {
+                    "id": 23,
+                    "date": "2016-04-25"
+                },
+                {
+                    "id": 24,
+                    "date": "2016-04-26"
+                },
+                {
+                    "id": 25,
+                    "date": "2016-04-27"
+                },
+                {
+                    "id": 26,
+                    "date": "2016-04-28"
+                },
+                {
+                    "id": 27,
+                    "date": "2016-04-29"
+                },
+                {
+                    "id": 28,
+                    "date": "2016-04-30"
+                }
             ],
             "meals": [
                 {
-                    "2016-04-25": "breakfast"
+                    "id": 40,
+                    "date": "2016-04-25",
+                    "time_of_day": "breakfast"
                 },
                 {
-                    "2016-04-25": "dinner"
+                    "id": 41,
+                    "date": "2016-04-25",
+                    "time_of_day": "dinner"
                 },
                 {
-                    "2016-04-26": "breakfast"
+                    "id": 42,
+                    "date": "2016-04-26",
+                    "time_of_day": "breakfast"
                 },
                 {
-                    "2016-04-26": "dinner"
+                    "id": 43,
+                    "date": "2016-04-26",
+                    "time_of_day": "dinner"
                 },
                 {
-                    "2016-04-27": "breakfast"
+                    "id": 44,
+                    "date": "2016-04-27",
+                    "time_of_day": "breakfast"
                 },
                 {
-                    "2016-04-27": "dinner"
+                    "id": 45,
+                    "date": "2016-04-27",
+                    "time_of_day": "dinner"
                 },
                 {
-                    "2016-04-28": "breakfast"
+                    "id": 46,
+                    "date": "2016-04-28",
+                    "time_of_day": "breakfast"
                 },
                 {
-                    "2016-04-28": "dinner"
+                    "id": 47,
+                    "date": "2016-04-28",
+                    "time_of_day": "dinner"
                 },
                 {
-                    "2016-04-29": "breakfast"
+                    "id": 48,
+                    "date": "2016-04-29",
+                    "time_of_day": "breakfast"
                 },
                 {
-                    "2016-04-29": "dinner"
+                    "id": 49,
+                    "date": "2016-04-29",
+                    "time_of_day": "dinner"
                 },
                 {
-                    "2016-04-30": "breakfast"
+                    "id": 50,
+                    "date": "2016-04-30",
+                    "time_of_day": "breakfast"
                 },
                 {
-                    "2016-04-30": "dinner"
+                    "id": 51,
+                    "date": "2016-04-30",
+                    "time_of_day": "dinner"
                 },
                 {
-                    "2016-05-01": "breakfast"
+                    "id": 52,
+                    "date": "2016-05-01",
+                    "time_of_day": "breakfast"
                 }
             ],
             "courses": [
                 {
+                    "course_id": 5,
+                    "trip_course_id": 19,
                     "date": "2016-04-25",
                     "name": "Red Wing Lake Golf Course",
                     "address": "1144 Prosperity Rd",
@@ -483,6 +668,8 @@ Example response:
                     "zip": "23451"
                 },
                 {
+                    "course_id": 6,
+                    "trip_course_id": 20,
                     "date": "2016-04-26",
                     "name": "Virginia Beach National Golf Club",
                     "address": "2500 Tournament Dr",
@@ -491,6 +678,8 @@ Example response:
                     "zip": "23456"
                 },
                 {
+                    "course_id": 7,
+                    "trip_course_id": 21,
                     "date": "2016-04-27",
                     "name": "Hells Point Golf Club",
                     "address": "2700 Atwoodtown Rd",
@@ -499,6 +688,8 @@ Example response:
                     "zip": "23456"
                 },
                 {
+                    "course_id": 8,
+                    "trip_course_id": 22,
                     "date": "2016-04-28",
                     "name": "Heron Ridge Golf Club",
                     "address": "2973 Heron Ridge Dr",
@@ -507,6 +698,8 @@ Example response:
                     "zip": "23456"
                 },
                 {
+                    "course_id": 9,
+                    "trip_course_id": 23,
                     "date": "2016-04-29",
                     "name": "Stumpy Lake Golf Course",
                     "address": "4797 Indian River Rd",
@@ -515,6 +708,8 @@ Example response:
                     "zip": "23456"
                 },
                 {
+                    "course_id": 5,
+                    "trip_course_id": 24,
                     "date": "2016-04-30",
                     "name": "Red Wing Lake Golf Course",
                     "address": "1144 Prosperity Rd",
@@ -555,39 +750,69 @@ Example response:
         "total_cost": 620.0,
         "attributes": {
             "nights": [
-                "2016-04-27",
-                "2016-04-28",
-                "2016-04-29",
-                "2016-04-30"
+                {
+                    "id": 25,
+                    "date": "2016-04-27"
+                },
+                {
+                    "id": 26,
+                    "date": "2016-04-28"
+                },
+                {
+                    "id": 27,
+                    "date": "2016-04-29"
+                },
+                {
+                    "id": 28,
+                    "date": "2016-04-30"
+                }
             ],
             "meals": [
                 {
-                    "2016-04-27": "dinner"
+                    "id": 45,
+                    "date": "2016-04-27",
+                    "time_of_day": "dinner"
                 },
                 {
-                    "2016-04-28": "breakfast"
+                    "id": 46,
+                    "date": "2016-04-28",
+                    "time_of_day": "breakfast"
                 },
                 {
-                    "2016-04-28": "dinner"
+                    "id": 47,
+                    "date": "2016-04-28",
+                    "time_of_day": "dinner"
                 },
                 {
-                    "2016-04-29": "breakfast"
+                    "id": 48,
+                    "date": "2016-04-29",
+                    "time_of_day": "breakfast"
                 },
                 {
-                    "2016-04-29": "dinner"
+                    "id": 49,
+                    "date": "2016-04-29",
+                    "time_of_day": "dinner"
                 },
                 {
-                    "2016-04-30": "breakfast"
+                    "id": 50,
+                    "date": "2016-04-30",
+                    "time_of_day": "breakfast"
                 },
                 {
-                    "2016-04-30": "dinner"
+                    "id": 51,
+                    "date": "2016-04-30",
+                    "time_of_day": "dinner"
                 },
                 {
-                    "2016-05-01": "breakfast"
+                    "id": 52,
+                    "date": "2016-05-01",
+                    "time_of_day": "breakfast"
                 }
             ],
             "courses": [
                 {
+                    "course_id": 8,
+                    "trip_course_id": 22,
                     "date": "2016-04-28",
                     "name": "Heron Ridge Golf Club",
                     "address": "2973 Heron Ridge Dr",
@@ -596,6 +821,8 @@ Example response:
                     "zip": "23456"
                 },
                 {
+                    "course_id": 9,
+                    "trip_course_id": 23,
                     "date": "2016-04-29",
                     "name": "Stumpy Lake Golf Course",
                     "address": "4797 Indian River Rd",
@@ -604,6 +831,8 @@ Example response:
                     "zip": "23456"
                 },
                 {
+                    "course_id": 5,
+                    "trip_course_id": 24,
                     "date": "2016-04-30",
                     "name": "Red Wing Lake Golf Course",
                     "address": "1144 Prosperity Rd",
