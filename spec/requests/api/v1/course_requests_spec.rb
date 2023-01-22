@@ -16,9 +16,7 @@ describe 'course endpoints' do
   describe 'GET /courses' do
     describe 'happy path' do
       it 'returns data for all courses in the database' do
-        headers = {'CONTENT_TYPE' => 'application/json'}
-
-        get "/api/v1/courses", headers: headers
+        get "/api/v1/courses?api_key=#{ENV["API_KEY"]}"
 
         expect(response).to have_http_status(200)
 
@@ -48,7 +46,8 @@ describe 'course endpoints' do
           address: '18 Fairway Dr',
           city: 'Fredericksburg',
           state: 'VA',
-          zipcode: '22406'
+          zipcode: '22406',
+          api_key: ENV["API_KEY"]
         }
 
         headers = {'CONTENT_TYPE' => 'application/json'}

@@ -231,9 +231,7 @@ describe 'golfer endpoints' do
   describe 'GET /trips' do
     describe 'happy path' do
       it 'returns all trips with their years, numbers, and locations' do
-        headers = {'CONTENT_TYPE' => 'application/json'}
-
-        get "/api/v1/trips", headers: headers
+        get "/api/v1/trips?api_key=#{ENV["API_KEY"]}", headers: headers
 
         expect(response).to have_http_status(200)
 
@@ -266,9 +264,7 @@ describe 'golfer endpoints' do
     describe 'happy path' do
       it 'returns a trips year, number, and location, courses, nights, and meals
           along with all the golfers attending and the cost they owe' do
-        headers = {'CONTENT_TYPE' => 'application/json'}
-
-        get "/api/v1/trips/#{@trip_1.id}", headers: headers
+        get "/api/v1/trips/#{@trip_1.id}?api_key=#{ENV["API_KEY"]}", headers: headers
 
         expect(response).to have_http_status(200)
 
@@ -453,8 +449,9 @@ describe 'golfer endpoints' do
               date: Date.parse('2017-04-30'),
               time_of_day: 0,
               cost: 5.0
-            },
-          ]
+            }
+          ],
+          api_key: ENV["API_KEY"]
         }
 
         headers = {'CONTENT_TYPE' => 'application/json'}

@@ -1,12 +1,16 @@
 class Api::V1::CoursesController < ApplicationController
   def index
-    courses = Course.all
-    render json: CourseSerializer.new(courses), status: 200
+    if params[:api_key] == ENV["API_KEY"]
+      courses = Course.all
+      render json: CourseSerializer.new(courses), status: 200
+    end
   end
 
   def create
-    course = Course.create!(course_params)
-    render json: CourseSerializer.new(course), status: 201
+    if params[:api_key] == ENV["API_KEY"]
+      course = Course.create!(course_params)
+      render json: CourseSerializer.new(course), status: 201
+    end
   end
 
   private

@@ -8,9 +8,7 @@ describe 'golfer endpoints' do
         @golfer_2 = Golfer.create!(first_name: 'Paulie', last_name: 'Gaultieri', email: 'walnuts@badabing.com', password: 'test123', password_confirmation: 'test123')
         @golfer_3 = Golfer.create!(first_name: 'Christopher', last_name: 'Moltisante', email: 'chrissie@badabing.com', password: 'test123', password_confirmation: 'test123')
 
-        headers = {'CONTENT_TYPE' => 'application/json'}
-
-        get '/api/v1/golfers', headers: headers
+        get "/api/v1/golfers?api_key=#{ENV["API_KEY"]}"
 
         expect(response).to have_http_status(200)
 
@@ -38,7 +36,8 @@ describe 'golfer endpoints' do
           last_name: 'Soprano',
           email: 't@badabing.com',
           password: 'varsityAthlete',
-          password_confirmation: 'varsityAthlete'
+          password_confirmation: 'varsityAthlete',
+          api_key: ENV["API_KEY"]
         }
 
         headers = {'CONTENT_TYPE' => 'application/json'}
@@ -68,7 +67,8 @@ describe 'golfer endpoints' do
           last_name: 'Soprano',
           email: 't@badabing.com',
           password: 'varsityAthlete',
-          password_confirmation: 'varsityAthlete'
+          password_confirmation: 'varsityAthlete',
+          api_key: ENV["API_KEY"]
         }
 
         headers = {'CONTENT_TYPE' => 'application/json'}
@@ -88,7 +88,8 @@ describe 'golfer endpoints' do
           first_name: 'Tony',
           email: 't@badabing.com',
           password: 'varsityAthlete',
-          password_confirmation: 'varsityAthlete'
+          password_confirmation: 'varsityAthlete',
+          api_key: ENV["API_KEY"]
         }
 
         headers = {'CONTENT_TYPE' => 'application/json'}
@@ -108,7 +109,8 @@ describe 'golfer endpoints' do
           first_name: 'Tony',
           last_name: 'Soprano',
           email: 't@badabing.com',
-          password_confirmation: 'varsityAthlete'
+          password_confirmation: 'varsityAthlete',
+          api_key: ENV["API_KEY"]
         }
 
         headers = {'CONTENT_TYPE' => 'application/json'}
@@ -128,7 +130,8 @@ describe 'golfer endpoints' do
           first_name: 'Tony',
           last_name: 'Soprano',
           email: 't@badabing.com',
-          password: 'varsityAthlete'
+          password: 'varsityAthlete',
+          api_key: ENV["API_KEY"]
         }
 
         headers = {'CONTENT_TYPE' => 'application/json'}
@@ -149,7 +152,8 @@ describe 'golfer endpoints' do
           last_name: 'Soprano',
           email: 't@badabing.com',
           password: 'varsityAthlete',
-          password_confirmation: 'neverVarsityAthlete'
+          password_confirmation: 'neverVarsityAthlete',
+          api_key: ENV["API_KEY"]
         }
 
         headers = {'CONTENT_TYPE' => 'application/json'}
@@ -172,7 +176,8 @@ describe 'golfer endpoints' do
           last_name: 'Soprano',
           email: 't@badabing.com',
           password: 'varsityAthlete',
-          password_confirmation: 'varsityAthlete'
+          password_confirmation: 'varsityAthlete',
+          api_key: ENV["API_KEY"]
         }
 
         headers = {'CONTENT_TYPE' => 'application/json'}
@@ -196,9 +201,13 @@ describe 'golfer endpoints' do
 
         expect(Golfer.find_by(email: 't@badabing.com')).to eq(golfer)
 
+        json_payload = {
+          api_key: ENV["API_KEY"]
+        }
+
         headers = {'CONTENT_TYPE' => 'application/json'}
 
-        delete "/api/v1/golfers/#{golfer.id}"
+        delete "/api/v1/golfers/#{golfer.id}", headers: headers, params: json_payload.to_json
 
         expect(response).to have_http_status(204)
 

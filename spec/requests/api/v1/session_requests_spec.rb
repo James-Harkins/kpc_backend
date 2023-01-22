@@ -9,6 +9,7 @@ describe 'session endpoints' do
         json_payload = {
           email: 't@badabing.com',
           password: 'test123',
+          api_key: ENV["API_KEY"]
         }
 
         headers = {'CONTENT_TYPE' => 'application/json'}
@@ -37,6 +38,7 @@ describe 'session endpoints' do
         json_payload = {
           email: 't@badabing.com',
           password: 'test123',
+          api_key: ENV["API_KEY"]
         }
 
         headers = {'CONTENT_TYPE' => 'application/json'}
@@ -58,6 +60,7 @@ describe 'session endpoints' do
         json_payload = {
           email: 't@badabing.com',
           password: 'varsityAthlete',
+          api_key: ENV["API_KEY"]
         }
 
         headers = {'CONTENT_TYPE' => 'application/json'}
