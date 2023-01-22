@@ -1,12 +1,18 @@
 class Api::V1::CoursesController < ApplicationController
+  include Authenticatable
+  
   def index
-    courses = Course.all
-    render json: CourseSerializer.new(courses), status: 200
+    if authenticated?(params)
+      courses = Course.all
+      render json: CourseSerializer.new(courses), status: 200
+    end
   end
 
   def create
-    course = Course.create!(course_params)
-    render json: CourseSerializer.new(course), status: 201
+    if authenticated?(params)
+      course = Course.create!(course_params)
+      render json: CourseSerializer.new(course), status: 201
+    end
   end
 
   private

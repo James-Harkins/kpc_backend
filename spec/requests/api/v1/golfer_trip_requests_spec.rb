@@ -230,14 +230,7 @@ describe 'golfer trip endpoints' do
   describe 'GET /golfers/:golfer_id/golfer_trips/:trip_id request' do
     describe 'happy path' do
       it 'returns some golfers trip data for a specific trip' do
-        json_payload = {
-          golfer_id: @golfer_1.id,
-          trip_id: @trip_4.id
-        }
-
-        headers = {'CONTENT_TYPE' => 'application/json'}
-
-        get "/api/v1/golfers/#{@golfer_1.id}/golfer_trips/#{@trip_4.id}", headers: headers, params: json_payload.to_json
+        get "/api/v1/golfers/#{@golfer_1.id}/golfer_trips/#{@trip_4.id}?api_key=#{ENV["API_KEY"]}"
 
         expect(response).to have_http_status(200)
 
@@ -299,13 +292,7 @@ describe 'golfer trip endpoints' do
     describe 'happy path' do
       it 'returns all of some golfers trips, along with each trips nights,
           meals, courses, and total cost for each trip' do
-        json_payload = {
-          golfer_id: @golfer_1.id
-        }
-
-        headers = {'CONTENT_TYPE' => 'application/json'}
-
-        get "/api/v1/golfers/#{@golfer_1.id}/golfer_trips", headers: headers, params: json_payload.to_json
+        get "/api/v1/golfers/#{@golfer_1.id}/golfer_trips?api_key=#{ENV["API_KEY"]}"
 
         expect(response).to have_http_status(200)
 
@@ -455,9 +442,10 @@ describe 'golfer trip endpoints' do
             @trip_4_course_4.id,
             @trip_4_course_5.id,
             @trip_4_course_6.id
-          ]
+          ],
+          api_key: ENV["API_KEY"]
         }
-        
+
         headers = {'CONTENT_TYPE' => 'application/json'}
 
         post "/api/v1/golfers/#{golfer_3.id}/golfer_trips", headers: headers, params: json_payload.to_json

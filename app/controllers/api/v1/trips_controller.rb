@@ -1,18 +1,26 @@
 class Api::V1::TripsController < ApplicationController
+  include Authenticatable
+  
   def index
-    trips = Trip.all
-    render json: TripSerializer.new(trips), status: 200
+    if authenticated?(params)
+      trips = Trip.all
+      render json: TripSerializer.new(trips), status: 200
+    end
   end
 
   def show
-    trip = Trip.find(params[:id])
-    render json: TripSerializer.new(trip), status: 200
+    if authenticated?(params)
+      trip = Trip.find(params[:id])
+      render json: TripSerializer.new(trip), status: 200
+    end
   end
 
   def create
-    trip = Trip.create!(trip_params)
-    TripFacade.create_trip_relationships(trip, params)
-    render json: TripSerializer.new(trip), status: 201
+    if authenticated?(params)
+      trip = Trip.create!(trip_params)
+      TripFacade.create_trip_relationships(trip, params)
+      render json: TripSerializer.new(trip), status: 201
+    end
   end
 
   private
