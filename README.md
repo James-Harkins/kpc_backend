@@ -27,7 +27,7 @@ This is the documentation for the Back End app, which is a REST API written in R
 
 ### Note: 
 
-All requests must include an `api_key` parameter, whether as a query param in the URI for `GET` requests or in the JSON payload for any other requests. Requests are authenticated by checking this parameter against the "API_KEY" environment variable, which is hidden from this repository using the `figaro` gem, included in the Gemfile. Documentation for use of this gem can be found [here](https://github.com/laserlemon/figaro).
+All requests must include an `api_key` parameter, whether as a query param in the URI for `GET` requests or in the JSON payload for any other requests. Requests are authenticated by checking this parameter against the `API_KEY` environment variable, which is hidden from this repository using the `figaro` gem, included in the Gemfile. Documentation for use of this gem can be found [here](https://github.com/laserlemon/figaro).
 
 ---
 
