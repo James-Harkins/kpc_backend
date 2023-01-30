@@ -14,7 +14,7 @@ describe 'session endpoints' do
 
         headers = {'CONTENT_TYPE' => 'application/json'}
 
-        post '/api/v1/sessions', headers: headers, params: json_payload.to_json
+        post '/api/v1/login', headers: headers, params: json_payload.to_json
 
         expect(response).to have_http_status(200)
 
@@ -43,7 +43,7 @@ describe 'session endpoints' do
 
         headers = {'CONTENT_TYPE' => 'application/json'}
 
-        post '/api/v1/sessions', headers: headers, params: json_payload.to_json
+        post '/api/v1/login', headers: headers, params: json_payload.to_json
 
         expect(response).to have_http_status(400)
 
@@ -65,7 +65,7 @@ describe 'session endpoints' do
 
         headers = {'CONTENT_TYPE' => 'application/json'}
 
-        post '/api/v1/sessions', headers: headers, params: json_payload.to_json
+        post '/api/v1/login', headers: headers, params: json_payload.to_json
 
         expect(response).to have_http_status(400)
 
