@@ -7,8 +7,10 @@ describe 'session endpoints' do
         golfer = Golfer.create!(first_name: 'Tony', last_name: 'Soprano', email: 't@badabing.com', password: 'test123', password_confirmation: 'test123')
 
         json_payload = {
-          email: 't@badabing.com',
-          password: 'test123',
+          golfer: {
+            email: 't@badabing.com',
+            password: 'test123'
+          },
           api_key: ENV["API_KEY"]
         }
 
@@ -27,7 +29,7 @@ describe 'session endpoints' do
         expect(golfer[:attributes]).to be_a Hash
         expect(golfer[:attributes][:first_name]).to eq('Tony')
         expect(golfer[:attributes][:last_name]).to eq('Soprano')
-        expect(golfer[:attributes][:email]).to eq(json_payload[:email])
+        expect(golfer[:attributes][:email]).to eq(json_payload[:golfer][:email])
         expect(golfer[:attributes][:role]).to eq('default')
       end
     end
@@ -36,8 +38,10 @@ describe 'session endpoints' do
       it 'returns a 400 error showing that no golfer exists with that email if
           there is no golfer with that email address in the database' do
         json_payload = {
-          email: 't@badabing.com',
-          password: 'test123',
+          golfer: {
+            email: 't@badabing.com',
+            password: 'test123'
+          },
           api_key: ENV["API_KEY"]
         }
 
@@ -58,8 +62,10 @@ describe 'session endpoints' do
         golfer = Golfer.create!(first_name: 'Tony', last_name: 'Soprano', email: 't@badabing.com', password: 'test123', password_confirmation: 'test123')
 
         json_payload = {
-          email: 't@badabing.com',
-          password: 'varsityAthlete',
+          golfer: {
+            email: 't@badabing.com',
+            password: 'varsityAthlete'
+          },
           api_key: ENV["API_KEY"]
         }
 

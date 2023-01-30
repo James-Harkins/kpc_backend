@@ -32,11 +32,13 @@ describe 'golfer endpoints' do
     describe 'happy path' do
       it 'returns a 201 response and json for the newly created golfer' do
         json_payload = {
-          first_name: 'Tony',
-          last_name: 'Soprano',
-          email: 't@badabing.com',
-          password: 'varsityAthlete',
-          password_confirmation: 'varsityAthlete',
+          golfer: {
+            first_name: 'Tony',
+            last_name: 'Soprano',
+            email: 't@badabing.com',
+            password: 'varsityAthlete',
+            password_confirmation: 'varsityAthlete',
+          },
           api_key: ENV["API_KEY"]
         }
 
@@ -54,9 +56,9 @@ describe 'golfer endpoints' do
         expect(golfer).to have_key(:attributes)
         expect(golfer[:attributes]).to be_a Hash
         expect(golfer[:attributes].keys).to eq([:first_name, :last_name, :email, :role])
-        expect(golfer[:attributes][:first_name]).to eq(json_payload[:first_name])
-        expect(golfer[:attributes][:last_name]).to eq(json_payload[:last_name])
-        expect(golfer[:attributes][:email]).to eq(json_payload[:email])
+        expect(golfer[:attributes][:first_name]).to eq(json_payload[:golfer][:first_name])
+        expect(golfer[:attributes][:last_name]).to eq(json_payload[:golfer][:last_name])
+        expect(golfer[:attributes][:email]).to eq(json_payload[:golfer][:email])
         expect(golfer[:attributes][:role]).to eq('default')
       end
     end

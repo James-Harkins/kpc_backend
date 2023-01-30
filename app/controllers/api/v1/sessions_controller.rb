@@ -37,6 +37,6 @@ class Api::V1::SessionsController < ApplicationController
   private
 
   def session_params
-    params.permit(:email, :password)
+    params.require(:golfer).permit(:email, :password)
   end
 end

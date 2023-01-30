@@ -30,6 +30,6 @@ class Api::V1::GolfersController < ApplicationController
   private
 
   def golfer_params
-    params.permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:golfer).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 end
