@@ -270,7 +270,7 @@ describe 'golfer endpoints' do
 
         response_body = JSON.parse(response.body, symbolize_names: true)
         trip = response_body[:data]
-
+        
         expect(trip).to be_a Hash
         expect(trip.keys).to eq([:id, :type, :attributes])
         expect(trip[:id]).to eq(@trip_1.id.to_s)
@@ -290,6 +290,75 @@ describe 'golfer endpoints' do
         expect(trip[:attributes][:golfers][0][:name]).to eq("Tony Soprano")
         expect(trip[:attributes][:golfers][0][:email]).to eq(@golfer_1.email)
         expect(trip[:attributes][:golfers][0][:cost]).to eq(660.0)
+      end
+    end
+  end
+
+  describe 'GET /next_trip' do 
+    describe 'happy path' do 
+      it 'returns trip data for the next years trip' do 
+        @trip_4 = Trip.create!(year: 2016, number: 16, location: 'VA Beach', start_date: Date.parse('2024-04-21'))
+        @night_1_trip_4 = @trip_4.nights.create!(date: Date.parse('2024-04-21'), cost: 0.0)
+        @night_2_trip_4 = @trip_4.nights.create!(date: Date.parse('2024-04-22'), cost: 70.0)
+        @night_3_trip_4 = @trip_4.nights.create!(date: Date.parse('2024-04-23'), cost: 70.0)
+        @night_4_trip_4 = @trip_4.nights.create!(date: Date.parse('2024-04-24'), cost: 70.0)
+        @night_5_trip_4 = @trip_4.nights.create!(date: Date.parse('2024-04-25'), cost: 70.0)
+        @night_6_trip_4 = @trip_4.nights.create!(date: Date.parse('2024-04-26'), cost: 70.0)
+        @night_7_trip_4 = @trip_4.nights.create!(date: Date.parse('2024-04-27'), cost: 70.0)
+        @meal_1_trip_4 = @trip_4.meals.create!(date: Date.parse('2024-04-22'), time_of_day: 0, cost: 5.0)
+        @meal_2_trip_4 = @trip_4.meals.create!(date: Date.parse('2024-04-22'), time_of_day: 1, cost: 5.0)
+        @meal_3_trip_4 = @trip_4.meals.create!(date: Date.parse('2024-04-23'), time_of_day: 0, cost: 5.0)
+        @meal_4_trip_4 = @trip_4.meals.create!(date: Date.parse('2024-04-23'), time_of_day: 1, cost: 5.0)
+        @meal_5_trip_4 = @trip_4.meals.create!(date: Date.parse('2024-04-24'), time_of_day: 0, cost: 5.0)
+        @meal_6_trip_4 = @trip_4.meals.create!(date: Date.parse('2024-04-24'), time_of_day: 1, cost: 5.0)
+        @meal_7_trip_4 = @trip_4.meals.create!(date: Date.parse('2024-04-25'), time_of_day: 0, cost: 5.0)
+        @meal_8_trip_4 = @trip_4.meals.create!(date: Date.parse('2024-04-25'), time_of_day: 1, cost: 5.0)
+        @meal_9_trip_4 = @trip_4.meals.create!(date: Date.parse('2024-04-26'), time_of_day: 0, cost: 5.0)
+        @meal_10_trip_4 = @trip_4.meals.create!(date: Date.parse('2024-04-26'), time_of_day: 1, cost: 5.0)
+        @meal_11_trip_4 = @trip_4.meals.create!(date: Date.parse('2024-04-27'), time_of_day: 0, cost: 5.0)
+        @meal_12_trip_4 = @trip_4.meals.create!(date: Date.parse('2024-04-27'), time_of_day: 1, cost: 5.0)
+        @meal_13_trip_4 = @trip_4.meals.create!(date: Date.parse('2024-04-28'), time_of_day: 0, cost: 5.0)
+        @trip_4_course_1 = @trip_4.trip_courses.create!(course: @course_1, date: Date.parse('2024-04-22'), cost: 65)
+        @trip_4_course_2 = @trip_4.trip_courses.create!(course: @course_2, date: Date.parse('2024-04-23'), cost: 65)
+        @trip_4_course_3 = @trip_4.trip_courses.create!(course: @course_3, date: Date.parse('2024-04-24'), cost: 65)
+        @trip_4_course_4 = @trip_4.trip_courses.create!(course: @course_4, date: Date.parse('2024-04-25'), cost: 65)
+        @trip_4_course_5 = @trip_4.trip_courses.create!(course: @course_1, date: Date.parse('2024-04-26'), cost: 65)
+        @trip_4_course_6 = @trip_4.trip_courses.create!(course: @course_2, date: Date.parse('2024-04-27'), cost: 65)
+
+        get "/api/v1/next_trip?api_key=#{ENV["API_KEY"]}", headers: headers
+
+        expect(response).to have_http_status(200)
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+        trip = response_body[:data]
+        
+        expect(trip).to be_a Hash
+        expect(trip.keys).to eq([:id, :type, :attributes])
+        expect(trip[:id]).to eq(@trip_4.id.to_s)
+        expect(trip[:type]).to eq('trip')
+        expect(trip[:attributes]).to be_a Hash
+        expect(trip[:attributes].keys).to eq([:year, :number, :location, :calendar, :golfers])
+        expect(trip[:attributes][:year]).to eq(@trip_4.year)
+        expect(trip[:attributes][:number]).to eq(@trip_4.number)
+        expect(trip[:attributes][:location]).to eq(@trip_4.location)
+        expect(trip[:attributes][:calendar]).to be_an Array
+        expect(trip[:attributes][:calendar].length).to eq(8)
+        expect(trip[:attributes][:golfers]).to be_an Array
+        expect(trip[:attributes][:golfers].length).to eq(0)
+      end
+    end
+
+    describe 'sad path' do 
+      it 'does not return any trip data if there is no upcoming trip yet in the database' do 
+        get "/api/v1/next_trip?api_key=#{ENV["API_KEY"]}", headers: headers
+
+        expect(response).to have_http_status(200)
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+        trip = response_body[:data]
+
+        expect(trip).to be_a Hash 
+        expect(trip.keys).to be_empty
       end
     end
   end
