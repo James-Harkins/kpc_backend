@@ -22,9 +22,10 @@ This is the documentation for the Back End app, which is a REST API written in R
 8. [POST /api/v1/golfers/:golfer_id/golfer_trips](#create_golfer_trip)
 9. [GET /api/v1/trips](#get_trips)
 10. [GET /api/v1/trips/:id](#get_trip)
-11. [POST /api/v1/trips](#create_trip)
-12. [GET /api/v1/courses](#get_courses)
-13. [POST /api/v1/courses](#create_course)
+11. [GET /api/v1/next_trip](#next_trip)
+12. [POST /api/v1/trips](#create_trip)
+13. [GET /api/v1/courses](#get_courses)
+14. [POST /api/v1/courses](#create_course)
 
 ### Note: 
 
@@ -2229,6 +2230,200 @@ Example response:
                     "cost": 365.0
                 }
             ]
+        }
+    }
+}
+```
+
+### GET /api/v1/next_trip <a name="next_trip"></a>
+
+This endpoint finds the next year's trip in the database (if it has been created), and returns the requisite data. If no trip has been created for next year, it returns an empty hash.  No parameters are required. 
+
+Example response: 
+
+```
+{
+    "data": {
+        "id": "5",
+        "type": "trip",
+        "attributes": {
+            "year": 2016,
+            "number": 16,
+            "location": "VA Beach",
+            "calendar": [
+                {
+                    "2024-04-21": {
+                        "night": {
+                            "id": 29,
+                            "cost": 0.0
+                        },
+                        "meals": [],
+                        "course": {}
+                    }
+                },
+                {
+                    "2024-04-22": {
+                        "night": {
+                            "id": 30,
+                            "cost": 70.0
+                        },
+                        "meals": [
+                            {
+                                "id": 53,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 54,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 25,
+                            "name": "Kings Creek Country Club",
+                            "cost": 65.0
+                        }
+                    }
+                },
+                {
+                    "2024-04-23": {
+                        "night": {
+                            "id": 31,
+                            "cost": 70.0
+                        },
+                        "meals": [
+                            {
+                                "id": 55,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 56,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 26,
+                            "name": "Rehoboth Country Club",
+                            "cost": 65.0
+                        }
+                    }
+                },
+                {
+                    "2024-04-24": {
+                        "night": {
+                            "id": 32,
+                            "cost": 70.0
+                        },
+                        "meals": [
+                            {
+                                "id": 57,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 58,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 27,
+                            "name": "The Salt Pond Golf Club",
+                            "cost": 65.0
+                        }
+                    }
+                },
+                {
+                    "2024-04-25": {
+                        "night": {
+                            "id": 33,
+                            "cost": 70.0
+                        },
+                        "meals": [
+                            {
+                                "id": 59,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 60,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 28,
+                            "name": "American Classic Golf Club",
+                            "cost": 65.0
+                        }
+                    }
+                },
+                {
+                    "2024-04-26": {
+                        "night": {
+                            "id": 34,
+                            "cost": 70.0
+                        },
+                        "meals": [
+                            {
+                                "id": 61,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 62,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 29,
+                            "name": "Kings Creek Country Club",
+                            "cost": 65.0
+                        }
+                    }
+                },
+                {
+                    "2024-04-27": {
+                        "night": {
+                            "id": 35,
+                            "cost": 70.0
+                        },
+                        "meals": [
+                            {
+                                "id": 63,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 64,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 30,
+                            "name": "Rehoboth Country Club",
+                            "cost": 65.0
+                        }
+                    }
+                },
+                {
+                    "2024-04-28": {
+                        "meals": [
+                            {
+                                "id": 65,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            }
+                        ]
+                    }
+                }
+            ],
+            "golfers": []
         }
     }
 }
