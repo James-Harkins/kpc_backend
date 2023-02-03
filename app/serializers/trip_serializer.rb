@@ -2,38 +2,36 @@ class TripSerializer
   include JSONAPI::Serializer
   attributes :year, :number, :location
 
-  attributes :nights do |trip|
-    trip.nights.map do |night|
-      {
-        id: night.id,
-        date: night.date,
-        cost: night.cost
-      }
+  attributes :calendar do |trip|
+    calendar = []
+    trip.nights.each do |night|
+      calendar_date = Hash.new
+      calendar_date[night.date] = Hash.new 
+      calendar_date[night.date][:night] = {id: night.id, cost: night.cost}
+      calendar_date[night.date][:meals] = [] 
+      trip.meals.where(date: night.date).each do |meal|
+        meal = {
+          id: meal.id,
+          time_of_day: meal.time_of_day,
+          cost: meal.cost
+        }
+        calendar_date[night.date][:meals] << meal
+      end
+      calendar_date[night.date][:course] = Hash.new 
+      trip.trip_courses.where(date: night.date).each do |tc|
+        calendar_date[night.date][:course][:id] = tc.id
+        calendar_date[night.date][:course][:name] = tc.course.name
+        calendar_date[night.date][:course][:cost] = tc.cost
+      end
+      calendar << calendar_date
     end
+    last_meal = trip.meals.last 
+    calendar_date = Hash.new
+    calendar_date[last_meal.date] = Hash.new
+    calendar_date[last_meal.date][:meals] = [{id: last_meal.id, time_of_day: last_meal.time_of_day, cost: last_meal.cost}]
+    calendar << calendar_date
+    calendar
   end
-
-  attributes :meals do |trip|
-    trip.meals.map do |meal|
-      {
-        id: meal.id,
-        date: meal.date,
-        time_of_day: meal.time_of_day,
-        cost: meal.cost
-      }
-    end
-  end
-
-  attributes :courses do |trip|
-    trip.trip_courses.map do |tc|
-      {
-        id: tc.id,
-        name: tc.course.name,
-        date: tc.date,
-        cost: tc.cost
-      }
-    end
-  end
-
 
   attributes :golfers do |trip|
     trip.golfers.map do |golfer|

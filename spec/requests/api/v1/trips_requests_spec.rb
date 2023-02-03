@@ -243,7 +243,7 @@ describe 'golfer endpoints' do
         expect(trips[0]).to be_a Hash
         expect(trips[0].keys).to eq([:id, :type, :attributes])
         expect(trips[0][:type]).to eq('trip')
-        expect(trips[0][:attributes].keys).to eq([:year, :number, :location, :nights, :meals, :courses, :golfers])
+        expect(trips[0][:attributes].keys).to eq([:year, :number, :location, :calendar, :golfers])
         expect(trips[0][:attributes][:year]).to eq(2013)
         expect(trips[0][:attributes][:number]).to eq(13)
         expect(trips[0][:attributes][:location]).to eq('Dewey Beach')
@@ -276,33 +276,12 @@ describe 'golfer endpoints' do
         expect(trip[:id]).to eq(@trip_1.id.to_s)
         expect(trip[:type]).to eq('trip')
         expect(trip[:attributes]).to be_a Hash
-        expect(trip[:attributes].keys).to eq([:year, :number, :location, :nights, :meals, :courses, :golfers])
+        expect(trip[:attributes].keys).to eq([:year, :number, :location, :calendar, :golfers])
         expect(trip[:attributes][:year]).to eq(@trip_1.year)
         expect(trip[:attributes][:number]).to eq(@trip_1.number)
         expect(trip[:attributes][:location]).to eq(@trip_1.location)
-        expect(trip[:attributes][:courses]).to be_an Array
-        expect(trip[:attributes][:courses].length).to eq(6)
-        expect(trip[:attributes][:courses][0]).to be_a Hash
-        expect(trip[:attributes][:courses][0].keys).to eq([:id, :name, :date, :cost])
-        expect(trip[:attributes][:courses][0][:id]).to eq(@trip_1_course_1.id)
-        expect(trip[:attributes][:courses][0][:name]).to eq(@course_1.name)
-        expect(trip[:attributes][:courses][0][:date]).to eq(@trip_1_course_1.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:courses][0][:cost]).to eq(@trip_1_course_1.cost)
-        expect(trip[:attributes][:nights]).to be_an Array
-        expect(trip[:attributes][:nights].length).to eq(7)
-        expect(trip[:attributes][:nights][0]).to be_a Hash
-        expect(trip[:attributes][:nights][0].keys).to eq([:id, :date, :cost])
-        expect(trip[:attributes][:nights][0][:id]).to eq(@night_1_trip_1.id)
-        expect(trip[:attributes][:nights][0][:date]).to eq(@night_1_trip_1.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:nights][0][:cost]).to eq(@night_1_trip_1.cost)
-        expect(trip[:attributes][:meals]).to be_an Array
-        expect(trip[:attributes][:meals].length).to eq(13)
-        expect(trip[:attributes][:meals][0]).to be_a Hash
-        expect(trip[:attributes][:meals][0].keys).to eq([:id, :date, :time_of_day, :cost])
-        expect(trip[:attributes][:meals][0][:id]).to eq(@meal_1_trip_1.id)
-        expect(trip[:attributes][:meals][0][:date]).to eq(@meal_1_trip_1.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:meals][0][:time_of_day]).to eq(@meal_1_trip_1.time_of_day)
-        expect(trip[:attributes][:meals][0][:cost]).to eq(@meal_1_trip_1.cost)
+        expect(trip[:attributes][:calendar]).to be_an Array
+        expect(trip[:attributes][:calendar].length).to eq(8)
         expect(trip[:attributes][:golfers]).to be_an Array
         expect(trip[:attributes][:golfers].length).to eq(2)
         expect(trip[:attributes][:golfers][0]).to be_a Hash
@@ -468,40 +447,10 @@ describe 'golfer endpoints' do
         expect(trip[:id]).to be_an String
         expect(trip[:type]).to eq('trip')
         expect(trip[:attributes]).to be_a Hash
-        expect(trip[:attributes].keys).to eq([:year, :number, :location, :nights, :meals, :courses, :golfers])
+        expect(trip[:attributes].keys).to eq([:year, :number, :location, :calendar, :golfers])
         expect(trip[:attributes][:year]).to eq(2017)
         expect(trip[:attributes][:number]).to eq(17)
         expect(trip[:attributes][:location]).to eq('VA Beach')
-        expect(trip[:attributes][:courses]).to be_an Array
-        expect(trip[:attributes][:courses].length).to eq(6)
-        expect(trip[:attributes][:courses][0]).to be_a Hash
-        expect(trip[:attributes][:courses][0].keys).to eq([:id, :name, :date, :cost])
-        expect(trip[:attributes][:courses][0][:id]).to be_an Integer
-        expect(trip[:attributes][:courses][0][:name]).to eq(@course_5.name)
-        expect(trip[:attributes][:courses][0][:date]).to eq('2017-04-24')
-        expect(trip[:attributes][:courses][0][:cost]).to eq(65.0)
-        expect(trip[:attributes][:nights]).to be_an Array
-        expect(trip[:attributes][:nights].length).to eq(7)
-        expect(trip[:attributes][:nights][0]).to be_a Hash
-        expect(trip[:attributes][:nights][0].keys).to eq([:id, :date, :cost])
-        expect(trip[:attributes][:nights][0][:id]).to be_an Integer
-        expect(trip[:attributes][:nights][0][:date]).to eq('2017-04-23')
-        expect(trip[:attributes][:nights][0][:cost]).to eq(0.0)
-        expect(trip[:attributes][:nights][1]).to be_a Hash
-        expect(trip[:attributes][:nights][1].keys).to eq([:id, :date, :cost])
-        expect(trip[:attributes][:nights][1][:id]).to be_an Integer
-        expect(trip[:attributes][:nights][1][:date]).to eq('2017-04-24')
-        expect(trip[:attributes][:nights][1][:cost]).to eq(90.0)
-        expect(trip[:attributes][:meals]).to be_an Array
-        expect(trip[:attributes][:meals].length).to eq(13)
-        expect(trip[:attributes][:meals][0]).to be_a Hash
-        expect(trip[:attributes][:meals][0].keys).to eq([:id, :date, :time_of_day, :cost])
-        expect(trip[:attributes][:meals][0][:id]).to be_an Integer
-        expect(trip[:attributes][:meals][0][:date]).to eq('2017-04-24')
-        expect(trip[:attributes][:meals][0][:time_of_day]).to eq('breakfast')
-        expect(trip[:attributes][:meals][0][:cost]).to eq(5.0)
-        expect(trip[:attributes][:golfers]).to be_an Array
-        expect(trip[:attributes][:golfers].length).to eq(0)
       end
     end
   end
