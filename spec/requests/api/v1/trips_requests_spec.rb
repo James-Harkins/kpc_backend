@@ -270,7 +270,7 @@ describe 'golfer endpoints' do
 
         response_body = JSON.parse(response.body, symbolize_names: true)
         trip = response_body[:data]
-
+        
         expect(trip).to be_a Hash
         expect(trip.keys).to eq([:id, :type, :attributes])
         expect(trip[:id]).to eq(@trip_1.id.to_s)
@@ -297,7 +297,7 @@ describe 'golfer endpoints' do
   describe 'GET /next_trip' do 
     describe 'happy path' do 
       it 'returns trip data for the next years trip' do 
-        @trip_4 = Trip.create!(year: 2016, number: 16, location: 'VA Beach', start_date: date: Date.parse('2024-04-21'))
+        @trip_4 = Trip.create!(year: 2016, number: 16, location: 'VA Beach', start_date: Date.parse('2024-04-21'))
         @night_1_trip_4 = @trip_4.nights.create!(date: Date.parse('2024-04-21'), cost: 0.0)
         @night_2_trip_4 = @trip_4.nights.create!(date: Date.parse('2024-04-22'), cost: 70.0)
         @night_3_trip_4 = @trip_4.nights.create!(date: Date.parse('2024-04-23'), cost: 70.0)
@@ -331,7 +331,7 @@ describe 'golfer endpoints' do
 
         response_body = JSON.parse(response.body, symbolize_names: true)
         trip = response_body[:data]
-
+        
         expect(trip).to be_a Hash
         expect(trip.keys).to eq([:id, :type, :attributes])
         expect(trip[:id]).to eq(@trip_4.id.to_s)
@@ -345,12 +345,6 @@ describe 'golfer endpoints' do
         expect(trip[:attributes][:calendar].length).to eq(8)
         expect(trip[:attributes][:golfers]).to be_an Array
         expect(trip[:attributes][:golfers].length).to eq(0)
-        expect(trip[:attributes][:golfers][0]).to be_a Hash
-        expect(trip[:attributes][:golfers][0].keys).to eq([:id, :name, :email, :cost])
-        expect(trip[:attributes][:golfers][0][:id]).to eq(@golfer_1.id)
-        expect(trip[:attributes][:golfers][0][:name]).to eq("Tony Soprano")
-        expect(trip[:attributes][:golfers][0][:email]).to eq(@golfer_1.email)
-        expect(trip[:attributes][:golfers][0][:cost]).to eq(660.0)
       end
     end
 
@@ -364,7 +358,7 @@ describe 'golfer endpoints' do
         trip = response_body[:data]
 
         expect(trip).to be_a Hash 
-        expect(trip.keys).to eq(nil)
+        expect(trip.keys).to be_empty
       end
     end
   end

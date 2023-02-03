@@ -15,6 +15,17 @@ class Api::V1::TripsController < ApplicationController
     end
   end
 
+  def next_trip
+    if authenticated?(params)
+      trip = Trip.where('start_date > ?', Date.today).first
+      if trip 
+        render json: TripSerializer.new(trip), status: 200
+      else
+        render json: {data: {}}
+      end
+    end
+  end
+
   def create
     if authenticated?(params)
       trip = Trip.create!(trip_params)

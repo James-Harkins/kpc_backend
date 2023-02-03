@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post '/login',    to: 'sessions#create'
       post '/logout',   to: 'sessions#destroy'
       resources :trips, only: [:index, :show, :create]
+      get '/next_trip', to: 'trips#next_trip'
       resources :courses, only: [:index, :create]
     end
   end
