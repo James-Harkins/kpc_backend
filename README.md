@@ -15,15 +15,16 @@ This is the documentation for the Back End app, which is a REST API written in R
 1. [GET /api/v1/golfers](#get_golfers)
 2. [POST /api/v1/golfers](#create_golfer)
 3. [DELETE /api/v1/golfers/:id](#delete_golfer)
-4. [POST /api/v1/sessions](#create_session)
-5. [GET /api/v1/golfers/:golfer_id/golfer_trips](#get_golfer_trips)
-6. [GET /api/v1/golfers/:golfer_id/golfer_trips/:trip_id](#get_golfer_trip)
-7. [POST /api/v1/golfers/:golfer_id/golfer_trips](#create_golfer_trip)
-8. [GET /api/v1/trips](#get_trips)
-9. [GET /api/v1/trips/:id](#get_trip)
-10. [POST /api/v1/trips](#create_trip)
-11. [GET /api/v1/courses](#get_courses)
-12. [POST /api/v1/courses](#create_course)
+4. [POST /api/v1/login](#create_session)
+5. [POST /api/v1/logout](#delete_session)
+6. [GET /api/v1/golfers/:golfer_id/golfer_trips](#get_golfer_trips)
+7. [GET /api/v1/golfers/:golfer_id/golfer_trips/:trip_id](#get_golfer_trip)
+8. [POST /api/v1/golfers/:golfer_id/golfer_trips](#create_golfer_trip)
+9. [GET /api/v1/trips](#get_trips)
+10. [GET /api/v1/trips/:id](#get_trip)
+11. [POST /api/v1/trips](#create_trip)
+12. [GET /api/v1/courses](#get_courses)
+13. [POST /api/v1/courses](#create_course)
 
 ### Note: 
 
@@ -111,16 +112,18 @@ Example response:
 
 This endpoint destroys the golfer in the database with the `id` passed in as a query parameter. This is the only parameter required. It produces a response of "no content."
 
-### POST /api/v1/sessions <a name="create_session"></a>
+### POST /api/v1/login <a name="create_session"></a>
 
-This endpoint returns relevant golfer data after authentication. The required parameters are `email` and `password`. If a golfer is found in the database with that email address and authenticated with the password, then the user is returned.
+This endpoint returns relevant golfer data after authentication. The required parameters are `email` and `password`. If a golfer is found in the database with that email address and authenticated with the password, then the user is returned, along with his `id`, and attributes, `first_name`, `last_name`, `email`, `role`, and `golfer_trips`, which is a serialization of all of the trips he has attended, including their `id`, `trip_number`, `total_cost`, and attributes of `nights`, `meals`, and `courses`.
 
 Example request:
 
 ```
 {
-    "email": "t@badabing.com",
-    "password": "varsityAthlete"
+    "golfer": {
+        "email":"t@badabing.com",
+        "password":"test123"
+    }
 }
 ```
 
@@ -135,11 +138,410 @@ Example response:
             "first_name": "Tony",
             "last_name": "Soprano",
             "email": "t@badabing.com",
-            "role": "default"
+            "role": "default",
+            "golfer_trips": {
+                "data": [
+                    {
+                        "id": 1,
+                        "type": "golfer_trip",
+                        "trip_number": 13,
+                        "total_cost": 660.0,
+                        "attributes": {
+                            "nights": [
+                                {
+                                    "id": 3,
+                                    "date": "2013-04-23"
+                                },
+                                {
+                                    "id": 4,
+                                    "date": "2013-04-24"
+                                },
+                                {
+                                    "id": 5,
+                                    "date": "2013-04-25"
+                                },
+                                {
+                                    "id": 6,
+                                    "date": "2013-04-26"
+                                },
+                                {
+                                    "id": 7,
+                                    "date": "2013-04-27"
+                                }
+                            ],
+                            "meals": [
+                                {
+                                    "id": 4,
+                                    "date": "2013-04-23",
+                                    "time_of_day": "dinner"
+                                },
+                                {
+                                    "id": 5,
+                                    "date": "2013-04-24",
+                                    "time_of_day": "breakfast"
+                                },
+                                {
+                                    "id": 6,
+                                    "date": "2013-04-24",
+                                    "time_of_day": "dinner"
+                                },
+                                {
+                                    "id": 7,
+                                    "date": "2013-04-25",
+                                    "time_of_day": "breakfast"
+                                },
+                                {
+                                    "id": 8,
+                                    "date": "2013-04-25",
+                                    "time_of_day": "dinner"
+                                },
+                                {
+                                    "id": 9,
+                                    "date": "2013-04-26",
+                                    "time_of_day": "breakfast"
+                                },
+                                {
+                                    "id": 10,
+                                    "date": "2013-04-26",
+                                    "time_of_day": "dinner"
+                                },
+                                {
+                                    "id": 11,
+                                    "date": "2013-04-27",
+                                    "time_of_day": "breakfast"
+                                },
+                                {
+                                    "id": 12,
+                                    "date": "2013-04-27",
+                                    "time_of_day": "dinner"
+                                },
+                                {
+                                    "id": 13,
+                                    "date": "2013-04-28",
+                                    "time_of_day": "breakfast"
+                                }
+                            ],
+                            "courses": [
+                                {
+                                    "course_id": 3,
+                                    "trip_course_id": 3,
+                                    "date": "2013-04-24",
+                                    "name": "The Salt Pond Golf Club",
+                                    "address": "402 Bethany Loop",
+                                    "city": "Bethany Beach",
+                                    "state": "DE",
+                                    "zip": "19930"
+                                },
+                                {
+                                    "course_id": 4,
+                                    "trip_course_id": 4,
+                                    "date": "2013-04-25",
+                                    "name": "American Classic Golf Club",
+                                    "address": "18485 Bethpage Dr",
+                                    "city": "Lewes",
+                                    "state": "DE",
+                                    "zip": "19958"
+                                },
+                                {
+                                    "course_id": 1,
+                                    "trip_course_id": 5,
+                                    "date": "2013-04-26",
+                                    "name": "Kings Creek Country Club",
+                                    "address": "1 Kings Creek Cir",
+                                    "city": "Rehoboth Beach",
+                                    "state": "DE",
+                                    "zip": "19971"
+                                },
+                                {
+                                    "course_id": 2,
+                                    "trip_course_id": 6,
+                                    "date": "2013-04-27",
+                                    "name": "Rehoboth Country Club",
+                                    "address": "221 West Side Dr",
+                                    "city": "Rehoboth Beach",
+                                    "state": "DE",
+                                    "zip": "19971"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "type": "golfer_trip",
+                        "trip_number": 14,
+                        "total_cost": 570.0,
+                        "attributes": {
+                            "nights": [
+                                {
+                                    "id": 11,
+                                    "date": "2014-04-23"
+                                },
+                                {
+                                    "id": 12,
+                                    "date": "2014-04-24"
+                                },
+                                {
+                                    "id": 13,
+                                    "date": "2014-04-25"
+                                },
+                                {
+                                    "id": 14,
+                                    "date": "2014-04-26"
+                                }
+                            ],
+                            "meals": [
+                                {
+                                    "id": 19,
+                                    "date": "2014-04-23",
+                                    "time_of_day": "dinner"
+                                },
+                                {
+                                    "id": 20,
+                                    "date": "2014-04-24",
+                                    "time_of_day": "breakfast"
+                                },
+                                {
+                                    "id": 21,
+                                    "date": "2014-04-24",
+                                    "time_of_day": "dinner"
+                                },
+                                {
+                                    "id": 22,
+                                    "date": "2014-04-25",
+                                    "time_of_day": "breakfast"
+                                },
+                                {
+                                    "id": 23,
+                                    "date": "2014-04-25",
+                                    "time_of_day": "dinner"
+                                },
+                                {
+                                    "id": 24,
+                                    "date": "2014-04-26",
+                                    "time_of_day": "breakfast"
+                                },
+                                {
+                                    "id": 25,
+                                    "date": "2014-04-26",
+                                    "time_of_day": "dinner"
+                                },
+                                {
+                                    "id": 26,
+                                    "date": "2014-04-27",
+                                    "time_of_day": "breakfast"
+                                }
+                            ],
+                            "courses": [
+                                {
+                                    "course_id": 4,
+                                    "trip_course_id": 10,
+                                    "date": "2014-04-24",
+                                    "name": "American Classic Golf Club",
+                                    "address": "18485 Bethpage Dr",
+                                    "city": "Lewes",
+                                    "state": "DE",
+                                    "zip": "19958"
+                                },
+                                {
+                                    "course_id": 1,
+                                    "trip_course_id": 11,
+                                    "date": "2014-04-25",
+                                    "name": "Kings Creek Country Club",
+                                    "address": "1 Kings Creek Cir",
+                                    "city": "Rehoboth Beach",
+                                    "state": "DE",
+                                    "zip": "19971"
+                                },
+                                {
+                                    "course_id": 3,
+                                    "trip_course_id": 12,
+                                    "date": "2014-04-26",
+                                    "name": "The Salt Pond Golf Club",
+                                    "address": "402 Bethany Loop",
+                                    "city": "Bethany Beach",
+                                    "state": "DE",
+                                    "zip": "19930"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": 4,
+                        "type": "golfer_trip",
+                        "trip_number": 16,
+                        "total_cost": 1025.0,
+                        "attributes": {
+                            "nights": [
+                                {
+                                    "id": 22,
+                                    "date": "2016-04-24"
+                                },
+                                {
+                                    "id": 23,
+                                    "date": "2016-04-25"
+                                },
+                                {
+                                    "id": 24,
+                                    "date": "2016-04-26"
+                                },
+                                {
+                                    "id": 25,
+                                    "date": "2016-04-27"
+                                },
+                                {
+                                    "id": 26,
+                                    "date": "2016-04-28"
+                                },
+                                {
+                                    "id": 27,
+                                    "date": "2016-04-29"
+                                },
+                                {
+                                    "id": 28,
+                                    "date": "2016-04-30"
+                                }
+                            ],
+                            "meals": [
+                                {
+                                    "id": 40,
+                                    "date": "2016-04-25",
+                                    "time_of_day": "breakfast"
+                                },
+                                {
+                                    "id": 41,
+                                    "date": "2016-04-25",
+                                    "time_of_day": "dinner"
+                                },
+                                {
+                                    "id": 42,
+                                    "date": "2016-04-26",
+                                    "time_of_day": "breakfast"
+                                },
+                                {
+                                    "id": 43,
+                                    "date": "2016-04-26",
+                                    "time_of_day": "dinner"
+                                },
+                                {
+                                    "id": 44,
+                                    "date": "2016-04-27",
+                                    "time_of_day": "breakfast"
+                                },
+                                {
+                                    "id": 45,
+                                    "date": "2016-04-27",
+                                    "time_of_day": "dinner"
+                                },
+                                {
+                                    "id": 46,
+                                    "date": "2016-04-28",
+                                    "time_of_day": "breakfast"
+                                },
+                                {
+                                    "id": 47,
+                                    "date": "2016-04-28",
+                                    "time_of_day": "dinner"
+                                },
+                                {
+                                    "id": 48,
+                                    "date": "2016-04-29",
+                                    "time_of_day": "breakfast"
+                                },
+                                {
+                                    "id": 49,
+                                    "date": "2016-04-29",
+                                    "time_of_day": "dinner"
+                                },
+                                {
+                                    "id": 50,
+                                    "date": "2016-04-30",
+                                    "time_of_day": "breakfast"
+                                },
+                                {
+                                    "id": 51,
+                                    "date": "2016-04-30",
+                                    "time_of_day": "dinner"
+                                },
+                                {
+                                    "id": 52,
+                                    "date": "2016-05-01",
+                                    "time_of_day": "breakfast"
+                                }
+                            ],
+                            "courses": [
+                                {
+                                    "course_id": 5,
+                                    "trip_course_id": 19,
+                                    "date": "2016-04-25",
+                                    "name": "Red Wing Lake Golf Course",
+                                    "address": "1144 Prosperity Rd",
+                                    "city": "Virginia Beach",
+                                    "state": "VA",
+                                    "zip": "23451"
+                                },
+                                {
+                                    "course_id": 6,
+                                    "trip_course_id": 20,
+                                    "date": "2016-04-26",
+                                    "name": "Virginia Beach National Golf Club",
+                                    "address": "2500 Tournament Dr",
+                                    "city": "Virginia Beach",
+                                    "state": "VA",
+                                    "zip": "23456"
+                                },
+                                {
+                                    "course_id": 7,
+                                    "trip_course_id": 21,
+                                    "date": "2016-04-27",
+                                    "name": "Hells Point Golf Club",
+                                    "address": "2700 Atwoodtown Rd",
+                                    "city": "Virginia Beach",
+                                    "state": "VA",
+                                    "zip": "23456"
+                                },
+                                {
+                                    "course_id": 8,
+                                    "trip_course_id": 22,
+                                    "date": "2016-04-28",
+                                    "name": "Heron Ridge Golf Club",
+                                    "address": "2973 Heron Ridge Dr",
+                                    "city": "Virginia Beach",
+                                    "state": "VA",
+                                    "zip": "23456"
+                                },
+                                {
+                                    "course_id": 9,
+                                    "trip_course_id": 23,
+                                    "date": "2016-04-29",
+                                    "name": "Stumpy Lake Golf Course",
+                                    "address": "4797 Indian River Rd",
+                                    "city": "Virginia Beach",
+                                    "state": "VA",
+                                    "zip": "23456"
+                                },
+                                {
+                                    "course_id": 5,
+                                    "trip_course_id": 24,
+                                    "date": "2016-04-30",
+                                    "name": "Red Wing Lake Golf Course",
+                                    "address": "1144 Prosperity Rd",
+                                    "city": "Virginia Beach",
+                                    "state": "VA",
+                                    "zip": "23451"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
         }
     }
 }
 ```
+
+### POST /api/v1/logout <a name="delete_session"></a>
+
+This endpoint destroys the current session and returns a 200 response.
 
 ### GET /api/v1/golfers/:golfer_id/golfer_trips <a name="get_golfer_trips"></a>
 
