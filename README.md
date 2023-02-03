@@ -1251,12 +1251,11 @@ Example response:
 
 ### GET /api/v1/trips <a name="get_trips"></a>
 
-This endpoint returns all trips in the database, including their `year`, `number`, and `location` attributes, along with its `nights`, `meals`, `courses`, and `golfers`. It does not require any parameters. 
+This endpoint returns all trips in the database, including their `year`, `number`, and `location` attributes, along with a `calendar` attribute, which is an array of hashes, each with a key of the date, and values of that date's `night`, `meals`, and `course`, where applicable. It also returns the trip's `golfers`. It does not require any parameters. 
 
 Example response: 
 
-```
-{
+```{
     "data": [
         {
             "id": "1",
@@ -1265,159 +1264,177 @@ Example response:
                 "year": 2013,
                 "number": 13,
                 "location": "Dewey Beach",
-                "nights": [
+                "calendar": [
                     {
-                        "id": 1,
-                        "date": "2013-04-21",
-                        "cost": 0.0
+                        "2013-04-21": {
+                            "night": {
+                                "id": 1,
+                                "cost": 0.0
+                            },
+                            "meals": [],
+                            "course": {}
+                        }
                     },
                     {
-                        "id": 2,
-                        "date": "2013-04-22",
-                        "cost": 70.0
+                        "2013-04-22": {
+                            "night": {
+                                "id": 2,
+                                "cost": 70.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 1,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 2,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 1,
+                                "name": "Kings Creek Country Club",
+                                "cost": 65.0
+                            }
+                        }
                     },
                     {
-                        "id": 3,
-                        "date": "2013-04-23",
-                        "cost": 70.0
+                        "2013-04-23": {
+                            "night": {
+                                "id": 3,
+                                "cost": 70.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 3,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 4,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 2,
+                                "name": "Rehoboth Country Club",
+                                "cost": 65.0
+                            }
+                        }
                     },
                     {
-                        "id": 4,
-                        "date": "2013-04-24",
-                        "cost": 70.0
+                        "2013-04-24": {
+                            "night": {
+                                "id": 4,
+                                "cost": 70.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 5,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 6,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 3,
+                                "name": "The Salt Pond Golf Club",
+                                "cost": 65.0
+                            }
+                        }
                     },
                     {
-                        "id": 5,
-                        "date": "2013-04-25",
-                        "cost": 70.0
+                        "2013-04-25": {
+                            "night": {
+                                "id": 5,
+                                "cost": 70.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 7,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 8,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 4,
+                                "name": "American Classic Golf Club",
+                                "cost": 65.0
+                            }
+                        }
                     },
                     {
-                        "id": 6,
-                        "date": "2013-04-26",
-                        "cost": 70.0
+                        "2013-04-26": {
+                            "night": {
+                                "id": 6,
+                                "cost": 70.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 9,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 10,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 5,
+                                "name": "Kings Creek Country Club",
+                                "cost": 65.0
+                            }
+                        }
                     },
                     {
-                        "id": 7,
-                        "date": "2013-04-27",
-                        "cost": 70.0
-                    }
-                ],
-                "meals": [
-                    {
-                        "id": 1,
-                        "date": "2013-04-22",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
+                        "2013-04-27": {
+                            "night": {
+                                "id": 7,
+                                "cost": 70.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 11,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 12,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 6,
+                                "name": "Rehoboth Country Club",
+                                "cost": 65.0
+                            }
+                        }
                     },
                     {
-                        "id": 2,
-                        "date": "2013-04-22",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 3,
-                        "date": "2013-04-23",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 4,
-                        "date": "2013-04-23",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 5,
-                        "date": "2013-04-24",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 6,
-                        "date": "2013-04-24",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 7,
-                        "date": "2013-04-25",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 8,
-                        "date": "2013-04-25",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 9,
-                        "date": "2013-04-26",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 10,
-                        "date": "2013-04-26",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 11,
-                        "date": "2013-04-27",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 12,
-                        "date": "2013-04-27",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 13,
-                        "date": "2013-04-28",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    }
-                ],
-                "courses": [
-                    {
-                        "id": 1,
-                        "name": "Kings Creek Country Club",
-                        "date": "2013-04-22",
-                        "cost": 65.0
-                    },
-                    {
-                        "id": 2,
-                        "name": "Rehoboth Country Club",
-                        "date": "2013-04-23",
-                        "cost": 65.0
-                    },
-                    {
-                        "id": 3,
-                        "name": "The Salt Pond Golf Club",
-                        "date": "2013-04-24",
-                        "cost": 65.0
-                    },
-                    {
-                        "id": 4,
-                        "name": "American Classic Golf Club",
-                        "date": "2013-04-25",
-                        "cost": 65.0
-                    },
-                    {
-                        "id": 5,
-                        "name": "Kings Creek Country Club",
-                        "date": "2013-04-26",
-                        "cost": 65.0
-                    },
-                    {
-                        "id": 6,
-                        "name": "Rehoboth Country Club",
-                        "date": "2013-04-27",
-                        "cost": 65.0
+                        "2013-04-28": {
+                            "meals": [
+                                {
+                                    "id": 13,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                }
+                            ]
+                        }
                     }
                 ],
                 "golfers": [
@@ -1443,159 +1460,177 @@ Example response:
                 "year": 2014,
                 "number": 14,
                 "location": "Rehoboth Beach",
-                "nights": [
+                "calendar": [
                     {
-                        "id": 8,
-                        "date": "2014-04-20",
-                        "cost": 0.0
+                        "2014-04-20": {
+                            "night": {
+                                "id": 8,
+                                "cost": 0.0
+                            },
+                            "meals": [],
+                            "course": {}
+                        }
                     },
                     {
-                        "id": 9,
-                        "date": "2014-04-21",
-                        "cost": 80.0
+                        "2014-04-21": {
+                            "night": {
+                                "id": 9,
+                                "cost": 80.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 14,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 15,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 7,
+                                "name": "Kings Creek Country Club",
+                                "cost": 70.0
+                            }
+                        }
                     },
                     {
-                        "id": 10,
-                        "date": "2014-04-22",
-                        "cost": 80.0
+                        "2014-04-22": {
+                            "night": {
+                                "id": 10,
+                                "cost": 80.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 16,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 17,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 8,
+                                "name": "Rehoboth Country Club",
+                                "cost": 70.0
+                            }
+                        }
                     },
                     {
-                        "id": 11,
-                        "date": "2014-04-23",
-                        "cost": 80.0
+                        "2014-04-23": {
+                            "night": {
+                                "id": 11,
+                                "cost": 80.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 18,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 19,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 9,
+                                "name": "The Salt Pond Golf Club",
+                                "cost": 70.0
+                            }
+                        }
                     },
                     {
-                        "id": 12,
-                        "date": "2014-04-24",
-                        "cost": 80.0
+                        "2014-04-24": {
+                            "night": {
+                                "id": 12,
+                                "cost": 80.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 20,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 21,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 10,
+                                "name": "American Classic Golf Club",
+                                "cost": 70.0
+                            }
+                        }
                     },
                     {
-                        "id": 13,
-                        "date": "2014-04-25",
-                        "cost": 80.0
+                        "2014-04-25": {
+                            "night": {
+                                "id": 13,
+                                "cost": 80.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 22,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 23,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 11,
+                                "name": "Kings Creek Country Club",
+                                "cost": 70.0
+                            }
+                        }
                     },
                     {
-                        "id": 14,
-                        "date": "2014-04-26",
-                        "cost": 80.0
-                    }
-                ],
-                "meals": [
-                    {
-                        "id": 14,
-                        "date": "2014-04-21",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
+                        "2014-04-26": {
+                            "night": {
+                                "id": 14,
+                                "cost": 80.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 24,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 25,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 12,
+                                "name": "The Salt Pond Golf Club",
+                                "cost": 70.0
+                            }
+                        }
                     },
                     {
-                        "id": 15,
-                        "date": "2014-04-21",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 16,
-                        "date": "2014-04-22",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 17,
-                        "date": "2014-04-22",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 18,
-                        "date": "2014-04-23",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 19,
-                        "date": "2014-04-23",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 20,
-                        "date": "2014-04-24",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 21,
-                        "date": "2014-04-24",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 22,
-                        "date": "2014-04-25",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 23,
-                        "date": "2014-04-25",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 24,
-                        "date": "2014-04-26",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 25,
-                        "date": "2014-04-26",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 26,
-                        "date": "2014-04-27",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    }
-                ],
-                "courses": [
-                    {
-                        "id": 7,
-                        "name": "Kings Creek Country Club",
-                        "date": "2014-04-21",
-                        "cost": 70.0
-                    },
-                    {
-                        "id": 8,
-                        "name": "Rehoboth Country Club",
-                        "date": "2014-04-22",
-                        "cost": 70.0
-                    },
-                    {
-                        "id": 9,
-                        "name": "The Salt Pond Golf Club",
-                        "date": "2014-04-23",
-                        "cost": 70.0
-                    },
-                    {
-                        "id": 10,
-                        "name": "American Classic Golf Club",
-                        "date": "2014-04-24",
-                        "cost": 70.0
-                    },
-                    {
-                        "id": 11,
-                        "name": "Kings Creek Country Club",
-                        "date": "2014-04-25",
-                        "cost": 70.0
-                    },
-                    {
-                        "id": 12,
-                        "name": "The Salt Pond Golf Club",
-                        "date": "2014-04-26",
-                        "cost": 70.0
+                        "2014-04-27": {
+                            "meals": [
+                                {
+                                    "id": 26,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                }
+                            ]
+                        }
                     }
                 ],
                 "golfers": [
@@ -1615,159 +1650,177 @@ Example response:
                 "year": 2015,
                 "number": 15,
                 "location": "VA Beach",
-                "nights": [
+                "calendar": [
                     {
-                        "id": 15,
-                        "date": "2015-04-19",
-                        "cost": 0.0
+                        "2015-04-19": {
+                            "night": {
+                                "id": 15,
+                                "cost": 0.0
+                            },
+                            "meals": [],
+                            "course": {}
+                        }
                     },
                     {
-                        "id": 16,
-                        "date": "2015-04-20",
-                        "cost": 90.0
+                        "2015-04-20": {
+                            "night": {
+                                "id": 16,
+                                "cost": 90.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 27,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 28,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 13,
+                                "name": "Red Wing Lake Golf Course",
+                                "cost": 50.0
+                            }
+                        }
                     },
                     {
-                        "id": 17,
-                        "date": "2015-04-21",
-                        "cost": 90.0
+                        "2015-04-21": {
+                            "night": {
+                                "id": 17,
+                                "cost": 90.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 29,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 30,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 14,
+                                "name": "Virginia Beach National Golf Club",
+                                "cost": 50.0
+                            }
+                        }
                     },
                     {
-                        "id": 18,
-                        "date": "2015-04-22",
-                        "cost": 90.0
+                        "2015-04-22": {
+                            "night": {
+                                "id": 18,
+                                "cost": 90.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 31,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 32,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 15,
+                                "name": "Hells Point Golf Club",
+                                "cost": 50.0
+                            }
+                        }
                     },
                     {
-                        "id": 19,
-                        "date": "2015-04-23",
-                        "cost": 90.0
+                        "2015-04-23": {
+                            "night": {
+                                "id": 19,
+                                "cost": 90.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 33,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 34,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 16,
+                                "name": "Heron Ridge Golf Club",
+                                "cost": 50.0
+                            }
+                        }
                     },
                     {
-                        "id": 20,
-                        "date": "2015-04-24",
-                        "cost": 90.0
+                        "2015-04-24": {
+                            "night": {
+                                "id": 20,
+                                "cost": 90.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 35,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 36,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 17,
+                                "name": "Stumpy Lake Golf Course",
+                                "cost": 50.0
+                            }
+                        }
                     },
                     {
-                        "id": 21,
-                        "date": "2015-04-25",
-                        "cost": 90.0
-                    }
-                ],
-                "meals": [
-                    {
-                        "id": 27,
-                        "date": "2015-04-20",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
+                        "2015-04-25": {
+                            "night": {
+                                "id": 21,
+                                "cost": 90.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 37,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 38,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 18,
+                                "name": "Virginia Beach National Golf Club",
+                                "cost": 50.0
+                            }
+                        }
                     },
                     {
-                        "id": 28,
-                        "date": "2015-04-20",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 29,
-                        "date": "2015-04-21",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 30,
-                        "date": "2015-04-21",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 31,
-                        "date": "2015-04-22",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 32,
-                        "date": "2015-04-22",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 33,
-                        "date": "2015-04-23",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 34,
-                        "date": "2015-04-23",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 35,
-                        "date": "2015-04-24",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 36,
-                        "date": "2015-04-24",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 37,
-                        "date": "2015-04-25",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 38,
-                        "date": "2015-04-25",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 39,
-                        "date": "2015-04-26",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    }
-                ],
-                "courses": [
-                    {
-                        "id": 13,
-                        "name": "Red Wing Lake Golf Course",
-                        "date": "2015-04-20",
-                        "cost": 50.0
-                    },
-                    {
-                        "id": 14,
-                        "name": "Virginia Beach National Golf Club",
-                        "date": "2015-04-21",
-                        "cost": 50.0
-                    },
-                    {
-                        "id": 15,
-                        "name": "Hells Point Golf Club",
-                        "date": "2015-04-22",
-                        "cost": 50.0
-                    },
-                    {
-                        "id": 16,
-                        "name": "Heron Ridge Golf Club",
-                        "date": "2015-04-23",
-                        "cost": 50.0
-                    },
-                    {
-                        "id": 17,
-                        "name": "Stumpy Lake Golf Course",
-                        "date": "2015-04-24",
-                        "cost": 50.0
-                    },
-                    {
-                        "id": 18,
-                        "name": "Virginia Beach National Golf Club",
-                        "date": "2015-04-25",
-                        "cost": 50.0
+                        "2015-04-26": {
+                            "meals": [
+                                {
+                                    "id": 39,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                }
+                            ]
+                        }
                     }
                 ],
                 "golfers": [
@@ -1787,159 +1840,177 @@ Example response:
                 "year": 2016,
                 "number": 16,
                 "location": "VA Beach",
-                "nights": [
+                "calendar": [
                     {
-                        "id": 22,
-                        "date": "2016-04-24",
-                        "cost": 0.0
+                        "2016-04-24": {
+                            "night": {
+                                "id": 22,
+                                "cost": 0.0
+                            },
+                            "meals": [],
+                            "course": {}
+                        }
                     },
                     {
-                        "id": 23,
-                        "date": "2016-04-25",
-                        "cost": 100.0
+                        "2016-04-25": {
+                            "night": {
+                                "id": 23,
+                                "cost": 100.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 40,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 41,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 19,
+                                "name": "Red Wing Lake Golf Course",
+                                "cost": 60.0
+                            }
+                        }
                     },
                     {
-                        "id": 24,
-                        "date": "2016-04-26",
-                        "cost": 100.0
+                        "2016-04-26": {
+                            "night": {
+                                "id": 24,
+                                "cost": 100.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 42,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 43,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 20,
+                                "name": "Virginia Beach National Golf Club",
+                                "cost": 60.0
+                            }
+                        }
                     },
                     {
-                        "id": 25,
-                        "date": "2016-04-27",
-                        "cost": 100.0
+                        "2016-04-27": {
+                            "night": {
+                                "id": 25,
+                                "cost": 100.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 44,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 45,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 21,
+                                "name": "Hells Point Golf Club",
+                                "cost": 60.0
+                            }
+                        }
                     },
                     {
-                        "id": 26,
-                        "date": "2016-04-28",
-                        "cost": 100.0
+                        "2016-04-28": {
+                            "night": {
+                                "id": 26,
+                                "cost": 100.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 46,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 47,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 22,
+                                "name": "Heron Ridge Golf Club",
+                                "cost": 60.0
+                            }
+                        }
                     },
                     {
-                        "id": 27,
-                        "date": "2016-04-29",
-                        "cost": 100.0
+                        "2016-04-29": {
+                            "night": {
+                                "id": 27,
+                                "cost": 100.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 48,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 49,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 23,
+                                "name": "Stumpy Lake Golf Course",
+                                "cost": 60.0
+                            }
+                        }
                     },
                     {
-                        "id": 28,
-                        "date": "2016-04-30",
-                        "cost": 100.0
-                    }
-                ],
-                "meals": [
-                    {
-                        "id": 40,
-                        "date": "2016-04-25",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
+                        "2016-04-30": {
+                            "night": {
+                                "id": 28,
+                                "cost": 100.0
+                            },
+                            "meals": [
+                                {
+                                    "id": 50,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                },
+                                {
+                                    "id": 51,
+                                    "time_of_day": "dinner",
+                                    "cost": 5.0
+                                }
+                            ],
+                            "course": {
+                                "id": 24,
+                                "name": "Red Wing Lake Golf Course",
+                                "cost": 60.0
+                            }
+                        }
                     },
                     {
-                        "id": 41,
-                        "date": "2016-04-25",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 42,
-                        "date": "2016-04-26",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 43,
-                        "date": "2016-04-26",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 44,
-                        "date": "2016-04-27",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 45,
-                        "date": "2016-04-27",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 46,
-                        "date": "2016-04-28",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 47,
-                        "date": "2016-04-28",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 48,
-                        "date": "2016-04-29",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 49,
-                        "date": "2016-04-29",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 50,
-                        "date": "2016-04-30",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 51,
-                        "date": "2016-04-30",
-                        "time_of_day": "dinner",
-                        "cost": 5.0
-                    },
-                    {
-                        "id": 52,
-                        "date": "2016-05-01",
-                        "time_of_day": "breakfast",
-                        "cost": 5.0
-                    }
-                ],
-                "courses": [
-                    {
-                        "id": 19,
-                        "name": "Red Wing Lake Golf Course",
-                        "date": "2016-04-25",
-                        "cost": 60.0
-                    },
-                    {
-                        "id": 20,
-                        "name": "Virginia Beach National Golf Club",
-                        "date": "2016-04-26",
-                        "cost": 60.0
-                    },
-                    {
-                        "id": 21,
-                        "name": "Hells Point Golf Club",
-                        "date": "2016-04-27",
-                        "cost": 60.0
-                    },
-                    {
-                        "id": 22,
-                        "name": "Heron Ridge Golf Club",
-                        "date": "2016-04-28",
-                        "cost": 60.0
-                    },
-                    {
-                        "id": 23,
-                        "name": "Stumpy Lake Golf Course",
-                        "date": "2016-04-29",
-                        "cost": 60.0
-                    },
-                    {
-                        "id": 24,
-                        "name": "Red Wing Lake Golf Course",
-                        "date": "2016-04-30",
-                        "cost": 60.0
+                        "2016-05-01": {
+                            "meals": [
+                                {
+                                    "id": 52,
+                                    "time_of_day": "breakfast",
+                                    "cost": 5.0
+                                }
+                            ]
+                        }
                     }
                 ],
                 "golfers": [
@@ -1958,7 +2029,7 @@ Example response:
 
 ### GET /api/v1/trips/:id <a name="get_trip"></a>
 
-This endpoint returns data for the requested trip, including its `year`, `number`, and `location` attributes, along with its `nights`, `meals`, `courses`, and `golfers`. The only required parameter is the the trip `id`, which should be included in the URI. 
+This endpoint returns data for the requested trip, including its `year`, `number`, and `location` attributes, along with a `calendar` attribute, which is an array of hashes, each with a key of the date, and values of that date's `night`, `meals`, and `course`, where applicable. It also returns the trip's `golfers`. The only required parameter is the the trip `id`, which should be included in the URI. 
 
 Example response: 
 
@@ -1971,159 +2042,177 @@ Example response:
             "year": 2013,
             "number": 13,
             "location": "Dewey Beach",
-            "nights": [
+            "calendar": [
                 {
-                    "id": 1,
-                    "date": "2013-04-21",
-                    "cost": 0.0
+                    "2013-04-21": {
+                        "night": {
+                            "id": 1,
+                            "cost": 0.0
+                        },
+                        "meals": [],
+                        "course": {}
+                    }
                 },
                 {
-                    "id": 2,
-                    "date": "2013-04-22",
-                    "cost": 70.0
+                    "2013-04-22": {
+                        "night": {
+                            "id": 2,
+                            "cost": 70.0
+                        },
+                        "meals": [
+                            {
+                                "id": 1,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 2,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 1,
+                            "name": "Kings Creek Country Club",
+                            "cost": 65.0
+                        }
+                    }
                 },
                 {
-                    "id": 3,
-                    "date": "2013-04-23",
-                    "cost": 70.0
+                    "2013-04-23": {
+                        "night": {
+                            "id": 3,
+                            "cost": 70.0
+                        },
+                        "meals": [
+                            {
+                                "id": 3,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 4,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 2,
+                            "name": "Rehoboth Country Club",
+                            "cost": 65.0
+                        }
+                    }
                 },
                 {
-                    "id": 4,
-                    "date": "2013-04-24",
-                    "cost": 70.0
+                    "2013-04-24": {
+                        "night": {
+                            "id": 4,
+                            "cost": 70.0
+                        },
+                        "meals": [
+                            {
+                                "id": 5,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 6,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 3,
+                            "name": "The Salt Pond Golf Club",
+                            "cost": 65.0
+                        }
+                    }
                 },
                 {
-                    "id": 5,
-                    "date": "2013-04-25",
-                    "cost": 70.0
+                    "2013-04-25": {
+                        "night": {
+                            "id": 5,
+                            "cost": 70.0
+                        },
+                        "meals": [
+                            {
+                                "id": 7,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 8,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 4,
+                            "name": "American Classic Golf Club",
+                            "cost": 65.0
+                        }
+                    }
                 },
                 {
-                    "id": 6,
-                    "date": "2013-04-26",
-                    "cost": 70.0
+                    "2013-04-26": {
+                        "night": {
+                            "id": 6,
+                            "cost": 70.0
+                        },
+                        "meals": [
+                            {
+                                "id": 9,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 10,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 5,
+                            "name": "Kings Creek Country Club",
+                            "cost": 65.0
+                        }
+                    }
                 },
                 {
-                    "id": 7,
-                    "date": "2013-04-27",
-                    "cost": 70.0
-                }
-            ],
-            "meals": [
-                {
-                    "id": 1,
-                    "date": "2013-04-22",
-                    "time_of_day": "breakfast",
-                    "cost": 5.0
+                    "2013-04-27": {
+                        "night": {
+                            "id": 7,
+                            "cost": 70.0
+                        },
+                        "meals": [
+                            {
+                                "id": 11,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 12,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 6,
+                            "name": "Rehoboth Country Club",
+                            "cost": 65.0
+                        }
+                    }
                 },
                 {
-                    "id": 2,
-                    "date": "2013-04-22",
-                    "time_of_day": "dinner",
-                    "cost": 5.0
-                },
-                {
-                    "id": 3,
-                    "date": "2013-04-23",
-                    "time_of_day": "breakfast",
-                    "cost": 5.0
-                },
-                {
-                    "id": 4,
-                    "date": "2013-04-23",
-                    "time_of_day": "dinner",
-                    "cost": 5.0
-                },
-                {
-                    "id": 5,
-                    "date": "2013-04-24",
-                    "time_of_day": "breakfast",
-                    "cost": 5.0
-                },
-                {
-                    "id": 6,
-                    "date": "2013-04-24",
-                    "time_of_day": "dinner",
-                    "cost": 5.0
-                },
-                {
-                    "id": 7,
-                    "date": "2013-04-25",
-                    "time_of_day": "breakfast",
-                    "cost": 5.0
-                },
-                {
-                    "id": 8,
-                    "date": "2013-04-25",
-                    "time_of_day": "dinner",
-                    "cost": 5.0
-                },
-                {
-                    "id": 9,
-                    "date": "2013-04-26",
-                    "time_of_day": "breakfast",
-                    "cost": 5.0
-                },
-                {
-                    "id": 10,
-                    "date": "2013-04-26",
-                    "time_of_day": "dinner",
-                    "cost": 5.0
-                },
-                {
-                    "id": 11,
-                    "date": "2013-04-27",
-                    "time_of_day": "breakfast",
-                    "cost": 5.0
-                },
-                {
-                    "id": 12,
-                    "date": "2013-04-27",
-                    "time_of_day": "dinner",
-                    "cost": 5.0
-                },
-                {
-                    "id": 13,
-                    "date": "2013-04-28",
-                    "time_of_day": "breakfast",
-                    "cost": 5.0
-                }
-            ],
-            "courses": [
-                {
-                    "id": 1,
-                    "name": "Kings Creek Country Club",
-                    "date": "2013-04-22",
-                    "cost": 65.0
-                },
-                {
-                    "id": 2,
-                    "name": "Rehoboth Country Club",
-                    "date": "2013-04-23",
-                    "cost": 65.0
-                },
-                {
-                    "id": 3,
-                    "name": "The Salt Pond Golf Club",
-                    "date": "2013-04-24",
-                    "cost": 65.0
-                },
-                {
-                    "id": 4,
-                    "name": "American Classic Golf Club",
-                    "date": "2013-04-25",
-                    "cost": 65.0
-                },
-                {
-                    "id": 5,
-                    "name": "Kings Creek Country Club",
-                    "date": "2013-04-26",
-                    "cost": 65.0
-                },
-                {
-                    "id": 6,
-                    "name": "Rehoboth Country Club",
-                    "date": "2013-04-27",
-                    "cost": 65.0
+                    "2013-04-28": {
+                        "meals": [
+                            {
+                                "id": 13,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            }
+                        ]
+                    }
                 }
             ],
             "golfers": [
@@ -2292,165 +2381,183 @@ Example response:
 ```
 {
     "data": {
-        "id": "6",
+        "id": "5",
         "type": "trip",
         "attributes": {
             "year": 2017,
             "number": 17,
             "location": "VA Beach",
-            "nights": [
+            "calendar": [
                 {
-                    "id": 29,
-                    "date": "2017-04-23",
-                    "cost": 0.0
+                    "2017-04-23": {
+                        "night": {
+                            "id": 29,
+                            "cost": 0.0
+                        },
+                        "meals": [],
+                        "course": {}
+                    }
                 },
                 {
-                    "id": 30,
-                    "date": "2017-04-24",
-                    "cost": 90.0
+                    "2017-04-24": {
+                        "night": {
+                            "id": 30,
+                            "cost": 90.0
+                        },
+                        "meals": [
+                            {
+                                "id": 53,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 54,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 25,
+                            "name": "Red Wing Lake Golf Course",
+                            "cost": 65.0
+                        }
+                    }
                 },
                 {
-                    "id": 31,
-                    "date": "2017-04-25",
-                    "cost": 90.0
+                    "2017-04-25": {
+                        "night": {
+                            "id": 31,
+                            "cost": 90.0
+                        },
+                        "meals": [
+                            {
+                                "id": 55,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 56,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 26,
+                            "name": "Virginia Beach National Golf Club",
+                            "cost": 65.0
+                        }
+                    }
                 },
                 {
-                    "id": 32,
-                    "date": "2017-04-26",
-                    "cost": 90.0
+                    "2017-04-26": {
+                        "night": {
+                            "id": 32,
+                            "cost": 90.0
+                        },
+                        "meals": [
+                            {
+                                "id": 57,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 58,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 27,
+                            "name": "Hells Point Golf Club",
+                            "cost": 65.0
+                        }
+                    }
                 },
                 {
-                    "id": 33,
-                    "date": "2017-04-27",
-                    "cost": 90.0
+                    "2017-04-27": {
+                        "night": {
+                            "id": 33,
+                            "cost": 90.0
+                        },
+                        "meals": [
+                            {
+                                "id": 59,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 60,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 28,
+                            "name": "Heron Ridge Golf Club",
+                            "cost": 65.0
+                        }
+                    }
                 },
                 {
-                    "id": 34,
-                    "date": "2017-04-28",
-                    "cost": 90.0
+                    "2017-04-28": {
+                        "night": {
+                            "id": 34,
+                            "cost": 90.0
+                        },
+                        "meals": [
+                            {
+                                "id": 61,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 62,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 29,
+                            "name": "Stumpy Lake Golf Course",
+                            "cost": 65.0
+                        }
+                    }
                 },
                 {
-                    "id": 35,
-                    "date": "2017-04-29",
-                    "cost": 90.0
-                }
-            ],
-            "meals": [
-                {
-                    "id": 53,
-                    "date": "2017-04-24",
-                    "time_of_day": "breakfast",
-                    "cost": 5.0
+                    "2017-04-29": {
+                        "night": {
+                            "id": 35,
+                            "cost": 90.0
+                        },
+                        "meals": [
+                            {
+                                "id": 63,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            },
+                            {
+                                "id": 64,
+                                "time_of_day": "dinner",
+                                "cost": 5.0
+                            }
+                        ],
+                        "course": {
+                            "id": 30,
+                            "name": "Red Wing Lake Golf Course",
+                            "cost": 65.0
+                        }
+                    }
                 },
                 {
-                    "id": 54,
-                    "date": "2017-04-24",
-                    "time_of_day": "dinner",
-                    "cost": 5.0
-                },
-                {
-                    "id": 55,
-                    "date": "2017-04-25",
-                    "time_of_day": "breakfast",
-                    "cost": 5.0
-                },
-                {
-                    "id": 56,
-                    "date": "2017-04-25",
-                    "time_of_day": "dinner",
-                    "cost": 5.0
-                },
-                {
-                    "id": 57,
-                    "date": "2017-04-26",
-                    "time_of_day": "breakfast",
-                    "cost": 5.0
-                },
-                {
-                    "id": 58,
-                    "date": "2017-04-26",
-                    "time_of_day": "dinner",
-                    "cost": 5.0
-                },
-                {
-                    "id": 59,
-                    "date": "2017-04-27",
-                    "time_of_day": "breakfast",
-                    "cost": 5.0
-                },
-                {
-                    "id": 60,
-                    "date": "2017-04-27",
-                    "time_of_day": "dinner",
-                    "cost": 5.0
-                },
-                {
-                    "id": 61,
-                    "date": "2017-04-28",
-                    "time_of_day": "breakfast",
-                    "cost": 5.0
-                },
-                {
-                    "id": 62,
-                    "date": "2017-04-28",
-                    "time_of_day": "dinner",
-                    "cost": 5.0
-                },
-                {
-                    "id": 63,
-                    "date": "2017-04-29",
-                    "time_of_day": "breakfast",
-                    "cost": 5.0
-                },
-                {
-                    "id": 64,
-                    "date": "2017-04-29",
-                    "time_of_day": "dinner",
-                    "cost": 5.0
-                },
-                {
-                    "id": 65,
-                    "date": "2017-04-30",
-                    "time_of_day": "breakfast",
-                    "cost": 5.0
-                }
-            ],
-            "courses": [
-                {
-                    "id": 25,
-                    "name": "Red Wing Lake Golf Course",
-                    "date": "2017-04-24",
-                    "cost": 65.0
-                },
-                {
-                    "id": 26,
-                    "name": "Virginia Beach National Golf Club",
-                    "date": "2017-04-25",
-                    "cost": 65.0
-                },
-                {
-                    "id": 27,
-                    "name": "Hells Point Golf Club",
-                    "date": "2017-04-26",
-                    "cost": 65.0
-                },
-                {
-                    "id": 28,
-                    "name": "Heron Ridge Golf Club",
-                    "date": "2017-04-27",
-                    "cost": 65.0
-                },
-                {
-                    "id": 29,
-                    "name": "Stumpy Lake Golf Course",
-                    "date": "2017-04-28",
-                    "cost": 65.0
-                },
-                {
-                    "id": 30,
-                    "name": "Red Wing Lake Golf Course",
-                    "date": "2017-04-29",
-                    "cost": 65.0
+                    "2017-04-30": {
+                        "meals": [
+                            {
+                                "id": 65,
+                                "time_of_day": "breakfast",
+                                "cost": 5.0
+                            }
+                        ]
+                    }
                 }
             ],
             "golfers": []
