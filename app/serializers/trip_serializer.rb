@@ -1,6 +1,6 @@
 class TripSerializer
   include JSONAPI::Serializer
-  attributes :year, :number, :location
+  attributes :year, :number, :location, :start_date
 
   attributes :calendar do |trip|
     calendar = []

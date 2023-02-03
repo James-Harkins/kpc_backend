@@ -243,7 +243,7 @@ describe 'golfer endpoints' do
         expect(trips[0]).to be_a Hash
         expect(trips[0].keys).to eq([:id, :type, :attributes])
         expect(trips[0][:type]).to eq('trip')
-        expect(trips[0][:attributes].keys).to eq([:year, :number, :location, :calendar, :golfers])
+        expect(trips[0][:attributes].keys).to eq([:year, :number, :location, :start_date, :calendar, :golfers])
         expect(trips[0][:attributes][:year]).to eq(2013)
         expect(trips[0][:attributes][:number]).to eq(13)
         expect(trips[0][:attributes][:location]).to eq('Dewey Beach')
@@ -276,7 +276,7 @@ describe 'golfer endpoints' do
         expect(trip[:id]).to eq(@trip_1.id.to_s)
         expect(trip[:type]).to eq('trip')
         expect(trip[:attributes]).to be_a Hash
-        expect(trip[:attributes].keys).to eq([:year, :number, :location, :calendar, :golfers])
+        expect(trip[:attributes].keys).to eq([:year, :number, :location, :start_date, :calendar, :golfers])
         expect(trip[:attributes][:year]).to eq(@trip_1.year)
         expect(trip[:attributes][:number]).to eq(@trip_1.number)
         expect(trip[:attributes][:location]).to eq(@trip_1.location)
@@ -337,7 +337,7 @@ describe 'golfer endpoints' do
         expect(trip[:id]).to eq(@trip_4.id.to_s)
         expect(trip[:type]).to eq('trip')
         expect(trip[:attributes]).to be_a Hash
-        expect(trip[:attributes].keys).to eq([:year, :number, :location, :calendar, :golfers])
+        expect(trip[:attributes].keys).to eq([:year, :number, :location, :start_date, :calendar, :golfers])
         expect(trip[:attributes][:year]).to eq(@trip_4.year)
         expect(trip[:attributes][:number]).to eq(@trip_4.number)
         expect(trip[:attributes][:location]).to eq(@trip_4.location)
@@ -516,7 +516,7 @@ describe 'golfer endpoints' do
         expect(trip[:id]).to be_an String
         expect(trip[:type]).to eq('trip')
         expect(trip[:attributes]).to be_a Hash
-        expect(trip[:attributes].keys).to eq([:year, :number, :location, :calendar, :golfers])
+        expect(trip[:attributes].keys).to eq([:year, :number, :location, :start_date, :calendar, :golfers])
         expect(trip[:attributes][:year]).to eq(2017)
         expect(trip[:attributes][:number]).to eq(17)
         expect(trip[:attributes][:location]).to eq('VA Beach')
