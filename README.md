@@ -2250,6 +2250,7 @@ Example response:
             "year": 2016,
             "number": 16,
             "location": "VA Beach",
+            "start_date": "2024-04-21T00:00:00.000Z",
             "calendar": [
                 {
                     "2024-04-21": {
