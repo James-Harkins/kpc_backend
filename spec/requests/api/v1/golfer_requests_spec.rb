@@ -19,7 +19,7 @@ describe 'golfer endpoints' do
         expect(golfers[0]).to be_a Hash
         expect(golfers[0][:id]).to eq(@golfer_1.id.to_s)
         expect(golfers[0][:type]).to eq('golfer')
-        expect(golfers[0][:attributes].keys).to eq([:first_name, :last_name, :email, :role])
+        expect(golfers[0][:attributes].keys).to eq([:first_name, :last_name, :email, :role, :golfer_trips])
         expect(golfers[0][:attributes][:first_name]).to eq(@golfer_1.first_name)
         expect(golfers[0][:attributes][:last_name]).to eq(@golfer_1.last_name)
         expect(golfers[0][:attributes][:email]).to eq(@golfer_1.email)
@@ -55,7 +55,7 @@ describe 'golfer endpoints' do
         expect(golfer).to have_key(:id)
         expect(golfer).to have_key(:attributes)
         expect(golfer[:attributes]).to be_a Hash
-        expect(golfer[:attributes].keys).to eq([:first_name, :last_name, :email, :role])
+        expect(golfer[:attributes].keys).to eq([:first_name, :last_name, :email, :role, :golfer_trips])
         expect(golfer[:attributes][:first_name]).to eq(json_payload[:golfer][:first_name])
         expect(golfer[:attributes][:last_name]).to eq(json_payload[:golfer][:last_name])
         expect(golfer[:attributes][:email]).to eq(json_payload[:golfer][:email])
