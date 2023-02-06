@@ -223,7 +223,7 @@
 @golfer_2_trip_2_night_3 = @golfer_2.golfer_nights.create!(night: @night_7_trip_3)
 @golfer_2_trip_2_meal_5 = @golfer_2.golfer_meals.create!(meal: @meal_13_trip_3)
 
-@trip_5 = Trip.create!(year: 2016, number: 16, location: 'VA Beach', start_date: Date.parse('2024-04-21'))
+@trip_5 = Trip.create!(year: 2024, number: 24, location: 'VA Beach', start_date: Date.parse('2024-04-21'))
 @night_1_trip_5 = @trip_5.nights.create!(date: Date.parse('2024-04-21'), cost: 0.0)
 @night_2_trip_5 = @trip_5.nights.create!(date: Date.parse('2024-04-22'), cost: 70.0)
 @night_3_trip_5 = @trip_5.nights.create!(date: Date.parse('2024-04-23'), cost: 70.0)

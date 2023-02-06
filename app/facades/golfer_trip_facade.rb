@@ -69,6 +69,10 @@ class GolferTripFacade
     trip_data[:golfer].trip_total_cost(trip_data[:trip].id)
   end
 
+  def self.trip_year(trip_data)
+    trip_data[:trip].year
+  end
+
   def self.create_new_golfer_trip(params)
     golfer = Golfer.find(params[:golfer_id])
     trip = Trip.find(params[:trip_id])
