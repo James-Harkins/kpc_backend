@@ -46,10 +46,10 @@ RSpec.describe Golfer, type: :model do
     before do
       @golfer_1 = Golfer.create!(first_name: 'Tony', last_name: 'Soprano', email: 't@badabing.com', password: 'test123', password_confirmation: 'test123')
 
-      @trip_1 = Trip.create!(year: 2013, number: 13, location: 'Dewey Beach')
-      @trip_2 = Trip.create!(year: 2014, number: 14, location: 'Rehoboth Beach')
-      @trip_3 = Trip.create!(year: 2015, number: 15, location: 'VA Beach')
-      @trip_4 = Trip.create!(year: 2016, number: 16, location: 'VA Beach')
+      @trip_1 = Trip.create!(year: 2013, number: 'XIII', location: 'Dewey Beach')
+      @trip_2 = Trip.create!(year: 2014, number: 'XIV', location: 'Rehoboth Beach')
+      @trip_3 = Trip.create!(year: 2015, number: 'XV', location: 'VA Beach')
+      @trip_4 = Trip.create!(year: 2016, number: 'XVI', location: 'VA Beach')
 
       @night_1_trip_1 = @trip_1.nights.create!(date: Date.parse('2013-04-21'), cost: 0.0)
       @night_2_trip_1 = @trip_1.nights.create!(date: Date.parse('2013-04-22'), cost: 70.0)
