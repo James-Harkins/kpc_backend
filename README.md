@@ -35,7 +35,7 @@ All requests must include an `api_key` parameter, whether as a query param in th
 
 ### GET /api/v1/golfers <a name="get_golfers"></a>
 
-This endpoint returns all of the golfers in the database, including all of their attributes except for their `password_digest`, which is just an encryption of their password. This includes `first_name`, `last_name`, `email`, and `role`. 
+This endpoint returns all of the golfers in the database, including all of their attributes except for their `password_digest`, which is just an encryption of their password. This includes `first_name`, `last_name`, `email`, and `role`, as well as a custom attribute `is_registered_for_next_trip`, which returns true if the golfer has registered for the upcoming trip, and false otherwise, along with all of their `golfer_trips`. 
 
 Example response: 
 
@@ -50,6 +50,8 @@ Example response:
                 "last_name": "Soprano",
                 "email": "t@badabing.com",
                 "role": "default"
+                "is_registered_for_next_trip": false, 
+                "golfer_trips": []
             }
         },
         {
@@ -60,6 +62,8 @@ Example response:
                 "last_name": "Gaultieri",
                 "email": "walnuts@badabing.com",
                 "role": "default"
+                "is_registered_for_next_trip": false, 
+                "golfer_trips": []
             }
         },
         {
@@ -70,6 +74,8 @@ Example response:
                 "last_name": "Moltisanti",
                 "email": "chrissie@badabing.com",
                 "role": "default"
+                "is_registered_for_next_trip": false, 
+                "golfer_trips": []
             }
         }
     ]
@@ -104,6 +110,8 @@ Example response:
             "last_name": "Soprano",
             "email": "t@badabing.com",
             "role": "default"
+            "is_registered_for_next_trip": false, 
+            "golfer_trips": []
         }
     }
 }
@@ -115,7 +123,7 @@ This endpoint destroys the golfer in the database with the `id` passed in as a q
 
 ### POST /api/v1/login <a name="create_session"></a>
 
-This endpoint returns relevant golfer data after authentication. The required parameters are `email` and `password`. If a golfer is found in the database with that email address and authenticated with the password, then the user is returned, along with his `id`, and attributes, `first_name`, `last_name`, `email`, `role`, and `golfer_trips`, which is a serialization of all of the trips he has attended, including their `id`, `trip_number`, `total_cost`, and attributes of `nights`, `meals`, and `courses`.
+This endpoint returns relevant golfer data after authentication. The required parameters are `email` and `password`. If a golfer is found in the database with that email address and authenticated with the password, then the user is returned, along with his `id`, and attributes, `first_name`, `last_name`, `email`, `role`, `is_registered_for_next_trip`, and `golfer_trips`, which is a serialization of all of the trips he has attended, including their `id`, `trip_number`, `total_cost`, and attributes of `nights`, `meals`, and `courses`.
 
 Example request:
 
@@ -140,6 +148,7 @@ Example response:
             "last_name": "Soprano",
             "email": "t@badabing.com",
             "role": "default",
+            "is_registered_for_next_trip": false, 
             "golfer_trips": {
                 "data": [
                     {
