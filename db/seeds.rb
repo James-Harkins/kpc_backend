@@ -244,9 +244,12 @@
 @meal_11_trip_5 = @trip_5.meals.create!(date: Date.parse('2024-04-27'), time_of_day: 0, cost: 5.0)
 @meal_12_trip_5 = @trip_5.meals.create!(date: Date.parse('2024-04-27'), time_of_day: 1, cost: 5.0)
 @meal_13_trip_5 = @trip_5.meals.create!(date: Date.parse('2024-04-28'), time_of_day: 0, cost: 5.0)
+
 @trip_5_course_1 = @trip_5.trip_courses.create!(course: @course_1, date: Date.parse('2024-04-22'), cost: 65)
 @trip_5_course_2 = @trip_5.trip_courses.create!(course: @course_2, date: Date.parse('2024-04-23'), cost: 65)
 @trip_5_course_3 = @trip_5.trip_courses.create!(course: @course_3, date: Date.parse('2024-04-24'), cost: 65)
 @trip_5_course_4 = @trip_5.trip_courses.create!(course: @course_4, date: Date.parse('2024-04-25'), cost: 65)
 @trip_5_course_5 = @trip_5.trip_courses.create!(course: @course_1, date: Date.parse('2024-04-26'), cost: 65)
 @trip_5_course_6 = @trip_5.trip_courses.create!(course: @course_2, date: Date.parse('2024-04-27'), cost: 65)
+
+@golfer_2_trip_5 = @trip_5.golfer_trips.create!(golfer: @golfer_2)
