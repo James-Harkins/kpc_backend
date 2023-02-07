@@ -7,6 +7,8 @@ describe 'golfer endpoints' do
         @golfer_1 = Golfer.create!(first_name: 'Tony', last_name: 'Soprano', email: 't@badabing.com', password: 'test123', password_confirmation: 'test123')
         @golfer_2 = Golfer.create!(first_name: 'Paulie', last_name: 'Gaultieri', email: 'walnuts@badabing.com', password: 'test123', password_confirmation: 'test123')
         @golfer_3 = Golfer.create!(first_name: 'Christopher', last_name: 'Moltisanti', email: 'chrissie@badabing.com', password: 'test123', password_confirmation: 'test123')
+        @trip_5 = Trip.create!(year: 2024, number: 24, location: 'VA Beach', start_date: Date.parse('2024-04-21'))
+        @golfer_2_trip_5 = @trip_5.golfer_trips.create!(golfer: @golfer_2)
 
         get "/api/v1/golfers?api_key=#{ENV["API_KEY"]}"
 
@@ -19,11 +21,17 @@ describe 'golfer endpoints' do
         expect(golfers[0]).to be_a Hash
         expect(golfers[0][:id]).to eq(@golfer_1.id.to_s)
         expect(golfers[0][:type]).to eq('golfer')
-        expect(golfers[0][:attributes].keys).to eq([:first_name, :last_name, :email, :role, :golfer_trips])
+        expect(golfers[0][:attributes].keys).to eq([:first_name, :last_name, :email, :role, :is_registered_for_next_trip, :golfer_trips])
         expect(golfers[0][:attributes][:first_name]).to eq(@golfer_1.first_name)
         expect(golfers[0][:attributes][:last_name]).to eq(@golfer_1.last_name)
         expect(golfers[0][:attributes][:email]).to eq(@golfer_1.email)
         expect(golfers[0][:attributes][:role]).to eq('default')
+        expect(golfers[0][:attributes][:golfer_trips]).to eq({data: []})
+        expect(golfers[0][:attributes][:is_registered_for_next_trip]).to eq(false)
+        expect(golfers[1][:attributes][:golfer_trips].length).to eq(1)
+        expect(golfers[1][:attributes][:is_registered_for_next_trip]).to eq(true)
+        expect(golfers[2][:attributes][:golfer_trips]).to eq({data: []})
+        expect(golfers[2][:attributes][:is_registered_for_next_trip]).to eq(false)
       end
     end
   end
@@ -55,7 +63,7 @@ describe 'golfer endpoints' do
         expect(golfer).to have_key(:id)
         expect(golfer).to have_key(:attributes)
         expect(golfer[:attributes]).to be_a Hash
-        expect(golfer[:attributes].keys).to eq([:first_name, :last_name, :email, :role, :golfer_trips])
+        expect(golfer[:attributes].keys).to eq([:first_name, :last_name, :email, :role, :is_registered_for_next_trip, :golfer_trips])
         expect(golfer[:attributes][:first_name]).to eq(json_payload[:golfer][:first_name])
         expect(golfer[:attributes][:last_name]).to eq(json_payload[:golfer][:last_name])
         expect(golfer[:attributes][:email]).to eq(json_payload[:golfer][:email])
