@@ -5,10 +5,10 @@ describe 'golfer trip endpoints' do
     @golfer_1 = Golfer.create!(first_name: 'Tony', last_name: 'Soprano', email: 't@badabing.com', password: 'test123', password_confirmation: 'test123')
     @golfer_2 = Golfer.create!(first_name: 'Paulie', last_name: 'Gaultieri', email: 'walnuts@badabing.com', password: 'test123', password_confirmation: 'test123')
 
-    @trip_1 = Trip.create!(year: 2013, number: 13, location: 'Dewey Beach')
-    @trip_2 = Trip.create!(year: 2014, number: 14, location: 'Rehoboth Beach')
-    @trip_3 = Trip.create!(year: 2015, number: 15, location: 'VA Beach')
-    @trip_4 = Trip.create!(year: 2016, number: 16, location: 'VA Beach')
+    @trip_1 = Trip.create!(year: 2013, number: 'XIII', location: 'Dewey Beach')
+    @trip_2 = Trip.create!(year: 2014, number: 'XIV', location: 'Rehoboth Beach')
+    @trip_3 = Trip.create!(year: 2015, number: 'XV', location: 'VA Beach')
+    @trip_4 = Trip.create!(year: 2016, number: 'XVI', location: 'VA Beach')
 
     @night_1_trip_1 = @trip_1.nights.create!(date: Date.parse('2013-04-21'), cost: 0.0)
     @night_2_trip_1 = @trip_1.nights.create!(date: Date.parse('2013-04-22'), cost: 70.0)
@@ -240,7 +240,7 @@ describe 'golfer trip endpoints' do
         expect(trip).to be_a Hash
         expect(trip[:id]).to eq(@trip_4.id)
         expect(trip[:type]).to eq('golfer_trip')
-        expect(trip[:trip_number]).to eq(16)
+        expect(trip[:trip_number]).to eq('XVI')
         expect(trip[:total_cost]).to eq(1025.0)
         expect(trip[:attributes]).to be_a Hash
         expect(trip[:attributes].keys).to eq([:nights, :meals, :courses])
@@ -339,7 +339,7 @@ describe 'golfer trip endpoints' do
         expect(trips[0]).to be_a Hash
         expect(trips[0][:id]).to eq(@trip_1.id)
         expect(trips[0][:type]).to eq('golfer_trip')
-        expect(trips[0][:trip_number]).to eq(13)
+        expect(trips[0][:trip_number]).to eq('XIII')
         expect(trips[0][:total_cost]).to eq(660.0)
         expect(trips[0][:attributes]).to be_a Hash
         expect(trips[0][:attributes].keys).to eq([:nights, :meals, :courses])
@@ -375,7 +375,7 @@ describe 'golfer trip endpoints' do
         expect(trips[1]).to be_a Hash
         expect(trips[1][:id]).to eq(@trip_2.id)
         expect(trips[1][:type]).to eq('golfer_trip')
-        expect(trips[1][:trip_number]).to eq(14)
+        expect(trips[1][:trip_number]).to eq('XIV')
         expect(trips[1][:total_cost]).to eq(570.0)
         expect(trips[1][:attributes]).to be_a Hash
         expect(trips[1][:attributes].keys).to eq([:nights, :meals, :courses])
@@ -407,7 +407,7 @@ describe 'golfer trip endpoints' do
         expect(trips[2]).to be_a Hash
         expect(trips[2][:id]).to eq(@trip_4.id)
         expect(trips[2][:type]).to eq('golfer_trip')
-        expect(trips[2][:trip_number]).to eq(16)
+        expect(trips[2][:trip_number]).to eq('XVI')
         expect(trips[2][:total_cost]).to eq(1025.0)
         expect(trips[2][:attributes]).to be_a Hash
         expect(trips[2][:attributes].keys).to eq([:nights, :meals, :courses])

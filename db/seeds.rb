@@ -2,10 +2,10 @@
 @golfer_2 = Golfer.create!(first_name: 'Paulie', last_name: 'Gaultieri', email: 'walnuts@badabing.com', password: 'test123', password_confirmation: 'test123')
 @golfer_3 = Golfer.create!(first_name: 'Christopher', last_name: 'Moltisanti', email: 'chrissie@badabing.com', password: 'test123', password_confirmation: 'test123')
 
-@trip_1 = Trip.create!(year: 2013, number: 13, location: 'Dewey Beach')
-@trip_2 = Trip.create!(year: 2014, number: 14, location: 'Rehoboth Beach')
-@trip_3 = Trip.create!(year: 2015, number: 15, location: 'VA Beach')
-@trip_4 = Trip.create!(year: 2016, number: 16, location: 'VA Beach')
+@trip_1 = Trip.create!(year: 2013, number: 'XIII', location: 'Dewey Beach')
+@trip_2 = Trip.create!(year: 2014, number: 'XIV', location: 'Rehoboth Beach')
+@trip_3 = Trip.create!(year: 2015, number: 'XV', location: 'VA Beach')
+@trip_4 = Trip.create!(year: 2016, number: 'XVI', location: 'VA Beach')
 
 @night_1_trip_1 = @trip_1.nights.create!(date: Date.parse('2013-04-21'), cost: 0.0)
 @night_2_trip_1 = @trip_1.nights.create!(date: Date.parse('2013-04-22'), cost: 70.0)
@@ -223,7 +223,7 @@
 @golfer_2_trip_2_night_3 = @golfer_2.golfer_nights.create!(night: @night_7_trip_3)
 @golfer_2_trip_2_meal_5 = @golfer_2.golfer_meals.create!(meal: @meal_13_trip_3)
 
-@trip_5 = Trip.create!(year: 2024, number: 24, location: 'VA Beach', start_date: Date.parse('2024-04-21'))
+@trip_5 = Trip.create!(year: 2024, number: 'XXIV', location: 'VA Beach', start_date: Date.parse('2024-04-21'))
 @night_1_trip_5 = @trip_5.nights.create!(date: Date.parse('2024-04-21'), cost: 0.0)
 @night_2_trip_5 = @trip_5.nights.create!(date: Date.parse('2024-04-22'), cost: 70.0)
 @night_3_trip_5 = @trip_5.nights.create!(date: Date.parse('2024-04-23'), cost: 70.0)

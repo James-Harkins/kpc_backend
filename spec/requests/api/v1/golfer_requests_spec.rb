@@ -7,7 +7,7 @@ describe 'golfer endpoints' do
         @golfer_1 = Golfer.create!(first_name: 'Tony', last_name: 'Soprano', email: 't@badabing.com', password: 'test123', password_confirmation: 'test123')
         @golfer_2 = Golfer.create!(first_name: 'Paulie', last_name: 'Gaultieri', email: 'walnuts@badabing.com', password: 'test123', password_confirmation: 'test123')
         @golfer_3 = Golfer.create!(first_name: 'Christopher', last_name: 'Moltisanti', email: 'chrissie@badabing.com', password: 'test123', password_confirmation: 'test123')
-        @trip_5 = Trip.create!(year: 2024, number: 24, location: 'VA Beach', start_date: Date.parse('2024-04-21'))
+        @trip_5 = Trip.create!(year: 2024, number: 'XXIV', location: 'VA Beach', start_date: Date.parse('2024-04-21'))
         @golfer_2_trip_5 = @trip_5.golfer_trips.create!(golfer: @golfer_2)
 
         get "/api/v1/golfers?api_key=#{ENV["API_KEY"]}"

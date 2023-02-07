@@ -6,10 +6,10 @@ describe 'golfer endpoints' do
     @golfer_2 = Golfer.create!(first_name: 'Paulie', last_name: 'Gaultieri', email: 'walnuts@badabing.com', password: 'test123', password_confirmation: 'test123')
     @golfer_3 = Golfer.create!(first_name: 'Christopher', last_name: 'Moltisanti', email: 'chrissie@badabing.com', password: 'test123', password_confirmation: 'test123')
 
-    @trip_1 = Trip.create!(year: 2013, number: 13, location: 'Dewey Beach')
-    @trip_2 = Trip.create!(year: 2014, number: 14, location: 'Rehoboth Beach')
-    @trip_3 = Trip.create!(year: 2015, number: 15, location: 'VA Beach')
-    @trip_4 = Trip.create!(year: 2016, number: 16, location: 'VA Beach')
+    @trip_1 = Trip.create!(year: 2013, number: 'XIII', location: 'Dewey Beach')
+    @trip_2 = Trip.create!(year: 2014, number: 'XIV', location: 'Rehoboth Beach')
+    @trip_3 = Trip.create!(year: 2015, number: 'XV', location: 'VA Beach')
+    @trip_4 = Trip.create!(year: 2016, number: 'XVI', location: 'VA Beach')
 
     @night_1_trip_1 = @trip_1.nights.create!(date: Date.parse('2013-04-21'), cost: 0.0)
     @night_2_trip_1 = @trip_1.nights.create!(date: Date.parse('2013-04-22'), cost: 70.0)
@@ -245,16 +245,16 @@ describe 'golfer endpoints' do
         expect(trips[0][:type]).to eq('trip')
         expect(trips[0][:attributes].keys).to eq([:year, :number, :location, :start_date, :calendar, :golfers])
         expect(trips[0][:attributes][:year]).to eq(2013)
-        expect(trips[0][:attributes][:number]).to eq(13)
+        expect(trips[0][:attributes][:number]).to eq('XIII')
         expect(trips[0][:attributes][:location]).to eq('Dewey Beach')
         expect(trips[1][:attributes][:year]).to eq(2014)
-        expect(trips[1][:attributes][:number]).to eq(14)
+        expect(trips[1][:attributes][:number]).to eq('XIV')
         expect(trips[1][:attributes][:location]).to eq('Rehoboth Beach')
         expect(trips[2][:attributes][:year]).to eq(2015)
-        expect(trips[2][:attributes][:number]).to eq(15)
+        expect(trips[2][:attributes][:number]).to eq('XV')
         expect(trips[2][:attributes][:location]).to eq('VA Beach')
         expect(trips[3][:attributes][:year]).to eq(2016)
-        expect(trips[3][:attributes][:number]).to eq(16)
+        expect(trips[3][:attributes][:number]).to eq('XVI')
         expect(trips[3][:attributes][:location]).to eq('VA Beach')
       end
     end
@@ -297,7 +297,7 @@ describe 'golfer endpoints' do
   describe 'GET /next_trip' do 
     describe 'happy path' do 
       it 'returns trip data for the next years trip' do 
-        @trip_4 = Trip.create!(year: 2016, number: 16, location: 'VA Beach', start_date: Date.parse('2024-04-21'))
+        @trip_4 = Trip.create!(year: 2016, number: 'XVI', location: 'VA Beach', start_date: Date.parse('2024-04-21'))
         @night_1_trip_4 = @trip_4.nights.create!(date: Date.parse('2024-04-21'), cost: 0.0)
         @night_2_trip_4 = @trip_4.nights.create!(date: Date.parse('2024-04-22'), cost: 70.0)
         @night_3_trip_4 = @trip_4.nights.create!(date: Date.parse('2024-04-23'), cost: 70.0)
@@ -368,7 +368,7 @@ describe 'golfer endpoints' do
       it 'creates a new trip and returns a json serialization of the new trip' do
         json_payload = {
           year: 2017,
-          number: 17,
+          number: 'XVII',
           location: 'VA Beach',
           courses: [
             {
@@ -518,7 +518,7 @@ describe 'golfer endpoints' do
         expect(trip[:attributes]).to be_a Hash
         expect(trip[:attributes].keys).to eq([:year, :number, :location, :start_date, :calendar, :golfers])
         expect(trip[:attributes][:year]).to eq(2017)
-        expect(trip[:attributes][:number]).to eq(17)
+        expect(trip[:attributes][:number]).to eq('XVII')
         expect(trip[:attributes][:location]).to eq('VA Beach')
       end
     end
