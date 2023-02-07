@@ -154,7 +154,7 @@ Example response:
                     {
                         "id": 1,
                         "type": "golfer_trip",
-                        "trip_number": 13,
+                        "trip_number": "XIII",
                         "total_cost": 660.0,
                         "attributes": {
                             "nights": [
@@ -278,7 +278,7 @@ Example response:
                     {
                         "id": 2,
                         "type": "golfer_trip",
-                        "trip_number": 14,
+                        "trip_number": "XIV",
                         "total_cost": 570.0,
                         "attributes": {
                             "nights": [
@@ -378,7 +378,7 @@ Example response:
                     {
                         "id": 4,
                         "type": "golfer_trip",
-                        "trip_number": 16,
+                        "trip_number": "XVI",
                         "total_cost": 1025.0,
                         "attributes": {
                             "nights": [
@@ -565,7 +565,7 @@ Example response:
         {
             "id": 1,
             "type": "golfer_trip",
-            "trip_number": 13,
+            "trip_number": "XIII",
             "total_cost": 660.0,
             "attributes": {
                 "nights": [
@@ -689,7 +689,7 @@ Example response:
         {
             "id": 2,
             "type": "golfer_trip",
-            "trip_number": 14,
+            "trip_number": "XIV",
             "total_cost": 570.0,
             "attributes": {
                 "nights": [
@@ -789,7 +789,7 @@ Example response:
         {
             "id": 4,
             "type": "golfer_trip",
-            "trip_number": 16,
+            "trip_number": "XVI",
             "total_cost": 1025.0,
             "attributes": {
                 "nights": [
@@ -968,7 +968,7 @@ Example response:
     "data": {
         "id": 4,
         "type": "golfer_trip",
-        "trip_number": 16,
+        "trip_number": "XVI",
         "total_cost": 1025.0,
         "attributes": {
             "nights": [
@@ -1158,7 +1158,7 @@ Example response:
     "data": {
         "id": 4,
         "type": "golfer_trip",
-        "trip_number": 16,
+        "trip_number": "XVI",
         "total_cost": 620.0,
         "attributes": {
             "nights": [
@@ -1272,7 +1272,7 @@ Example response:
             "type": "trip",
             "attributes": {
                 "year": 2013,
-                "number": 13,
+                "number": "XIII",
                 "location": "Dewey Beach",
                 "calendar": [
                     {
@@ -1468,7 +1468,7 @@ Example response:
             "type": "trip",
             "attributes": {
                 "year": 2014,
-                "number": 14,
+                "number": "XIV",
                 "location": "Rehoboth Beach",
                 "calendar": [
                     {
@@ -1658,7 +1658,7 @@ Example response:
             "type": "trip",
             "attributes": {
                 "year": 2015,
-                "number": 15,
+                "number": "XV",
                 "location": "VA Beach",
                 "calendar": [
                     {
@@ -1848,7 +1848,7 @@ Example response:
             "type": "trip",
             "attributes": {
                 "year": 2016,
-                "number": 16,
+                "number": "XVI",
                 "location": "VA Beach",
                 "calendar": [
                     {
@@ -2050,7 +2050,7 @@ Example response:
         "type": "trip",
         "attributes": {
             "year": 2013,
-            "number": 13,
+            "number": "XIII",
             "location": "Dewey Beach",
             "calendar": [
                 {
@@ -2257,7 +2257,7 @@ Example response:
         "type": "trip",
         "attributes": {
             "year": 2016,
-            "number": 16,
+            "number": "XVI",
             "location": "VA Beach",
             "start_date": "2024-04-21T00:00:00.000Z",
             "calendar": [
@@ -2448,7 +2448,7 @@ Example request:
 ```
 {
     "year":2017,
-    "number":17,
+    "number":"XVII",
     "location":"VA Beach",
     "courses":[
         {
@@ -2590,7 +2590,7 @@ Example response:
         "type": "trip",
         "attributes": {
             "year": 2017,
-            "number": 17,
+            "number": "XVII",
             "location": "VA Beach",
             "calendar": [
                 {
