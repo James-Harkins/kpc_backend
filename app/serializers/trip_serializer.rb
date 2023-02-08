@@ -31,7 +31,9 @@ class TripSerializer
     last_meal = trip.meals.last 
     calendar_date = Hash.new
     calendar_date[:date] = last_meal.date.strftime('%A %m-%d-%Y') 
+    calendar_date[:night] = {}
     calendar_date[:meals] = [{id: last_meal.id, time_of_day: last_meal.time_of_day, cost: last_meal.cost}]
+    calendar_date[:course] = {}
     calendar << calendar_date
     calendar
   end
