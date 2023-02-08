@@ -3,5 +3,5 @@ class Meal < ApplicationRecord
   has_many :golfer_meals
   has_many :golfers, through: :golfer_meals
 
-  enum time_of_day: [:breakfast, :dinner]
+  enum time_of_day: [:Breakfast, :Dinner]
 end
