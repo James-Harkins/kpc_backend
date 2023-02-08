@@ -6,29 +6,32 @@ class TripSerializer
     calendar = []
     trip.nights.each do |night|
       calendar_date = Hash.new
-      calendar_date[night.date] = Hash.new 
-      calendar_date[night.date][:night] = {id: night.id, cost: night.cost}
-      calendar_date[night.date][:meals] = [] 
+      calendar_date[:date] = night.date.strftime('%A %m-%d-%Y') 
+      calendar_date[:night] = {
+        id: night.id,  
+        cost: night.cost
+      }
+      calendar_date[:meals] = [] 
       trip.meals.where(date: night.date).each do |meal|
         meal = {
           id: meal.id,
           time_of_day: meal.time_of_day,
           cost: meal.cost
         }
-        calendar_date[night.date][:meals] << meal
+        calendar_date[:meals] << meal
       end
-      calendar_date[night.date][:course] = Hash.new 
+      calendar_date[:course] = Hash.new 
       trip.trip_courses.where(date: night.date).each do |tc|
-        calendar_date[night.date][:course][:id] = tc.id
-        calendar_date[night.date][:course][:name] = tc.course.name
-        calendar_date[night.date][:course][:cost] = tc.cost
+        calendar_date[:course][:id] = tc.id
+        calendar_date[:course][:name] = tc.course.name
+        calendar_date[:course][:cost] = tc.cost
       end
       calendar << calendar_date
     end
     last_meal = trip.meals.last 
     calendar_date = Hash.new
-    calendar_date[last_meal.date] = Hash.new
-    calendar_date[last_meal.date][:meals] = [{id: last_meal.id, time_of_day: last_meal.time_of_day, cost: last_meal.cost}]
+    calendar_date[:date] = last_meal.date.strftime('%A %m-%d-%Y') 
+    calendar_date[:meals] = [{id: last_meal.id, time_of_day: last_meal.time_of_day, cost: last_meal.cost}]
     calendar << calendar_date
     calendar
   end
