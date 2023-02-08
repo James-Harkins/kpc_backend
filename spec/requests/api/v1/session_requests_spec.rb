@@ -144,6 +144,16 @@ describe 'session endpoints' do
         expect(golfer[:attributes][:email]).to eq(json_payload[:golfer][:email])
         expect(golfer[:attributes][:role]).to eq('default')
       end
+
+      it 'returns an empty hash if no user is logged in' do 
+        get '/api/v1/login_status'
+
+        expect(response).to have_http_status(200)
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response_body[:data]).to eq({})
+      end
     end
   end
 end
