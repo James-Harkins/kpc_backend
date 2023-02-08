@@ -82,4 +82,32 @@ describe 'session endpoints' do
       end
     end
   end
+
+  describe 'POST /logout' do 
+    describe 'happy path' do 
+      it 'returns a 200 response if the user is logged out successfully' do 
+        golfer = Golfer.create!(first_name: 'Tony', last_name: 'Soprano', email: 'ton@badabing.com', password: 'test123', password_confirmation: 'test123')
+
+        json_payload = {
+          golfer: {
+            email: 't@badabing.com',
+            password: 'test123'
+          },
+          api_key: ENV["API_KEY"]
+        }
+
+        headers = {'CONTENT_TYPE' => 'application/json'}
+
+        post '/api/v1/login', headers: headers, params: json_payload.to_json
+
+        post '/api/v1/logout'
+
+        expect(response).to have_http_status(200)
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response_body[:logged_out]).to eq(true)
+      end
+    end
+  end
 end
