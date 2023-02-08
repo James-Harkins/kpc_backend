@@ -17,7 +17,7 @@ class Api::V1::GolferTripsController < ApplicationController
 
   def create
     if authenticated?(params)
-      trip_data = GolferTripFacade.create_new_golfer_trip(params)
+      trip_data = GolferTripFacade.create_new_golfer_trip(params[:golfer_trip])
       render json: GolferTripSerializer.serialize_trip(trip_data), status: 201
     end
   end
