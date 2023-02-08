@@ -15,6 +15,14 @@ class Api::V1::SessionsController < ApplicationController
     end
   end
 
+  def login_status
+    if logged_in? && current_golfer
+      render json: GolferSerializer.new(current_golfer)
+    else
+      render json: {data: {}}
+    end
+  end
+
   def destroy
     logout!
     render json: {status: 200, logged_out: true}
