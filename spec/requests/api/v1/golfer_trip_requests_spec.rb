@@ -282,43 +282,43 @@ describe 'golfer trip endpoints' do
         expect(trip[:attributes][:meals][0]).to be_a Hash
         expect(trip[:attributes][:meals][0][:id]).to eq(@meal_1_trip_4.id)
         expect(trip[:attributes][:meals][0][:date]).to eq(@meal_1_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:meals][0][:time_of_day]).to eq('breakfast')
+        expect(trip[:attributes][:meals][0][:time_of_day]).to eq('Breakfast')
         expect(trip[:attributes][:meals][1][:id]).to eq(@meal_2_trip_4.id)
         expect(trip[:attributes][:meals][1][:date]).to eq(@meal_2_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:meals][1][:time_of_day]).to eq('dinner')
+        expect(trip[:attributes][:meals][1][:time_of_day]).to eq('Dinner')
         expect(trip[:attributes][:meals][2][:id]).to eq(@meal_3_trip_4.id)
         expect(trip[:attributes][:meals][2][:date]).to eq(@meal_3_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:meals][2][:time_of_day]).to eq('breakfast')
+        expect(trip[:attributes][:meals][2][:time_of_day]).to eq('Breakfast')
         expect(trip[:attributes][:meals][3][:id]).to eq(@meal_4_trip_4.id)
         expect(trip[:attributes][:meals][3][:date]).to eq(@meal_4_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:meals][3][:time_of_day]).to eq('dinner')
+        expect(trip[:attributes][:meals][3][:time_of_day]).to eq('Dinner')
         expect(trip[:attributes][:meals][4][:id]).to eq(@meal_5_trip_4.id)
         expect(trip[:attributes][:meals][4][:date]).to eq(@meal_5_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:meals][4][:time_of_day]).to eq('breakfast')
+        expect(trip[:attributes][:meals][4][:time_of_day]).to eq('Breakfast')
         expect(trip[:attributes][:meals][5][:id]).to eq(@meal_6_trip_4.id)
         expect(trip[:attributes][:meals][5][:date]).to eq(@meal_6_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:meals][5][:time_of_day]).to eq('dinner')
+        expect(trip[:attributes][:meals][5][:time_of_day]).to eq('Dinner')
         expect(trip[:attributes][:meals][6][:id]).to eq(@meal_7_trip_4.id)
         expect(trip[:attributes][:meals][6][:date]).to eq(@meal_7_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:meals][6][:time_of_day]).to eq('breakfast')
+        expect(trip[:attributes][:meals][6][:time_of_day]).to eq('Breakfast')
         expect(trip[:attributes][:meals][7][:id]).to eq(@meal_8_trip_4.id)
         expect(trip[:attributes][:meals][7][:date]).to eq(@meal_8_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:meals][7][:time_of_day]).to eq('dinner')
+        expect(trip[:attributes][:meals][7][:time_of_day]).to eq('Dinner')
         expect(trip[:attributes][:meals][8][:id]).to eq(@meal_9_trip_4.id)
         expect(trip[:attributes][:meals][8][:date]).to eq(@meal_9_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:meals][8][:time_of_day]).to eq('breakfast')
+        expect(trip[:attributes][:meals][8][:time_of_day]).to eq('Breakfast')
         expect(trip[:attributes][:meals][9][:id]).to eq(@meal_10_trip_4.id)
         expect(trip[:attributes][:meals][9][:date]).to eq(@meal_10_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:meals][9][:time_of_day]).to eq('dinner')
+        expect(trip[:attributes][:meals][9][:time_of_day]).to eq('Dinner')
         expect(trip[:attributes][:meals][10][:id]).to eq(@meal_11_trip_4.id)
         expect(trip[:attributes][:meals][10][:date]).to eq(@meal_11_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:meals][10][:time_of_day]).to eq('breakfast')
+        expect(trip[:attributes][:meals][10][:time_of_day]).to eq('Breakfast')
         expect(trip[:attributes][:meals][11][:id]).to eq(@meal_12_trip_4.id)
         expect(trip[:attributes][:meals][11][:date]).to eq(@meal_12_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:meals][11][:time_of_day]).to eq('dinner')
+        expect(trip[:attributes][:meals][11][:time_of_day]).to eq('Dinner')
         expect(trip[:attributes][:meals][12][:id]).to eq(@meal_13_trip_4.id)
         expect(trip[:attributes][:meals][12][:date]).to eq(@meal_13_trip_4.date.strftime('%Y-%m-%d'))
-        expect(trip[:attributes][:meals][12][:time_of_day]).to eq('breakfast')
+        expect(trip[:attributes][:meals][12][:time_of_day]).to eq('Breakfast')
       end
     end
   end
@@ -435,29 +435,31 @@ describe 'golfer trip endpoints' do
       it 'returns a 201 created response with the new trip data' do
         golfer_3 = Golfer.create!(first_name: 'Christopher', last_name: 'Moltisanti', email: 'chrissie@badabing.com', password: 'test123', password_confirmation: 'test123')
         json_payload = {
-          golfer_id: golfer_3.id,
-          trip_id: @trip_4.id,
-          nights: [
-            @night_4_trip_4.id,
-            @night_5_trip_4.id,
-            @night_6_trip_4.id,
-            @night_7_trip_4.id
+        golfer_trip: {
+            golfer_id: golfer_3.id,
+            trip_id: @trip_4.id,
+            nights: [
+              @night_4_trip_4.id,
+              @night_5_trip_4.id,
+              @night_6_trip_4.id,
+              @night_7_trip_4.id
+              ],
+            meals: [
+              @meal_6_trip_4.id,
+              @meal_7_trip_4.id,
+              @meal_8_trip_4.id,
+              @meal_9_trip_4.id,
+              @meal_10_trip_4.id,
+              @meal_11_trip_4.id,
+              @meal_12_trip_4.id,
+              @meal_13_trip_4.id
             ],
-          meals: [
-            @meal_6_trip_4.id,
-            @meal_7_trip_4.id,
-            @meal_8_trip_4.id,
-            @meal_9_trip_4.id,
-            @meal_10_trip_4.id,
-            @meal_11_trip_4.id,
-            @meal_12_trip_4.id,
-            @meal_13_trip_4.id
-          ],
-          courses: [
-            @trip_4_course_4.id,
-            @trip_4_course_5.id,
-            @trip_4_course_6.id
-          ],
+            courses: [
+              @trip_4_course_4.id,
+              @trip_4_course_5.id,
+              @trip_4_course_6.id
+            ],
+          },
           api_key: ENV["API_KEY"]
         }
 
