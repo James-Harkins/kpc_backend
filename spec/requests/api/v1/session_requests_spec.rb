@@ -90,7 +90,7 @@ describe 'session endpoints' do
 
         json_payload = {
           golfer: {
-            email: 't@badabing.com',
+            email: 'ton@badabing.com',
             password: 'test123'
           },
           api_key: ENV["API_KEY"]
@@ -107,6 +107,42 @@ describe 'session endpoints' do
         response_body = JSON.parse(response.body, symbolize_names: true)
 
         expect(response_body[:logged_out]).to eq(true)
+      end
+    end
+  end
+
+  describe 'GET /login_status' do 
+    describe 'happy path' do 
+      it 'returns golfer data if a user is logged in' do 
+        golfer = Golfer.create!(first_name: 'Tony', last_name: 'Soprano', email: 'ton@badabing.com', password: 'test123', password_confirmation: 'test123')
+
+        json_payload = {
+          golfer: {
+            email: 'ton@badabing.com',
+            password: 'test123'
+          },
+          api_key: ENV["API_KEY"]
+        }
+
+        headers = {'CONTENT_TYPE' => 'application/json'}
+
+        post '/api/v1/login', headers: headers, params: json_payload.to_json
+
+        get '/api/v1/login_status'
+
+        expect(response).to have_http_status(200)
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+        golfer = response_body[:data]
+
+        expect(golfer[:type]).to eq('golfer')
+        expect(golfer).to have_key(:id)
+        expect(golfer).to have_key(:attributes)
+        expect(golfer[:attributes]).to be_a Hash
+        expect(golfer[:attributes][:first_name]).to eq('Tony')
+        expect(golfer[:attributes][:last_name]).to eq('Soprano')
+        expect(golfer[:attributes][:email]).to eq(json_payload[:golfer][:email])
+        expect(golfer[:attributes][:role]).to eq('default')
       end
     end
   end
