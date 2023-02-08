@@ -1143,11 +1143,14 @@ Example request:
 
 ```
 {
-    "golfer_id":3,
-    "trip_id":4,
-    "nights":[25,26,27,28],
-    "meals":[45,46,47,48,49,50,51,52],
-    "courses":[22,23,24]
+  golfer_trip:
+    {
+        "golfer_id":3,
+        "trip_id":4,
+        "nights":[25,26,27,28],
+        "meals":[45,46,47,48,49,50,51,52],
+        "courses":[22,23,24]
+    }
 }
 ```
 
