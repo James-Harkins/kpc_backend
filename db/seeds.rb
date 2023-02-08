@@ -251,5 +251,3 @@
 @trip_5_course_4 = @trip_5.trip_courses.create!(course: @course_4, date: Date.parse('2024-04-25'), cost: 65)
 @trip_5_course_5 = @trip_5.trip_courses.create!(course: @course_1, date: Date.parse('2024-04-26'), cost: 65)
 @trip_5_course_6 = @trip_5.trip_courses.create!(course: @course_2, date: Date.parse('2024-04-27'), cost: 65)
-
-@golfer_2_trip_5 = @trip_5.golfer_trips.create!(golfer: @golfer_2)
