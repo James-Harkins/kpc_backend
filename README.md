@@ -8,6 +8,10 @@ KPC is an app used for management of the world's most glorious golf outing, the 
 
 This is the documentation for the Back End app, which is a REST API written in Ruby on Rails (Ruby Version 2.7.4 / Rails Version 5.2.8). It contains the PostgreSQL relational database and exposes endpoints generating serialized JSON responses for use on the Front End. 
 
+### Note: 
+
+This app is not currently deployed. To test locally, fork and clone this repo, then run `bundle install` and `rails db:{create,migrate,seed}.` Then you will need to run `bundle exec figaro install` to create the `config/application.yml` file, in which you will need to create an `API_KEY` environment variable with any value you want. Then you can run the tests to make sure everything is passing locally by running `bundle exec rspec`. Then run `rails s` to spin up the server, which will run at `localhost:3001`. Next, fork and clone the [front end repo](https://github.com/James-Harkins/kpc_frontend), then run `npm install` to install dependencies. Next you will need to create a file called `.env` in the root directory of the repo, in which you will need to create an environment variable called `REACT_APP_API_KEY` with a value of your `API_KEY` env var from the back end app. Then you can run `npm start` from the terminal, which will open up the app in your browser and you will have access to its full functionality. Check the `seeds.rb` file in the back end app to see data for the seeded golfers, or create your own file and register for the upcoming trip. Happy golfing! 
+
 ## Database Schema 
 
 <img width="1419" alt="image" src="https://user-images.githubusercontent.com/93609855/212140683-f1b63ad7-99eb-426f-8611-aebfc87043d5.png">
