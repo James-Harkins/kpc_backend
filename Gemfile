@@ -29,6 +29,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors'
 
 gem 'figaro'
+gem 'jsonapi-serializer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -36,7 +37,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'simplecov'
   gem 'pry'
-  gem 'jsonapi-serializer'
   gem 'shoulda-matchers'
 end
 
